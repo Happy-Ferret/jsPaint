@@ -367,6 +367,17 @@
 	visibility: hidden;
 }
 
+.popup-container
+{
+    background-color: #FCFCFC;
+
+    border: 1px solid #8492A6;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+
+    padding: 1px;
+}
+
 .common_button:hover .rotate_block_image
 {
 	background-color: transparent;

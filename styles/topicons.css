@@ -1,6 +1,28 @@
 .top-icon
 {
     background-image: url('../img/top_icons.png');
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
+}
+
+.top-icon-customize-header
+{
+    background-color: #EBF2F7;
+}
+
+.top-icon-customize-outer
+{
+    background-color: #F3F7FB;
+    padding: 2px;
+}
+
+.top-icon-customize-checked
+{
+    border-color: #F29536;
+}
+
+.top-icon-customize-checked-inner
+{
+    border-color: #FFE395;
+    background-color: #FFE082;
 }
