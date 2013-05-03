@@ -1,17 +1,19 @@
 <html>
 <head>
 	<title>jPaint demo</title>
-	<script src="scripts/knockout-2.2.1.js"></script>
-	<script src="scripts/viewmodel.js"></script>
-	<script src="scripts/color.js"></script>
-	<script src="scripts/picker.js"></script>
-	<script src="scripts/position.js"></script>
-	<script src="scripts/drawbox.js"></script>
-	<script src="scripts/common.js"></script>
-	<script src="scripts/file_functions.js"></script>
-	<script src="scripts/window_functions.js"></script>
-	<link rel="stylesheet" type="text/css" href="styles/style.css"/>
-	<link rel="stylesheet" type="text/css" href="styles/pickerstyle.css"/>
+
+    <link rel="stylesheet" type="text/css" href="styles/style.css"/>
+    <link rel="stylesheet" type="text/css" href="styles/pickerstyle.css"/>
+
+	<script type="text/javascript" src="scripts/knockout-2.2.1.js"></script>
+	<script type="text/javascript" src="scripts/viewmodel.js"></script>
+	<script type="text/javascript" src="scripts/color.js"></script>
+	<script type="text/javascript" src="scripts/picker.js"></script>
+	<script type="text/javascript" src="scripts/position.js"></script>
+	<script type="text/javascript" src="scripts/drawbox.js"></script>
+	<script type="text/javascript" src="scripts/common.js"></script>
+	<script type="text/javascript" src="scripts/file_functions.js"></script>
+	<script type="text/javascript" src="scripts/window_functions.js"></script>
 </head>
 
 <body onload="init()" onmouseup="mouseUp()" id="app">
@@ -19,7 +21,7 @@
 <!-- System border -->
 <div class="system_border">
 	<div class="system_bar" onmousedown="beginDrag(event, this)" onmouseup="endDrag()">
-		<table style="width:100%">
+		<table class="full-width">
 			<tr>
 				<td>
 					<table>
@@ -315,7 +317,7 @@
 	</div>
 	
 	<!-- Main part with canvas -->
-    <table style="width: 100%; height: 100%">
+    <table class="full-width" style="height: 100%">
         <tr>
             <td></td>
             <td>
@@ -350,7 +352,7 @@
 	<!-- Bottom statusbar -->
 	<div id="statusbar">
 		<div id="statusbar_inner">
-			<table style="width: 100%">
+			<table class="full-width">
 			<tr>
 				<td class="statusbar_icon"><img src="img/statusbar_icons/position.png" /></td>
 				<td id="statusbar_coords" class="statusbar_text"></td>
@@ -459,10 +461,10 @@
 			</table>
 		</div>
 		<div>
-			<table cellspacing="0" style="width: 100%">
+			<table cellspacing="0" class="full-width">
 				<tr>
 					<td id="main_menu_icons">
-						<table style="width: 100%">
+						<table class="full-width">
 							<tr>
 								<td colspan="3">
 									<div class="main_menu_item common_button" style="vertical-align: middle" onclick="newFileCommand()">
