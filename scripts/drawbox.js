@@ -583,20 +583,6 @@ function raiseZoomChanged() {
 	canvas.style.height = parseInt(canvas.height) * zoomValue / 100.0;	
 }
 
-function zoomIn() {
-	var zoomSlider = getElement('zoom_value');
-	zoomSlider.value = parseInt(zoomSlider.value) + parseInt(zoomSlider.step);
-	
-	raiseZoomChanged();
-}
-
-function zoomOut() {
-	var zoomSlider = getElement('zoom_value');
-	zoomSlider.value = parseInt(zoomSlider.value) - parseInt(zoomSlider.step);
-	
-	raiseZoomChanged();
-}
-
 function showRotateBlock() {
 	var button = getElement('rotate_block_button');
 	var block = getElement('rotate_block');

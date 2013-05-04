@@ -135,6 +135,20 @@ function PaintViewModel() {
         window.close();
     };
 
+    this.ZoomIn = function(){
+        var zoomSlider = getElement('zoom_value');
+        zoomSlider.value = parseInt(zoomSlider.value) + parseInt(zoomSlider.step);
+
+        raiseZoomChanged();
+    };
+
+    this.ZoomOut = function(){
+        var zoomSlider = getElement('zoom_value');
+        zoomSlider.value = parseInt(zoomSlider.value) - parseInt(zoomSlider.step);
+
+        raiseZoomChanged();
+    };
+
     this.Init = function(){
         self.TopIcons(new TopIconsViewModel(self));
     }

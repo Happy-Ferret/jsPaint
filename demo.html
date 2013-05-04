@@ -353,13 +353,12 @@
         <td>
             <table>
                 <tr>
-                    <td class="common_button" style="width: 42px; height: 66px; text-align: center;" onclick="zoomIn()">
+                    <td class="common_button" style="width: 42px; height: 66px; text-align: center;" data-bind="click: ZoomIn">
                         <div><img src="img/ribbon_view_icons/zoom_in.png"/></div>
                         <div>Zoom</div>
                         <div>in</div>
                     </td>
-                    <td class="common_button" style="width: 42px; height: 66px; text-align: center;"
-                        onclick="zoomOut()">
+                    <td class="common_button" style="width: 42px; height: 66px; text-align: center;" data-bind="click: ZoomOut">
                         <div><img src="img/ribbon_view_icons/zoom_out.png"/></div>
                         <div>Zoom</div>
                         <div>out</div>
@@ -458,7 +457,6 @@
         </td>
     </tr>
 </table>
-
 <!-- Bottom statusbar -->
 <div id="statusbar">
     <div id="statusbar_inner">
@@ -484,14 +482,14 @@
                                     <div id="zoom_text_value">100%</div>
                                 </td>
 
-                                <td><img src="img/statusbar_icons/zoom_out.png" onclick="zoomOut()"/></td>
+                                <td><img src="img/statusbar_icons/zoom_out.png" data-bind="click: ZoomOut"/></td>
 
                                 <td>
                                     <input id="zoom_value" type="range" value="100" min="25" max="800" step="25"
                                            style="width:100px; margin: 0;" onchange="raiseZoomChanged()"/>
                                 </td>
 
-                                <td><img src="img/statusbar_icons/zoom_in.png" onclick="zoomIn()"/></td>
+                                <td><img src="img/statusbar_icons/zoom_in.png" data-bind="click: ZoomIn" /></td>
                             </tr>
                         </table>
                     </div>
