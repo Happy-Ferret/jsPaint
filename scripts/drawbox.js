@@ -253,6 +253,8 @@ function tempMethod(e){
 function initMiscWindows() {
 	createWindow({title: 'Test', canMinimize: false, canMaximize: false, canClose: true, resizable: false, icon: null, content: 'canvas_resize_window_content', id: 'canvas_resize_window'});
 	createWindow({title: 'Palette', canMinimize: false, canMaximize: false, canClose: true, resizable: false, icon: null, content: 'color_picker_window_content', id: 'color_picker_window'});
+    createWindow({title: 'About Paint', canMinimize: false, canMaximize: false, canClose: true, resizable: false, icon: null, content: 'about_window_content', id: 'about_window'});
+    createWindow({title: 'Image Properties', canMinimize: false, canMaximize: false, canClose: true, resizable: false, icon: null, content: 'properties_window_content', id: 'properties_window'});
 }
 
 function initVerticalRuler() {
@@ -486,7 +488,7 @@ function endResizing() {
 	var canvas = getElement('canv');
 	var resizingCanvas = getElement('resizing_canvas');
 	var app = getElement('app');
-	
+
 	canvas.style.width = resizingCanvas.width;
 	canvas.style.height = resizingCanvas.height;
 	

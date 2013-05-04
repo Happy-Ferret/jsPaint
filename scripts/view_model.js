@@ -128,9 +128,11 @@ function PaintViewModel() {
     };
 
     this.ShowProperties = function () {
+        getElement('properties_window').style.display = "block";
     };
 
     this.ShowAbout = function () {
+        getElement('about_window').style.display = "block";
     };
 
     this.Exit = function () {

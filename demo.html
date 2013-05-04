@@ -682,7 +682,8 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="3" class="main_menu_item_text main_menu_separator">
+                            <td colspan="3" class="main_menu_item_text main_menu_separator"
+                                data-bind="click: ShowProperties">
                                 <div class="main_menu_item common_button">
                                     <table style="height: 100%">
                                         <tr>
@@ -694,7 +695,8 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="3" class="main_menu_item_text main_menu_separator">
+                            <td colspan="3" class="main_menu_item_text main_menu_separator"
+                                data-bind="click: ShowAbout">
                                 <div class="main_menu_item common_button">
                                     <table style="height: 100%">
                                         <tr>
@@ -940,6 +942,41 @@
     </table>
 </div>
 
+<div id="about_window_content" style="background-color: #F0F0F0">
+    Windows 7 Professional
+    <hr/>
+
+    <p>Javascript Paint
+        Version 3.8 (Build 3838: ServicePack 1)
+        Copyright ©</p>
+
+    <p>The Windows 7 Professional operating system and its user interface are
+        protected by trademark and other pending or existing intellectual property
+        rights in the United States and other countries.</p>
+
+    <p>This product is licensed under the GNU license to:<br/>
+        everybody.</p>
+
+    <input type="button" value="OK"/>
+</div>
+
+<div id="properties_window_content" style="background-color: #F0F0F0">
+    <fieldset>
+        <legend>File Attributes</legend>
+    </fieldset>
+
+    <fieldset>
+        <legend>Units</legend>
+    </fieldset>
+
+    <fieldset>
+        <legend>Colors</legend>
+    </fieldset>
+
+    <input type="text"/> <input type="text"/> <input type="button" value="Default"/><br/>
+    <input type="button" value="OK"/><input type="button" value="Cancel"/>
+</div>
+
 <!-- Black thin border -->
 <div class="outer_border" style="position: absolute; display: none" id="window_template">
     <!-- System color border -->
@@ -951,7 +988,7 @@
                     <td>
                         <table>
                             <tr>
-                                <td><img src="img/top_icons/paint_icon.png"/></td>
+                                <td class="top-icon app-icon">&nbsp</td>
 
                                 <td class="system_separator"></td>
 
