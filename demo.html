@@ -72,7 +72,7 @@
                         <td class="system_separator"></td>
 
                         <!-- ko foreach: VisibleIcons -->
-                        <td class="common_button">
+                        <td class="common_button" data-bind="attr: { 'title' : Name() + ': ' + Description() }">
                             <div class="top-icon" data-bind="style: { 'background-position':  BackgroundStyle }, click: Action"/>
                         </td>
                         <!-- /ko -->

@@ -3,7 +3,7 @@ function TopIconViewModel(parent, name, description, offset, action) {
 
     self.Visible = ko.observable(true);
     self.Name = ko.observable(name);
-    self.Desctiption = ko.observable(description);
+    self.Description = ko.observable(description);
     self.Offset = ko.observable(offset);
 
     self.BackgroundStyle = ko.computed(function(){
