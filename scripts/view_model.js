@@ -1,7 +1,8 @@
-function TopIconViewModel(parent, name, description, offset, action) {
+function TopIconViewModel(parent, name, description, enabled, offset, action) {
     var self = this;
 
     self.Visible = ko.observable(true);
+    self.Enabled = enabled;
     self.Name = ko.observable(name);
     self.Description = ko.observable(description);
     self.Offset = ko.observable(offset);
@@ -15,7 +16,10 @@ function TopIconViewModel(parent, name, description, offset, action) {
         parent.HideProperties();
     };
 
-    this.Action = action;
+    this.Action = function(){
+        if (action)
+            action();
+    };
 }
 
 function TopIconsViewModel(parent) {
@@ -55,14 +59,14 @@ function TopIconsViewModel(parent) {
 
     this.Init = function () {
         self.Icons([
-            new TopIconViewModel(self, 'New', 'Create a new picture.', -17, parent.New),
-            new TopIconViewModel(self, 'Open', 'Open an existing picture.', -33, parent.Open),
-            new TopIconViewModel(self, 'Save', 'Save the current picture.', -50, parent.Save),
-            new TopIconViewModel(self, 'Print', 'Print the current picture.', -66, parent.Print),
-            new TopIconViewModel(self, 'Print preview', 'Print preview', -82, parent.Print),
-            new TopIconViewModel(self, 'Send in e-mail', 'Send a copy of the picture in an e-mail message as an attachment.', -101, parent.SendEmail),
-            new TopIconViewModel(self, 'Undo', 'Undo last action.', -118, parent.Undo),
-            new TopIconViewModel(self, 'Redo', 'Redo last action.', -136, parent.Redo)
+            new TopIconViewModel(self, 'New', 'Create a new picture.', true, -17, parent.New),
+            new TopIconViewModel(self, 'Open', 'Open an existing picture.', true, -33, parent.Open),
+            new TopIconViewModel(self, 'Save', 'Save the current picture.', true, -50, parent.Save),
+            new TopIconViewModel(self, 'Print', 'Print the current picture.', true, -66, parent.Print),
+            new TopIconViewModel(self, 'Print preview', 'Print preview', false, -82, null),
+            new TopIconViewModel(self, 'Send in e-mail', 'Send a copy of the picture in an e-mail message as an attachment.', false, -101, null),
+            new TopIconViewModel(self, 'Undo', 'Undo last action.', true, -118, parent.Undo),
+            new TopIconViewModel(self, 'Redo', 'Redo last action.', true, -136, parent.Redo)
         ]);
     };
 
