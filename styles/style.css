@@ -409,8 +409,8 @@
     -webkit-border-radius: 2px;
 	border-radius: 2px;
 	
-	-webkit-box-shadow: 3px 3px 0px 1px rgba(0, , , 0.3);
-	box-shadow: 3px 3px 0px 1px rgba(0, , , 0.3);
+	-webkit-box-shadow: 3px 3px 0px 1px rgba(0, 0, 0, 0.3);
+	box-shadow: 3px 3px 0px 1px rgba(0, 0, 0, 0.3);
 	
 	position: absolute;
 	display: none;
@@ -471,6 +471,11 @@
 .main_menu_item_text
 {
 	color: #254264;
+}
+
+.main_menu_item_text[disabled^="disabled"]
+{
+    color: #999;
 }
 
  .recent_image_item

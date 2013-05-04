@@ -116,15 +116,6 @@ function PaintViewModel() {
     this.Print = function () {
     };
 
-    this.FromScanner = function () {
-    };
-
-    this.SendEmail = function () {
-    };
-
-    this.SetAsWallpaper = function () {
-    };
-
     this.ShowProperties = function () {
     };
 
