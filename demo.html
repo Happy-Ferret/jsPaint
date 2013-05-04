@@ -69,13 +69,15 @@
 
                         <td class="system_separator"></td>
 
-                        <td>
-                            <!-- ko foreach: VisibleIcons -->
+                        <!-- ko foreach: VisibleIcons -->
+                        <td class="common_button">
                             <img class="top-icon" style="border-width: 0" data-bind="style: { 'background-position':  BackgroundStyle }, click: Action"/>
-                            <!-- /ko -->
                         </td>
+                        <!-- /ko -->
 
-                        <td data-bind="click: ShowProperties">Props</td>
+                        <td data-bind="click: ShowProperties" class="common_button">
+                            <img src="img/top_icon_show_properties.png" />
+                        </td>
 
                         <td class="system_separator"></td>
 
@@ -95,7 +97,7 @@
                                 <div id="maximize_button" class="system_button">&nbsp</div>
                             </td>
                             <td>
-                                <div id="close_button" class="system_button">&nbsp</div>
+                                <div id="close_button" class="system_button" data-bind="click: Exit">&nbsp</div>
                             </td>
                         </tr>
                     </table>
