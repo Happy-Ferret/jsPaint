@@ -764,10 +764,6 @@ function showRibbon(ribbonName) {
 	getElement('ribbon_'+ribbonName).style.display = "table";
 }
 
-function changeStatusBarVisibility(isVisible) {
-	getElement('statusbar').style.display = isVisible ? "block" : "none";
-}
-
 /* */
 function showSaveAdditionalWindow() {
 	var element = getElement('save_as_additional_window');

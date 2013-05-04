@@ -382,8 +382,9 @@
                     <td>
                         <div><input type="checkbox" onclick="changeRulersVisibility(this.checked)">Rulers</input></div>
                         <div><input type="checkbox">Gridlines</input></div>
-                        <div><input type="checkbox" checked="true" onclick="changeStatusBarVisibility(this.checked)">Status
-                            bar</input></div>
+                        <div>
+                            <input type="checkbox" data-bind="checked: StatusBarVisible">Status bar</input>
+                        </div>
                     </td>
                 </tr>
             </table>
@@ -461,7 +462,7 @@
     </tr>
 </table>
 <!-- Bottom statusbar -->
-<div id="statusbar">
+<div id="statusbar" data-bind="visible: StatusBarVisible">
     <div id="statusbar_inner">
         <table class="full-width">
             <tr>

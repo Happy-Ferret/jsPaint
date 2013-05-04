@@ -74,6 +74,8 @@ function PaintViewModel() {
 
     self.TopIcons = ko.observable();
 
+    self.StatusBarVisible = ko.observable(true);
+
     self.UndoAvailable = ko.computed(function () {
 
     });
