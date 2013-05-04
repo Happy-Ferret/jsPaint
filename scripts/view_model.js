@@ -46,12 +46,12 @@ function TopIconsViewModel(parent) {
 
     this.Init = function(){
         self.Icons([
-            new TopIconViewModel(self, 'New', 'Create a new picture.', -16, parent.New),
-            new TopIconViewModel(self, 'Open', 'Open an existing picture.', -32, parent.Open),
-            new TopIconViewModel(self, 'Save', 'Save the current picture.', -48, parent.Save),
-            new TopIconViewModel(self, 'Print', 'Print the current picture.', -64, parent.Print),
-            new TopIconViewModel(self, 'Print preview', 'Print preview', -80, parent.Print),
-            new TopIconViewModel(self, 'Send in e-mail', 'Send a copy of the picture in an e-mail message as an attachment.', -100, parent.SendEmail),
+            new TopIconViewModel(self, 'New', 'Create a new picture.', -17, parent.New),
+            new TopIconViewModel(self, 'Open', 'Open an existing picture.', -33, parent.Open),
+            new TopIconViewModel(self, 'Save', 'Save the current picture.', -50, parent.Save),
+            new TopIconViewModel(self, 'Print', 'Print the current picture.', -66, parent.Print),
+            new TopIconViewModel(self, 'Print preview', 'Print preview', -82, parent.Print),
+            new TopIconViewModel(self, 'Send in e-mail', 'Send a copy of the picture in an e-mail message as an attachment.', -101, parent.SendEmail),
             new TopIconViewModel(self, 'Undo', 'Undo last action.', -118, parent.Undo),
             new TopIconViewModel(self, 'Redo', 'Redo last action.', -136, parent.Redo)
         ]);

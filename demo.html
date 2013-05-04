@@ -67,14 +67,13 @@
             <td>
                 <table data-bind="with: TopIcons">
                     <tr>
-                        <td><img src="img/top_icons/paint_icon.png"/></td>
+                        <td class="top-icon app-icon">&nbsp</td>
 
                         <td class="system_separator"></td>
 
                         <!-- ko foreach: VisibleIcons -->
                         <td class="common_button">
-                            <img class="top-icon" style="border-width: 0"
-                                 data-bind="style: { 'background-position':  BackgroundStyle }, click: Action"/>
+                            <div class="top-icon" data-bind="style: { 'background-position':  BackgroundStyle }, click: Action"/>
                         </td>
                         <!-- /ko -->
 

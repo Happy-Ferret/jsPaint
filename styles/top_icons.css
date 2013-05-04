@@ -1,6 +1,11 @@
+.app-icon
+{
+    background: no-repeat 0 0;
+}
+
 .top-icon
 {
-    background-image: url('../img/top_icons.png');
+    background: url('../img/top_icons.png') no-repeat;
     width: 18px;
     height: 18px;
 }
