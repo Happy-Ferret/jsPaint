@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="styles/helpers.css"/>
     <link rel="stylesheet" type="text/css" href="styles/top_icons.css"/>
     <link rel="stylesheet" type="text/css" href="styles/menu_icons.css"/>
+    <link rel="stylesheet" type="text/css" href="styles/print.css" media="print"/>
 
     <script type="text/javascript" src="scripts/knockout-2.2.1.js"></script>
     <script type="text/javascript" src="scripts/view_model.js"></script>
@@ -434,7 +435,8 @@
                 <table id="canvas_block">
                     <tr>
                         <td>
-                            <canvas style="width: 500px; height: 500px" width="500px" height="500px" id="canv"
+                            <canvas style="width: 500px; height: 500px" width="500px" height="500px"
+                                    id="canv"
                                     onmousedown="mouseDown()" onmouseout="removeEraserCursor()"
                                     onmouseover="createEraserCursor()"></canvas>
                         </td>
@@ -632,7 +634,7 @@
                         </tr>
                         <tr>
                             <td colspan="3">
-                                <div class="main_menu_item common_button">
+                                <div class="main_menu_item common_button" data-bind="click: Print">
                                     <table style="height: 100%">
                                         <tr>
                                             <td class="menu-icon menu-icon-print">&nbsp</td>

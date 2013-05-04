@@ -1,0 +1,7 @@
+* {
+    display: none;
+}
+
+html, body, #printing_canvas {
+    display: block;
+}

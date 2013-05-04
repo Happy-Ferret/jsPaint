@@ -622,3 +622,9 @@
     width: 18px;
     border-right-width: 1px;
 }
+
+@media not print {
+    #printing_canvas {
+        display: none;
+    }
+}

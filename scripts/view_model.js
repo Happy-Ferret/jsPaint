@@ -125,6 +125,17 @@ function PaintViewModel() {
     };
 
     this.Print = function () {
+        var canvasClone = document.getElementById('printing_canvas');
+
+        if (canvasClone)
+            document.getElementById('app').removeChild(canvasClone);
+
+        canvasClone = cloneCanvas(document.getElementById('canv'));
+        canvasClone.id = 'printing_canvas';
+
+        document.getElementById('app').appendChild(canvasClone);
+
+        window.print();
     };
 
     this.ShowProperties = function () {
