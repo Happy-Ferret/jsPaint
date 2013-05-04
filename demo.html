@@ -38,24 +38,22 @@
 <body onload="init()" onmouseup="mouseUp()" id="app">
 
 <div id="top_icons_properties" class="popup-container"
-     data-bind="with: TopIcons, visible: TopIcons().PropertiesVisible">
-    <div class="top-icon-customize-container-inner">
-
-    </div>
-    <div class="top-icon-customize-header"><b>Customize Quick Access Toolbar</b></div>
-    <table cellspacing="0" data-bind="foreach: Icons">
-        <tr class="common_button" data-bind="click: ChangeState">
-            <td class="top-icon-customize-outer">
-                <div data-bind="css: Visible() == true ? 'top-icon-customize-checked' : ''">
-                    <div data-bind="css: Visible() == true ? 'top-icon-customize-checked-inner' : ''">
-                        <img src="img/check.png" data-bind="visible: Visible"/>
+     data-bind="with: TopIcons, visible: TopIcons().PropertiesVisible, style: { left: TopIcons().PropertiesWindowPosition().left, top: TopIcons().PropertiesWindowPosition().top }">
+    <div class="popup-container-header popup-container-header-top">Customize Quick Access Toolbar</div>
+    <div class="full-width" data-bind="foreach: Icons">
+        <table cellspacing="0" cellpadding="0" class="common_button full-width">
+            <tr data-bind="click: ChangeState">
+                <td class="top-icon-customize-outer" style="width: 20px; height: 20px">
+                    <div data-bind="css: Visible() == true ? 'top-icon-customize-checked' : ''">
+                        <div data-bind="css: Visible() == true ? 'top-icon-customize-checked-inner' : ''">
+                            <img src="img/check.png" data-bind="visible: Visible"/>
+                        </div>
                     </div>
-                </div>
-            </td>
-            <td data-bind="text: Name"></td>
-        </tr>
-    </table>
-
+                </td>
+                <td data-bind="text: Name"></td>
+            </tr>
+        </table>
+    </div>
 </div>
 
 <div class="outer_border" style="position: absolute;">
@@ -73,11 +71,12 @@
 
                         <!-- ko foreach: VisibleIcons -->
                         <td class="common_button" data-bind="attr: { 'title' : Name() + ': ' + Description() }">
-                            <div class="top-icon" data-bind="style: { 'background-position':  BackgroundStyle }, click: Action"/>
+                            <div class="top-icon"
+                                 data-bind="style: { 'background-position':  BackgroundStyle }, click: Action"/>
                         </td>
                         <!-- /ko -->
 
-                        <td data-bind="click: ShowProperties" class="common_button">
+                        <td id="top_icons_show_properties_btn" data-bind="click: ShowProperties" class="common_button">
                             <img src="img/top_icon_show_properties.png"/>
                         </td>
 
@@ -648,7 +647,8 @@
                                     <table style="height: 100%">
                                         <tr>
                                             <td class="menu-icon menu-icon-from-scanner">&nbsp</td>
-                                            <td class="main_menu_item_text" disabled="disabled">From scanner or camera</td>
+                                            <td class="main_menu_item_text" disabled="disabled">From scanner or camera
+                                            </td>
                                         </tr>
                                     </table>
                                 </div>
@@ -672,7 +672,9 @@
                                     <table style="height: 100%">
                                         <tr>
                                             <td class="menu-icon menu-icon-set-background">&nbsp</td>
-                                            <td class="main_menu_item_text" disabled="disabled">Set as desktop background</td>
+                                            <td class="main_menu_item_text" disabled="disabled">Set as desktop
+                                                background
+                                            </td>
                                         </tr>
                                     </table>
                                 </div>

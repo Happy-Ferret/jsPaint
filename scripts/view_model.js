@@ -6,11 +6,11 @@ function TopIconViewModel(parent, name, description, offset, action) {
     self.Description = ko.observable(description);
     self.Offset = ko.observable(offset);
 
-    self.BackgroundStyle = ko.computed(function(){
+    self.BackgroundStyle = ko.computed(function () {
         return ' ' + self.Offset() + 'px 0';
     });
 
-    this.ChangeState = function(){
+    this.ChangeState = function () {
         self.Visible(!self.Visible());
         parent.HideProperties();
     };
@@ -22,10 +22,19 @@ function TopIconsViewModel(parent) {
     var self = this;
 
     self.PropertiesVisible = ko.observable(false);
+    self.PropertiesWindowPosition = ko.computed(function () {
+        self.PropertiesVisible();   // dummy reference to update this computed on "PropertiesVisible()" changed
+        var position = getAbsoluteElementPosition(document.getElementById('top_icons_show_properties_btn'));
+
+        return {
+            left: position.x,
+            top: position.y
+        }
+    });
 
     self.Icons = ko.observableArray([]);
 
-    self.VisibleIcons = ko.computed(function(){
+    self.VisibleIcons = ko.computed(function () {
         var result = [];
 
         var i;
@@ -44,7 +53,7 @@ function TopIconsViewModel(parent) {
         self.PropertiesVisible(false);
     };
 
-    this.Init = function(){
+    this.Init = function () {
         self.Icons([
             new TopIconViewModel(self, 'New', 'Create a new picture.', -17, parent.New),
             new TopIconViewModel(self, 'Open', 'Open an existing picture.', -33, parent.Open),
@@ -65,11 +74,11 @@ function PaintViewModel() {
 
     self.TopIcons = ko.observable();
 
-    self.UndoAvailable = ko.computed(function(){
+    self.UndoAvailable = ko.computed(function () {
 
     });
 
-    self.RedoAvailable = ko.computed(function(){
+    self.RedoAvailable = ko.computed(function () {
 
     });
 
@@ -82,11 +91,11 @@ function PaintViewModel() {
     this.Open = function () {
         var reader = new FileReader();
         var image;
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             image = new Image();
             image.src = e.target.result;
 
-            image.onload = function() {
+            image.onload = function () {
                 var canvas = getElement('canv');
                 canvas.width = image.width;
                 canvas.height = image.height;
@@ -126,21 +135,21 @@ function PaintViewModel() {
         window.close();
     };
 
-    this.ZoomIn = function(){
+    this.ZoomIn = function () {
         var zoomSlider = getElement('zoom_value');
         zoomSlider.value = parseInt(zoomSlider.value) + parseInt(zoomSlider.step);
 
         raiseZoomChanged();
     };
 
-    this.ZoomOut = function(){
+    this.ZoomOut = function () {
         var zoomSlider = getElement('zoom_value');
         zoomSlider.value = parseInt(zoomSlider.value) - parseInt(zoomSlider.step);
 
         raiseZoomChanged();
     };
 
-    this.Init = function(){
+    this.Init = function () {
         self.TopIcons(new TopIconsViewModel(self));
     }
 

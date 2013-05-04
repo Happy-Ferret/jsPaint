@@ -376,6 +376,9 @@
     border-radius: 2px;
 
     padding: 1px;
+    position: absolute;
+
+    z-index: 1000;
 }
 
 .common_button:hover .rotate_block_image
