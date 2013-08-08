@@ -16,7 +16,7 @@ function TopIconViewModel(parent, name, description, enabled, offset, action) {
         parent.HideProperties();
     };
 
-    this.Action = function(){
+    this.Action = function () {
         if (action)
             action();
     };
@@ -172,7 +172,7 @@ function PaintViewModel() {
 
     this.Init = function () {
         self.TopIcons(new TopIconsViewModel(self));
-    }
+    };
 
     self.Init();
 }
