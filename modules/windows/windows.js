@@ -1,19 +1,19 @@
 /*
 
  parameters: {
-     title (string, ''),
-     icon (url, null),
-     system: {
-     canMinimize (bool, false),
-     canMaximize (bool, false),
-     canClose (bool, true),
-     resizable (bool, false)
-     },
-     size: {
-     width (integer, 640),
-     height (integer, 480)
-     },
-     background: (string, #FFFFFF),
+ title (string, ''),
+ icon (url, null),
+ system: {
+ canMinimize (bool, false),
+ canMaximize (bool, false),
+ canClose (bool, true),
+ resizable (bool, false)
+ },
+ size: {
+ width (integer, 640),
+ height (integer, 480)
+ },
+ background: (string, #FFFFFF),
  },
  content (DOMElement, null)
 
@@ -35,7 +35,7 @@ function WindowViewModel(parameters, content) {
     // Window state
     self.IsVisible = ko.observable(true);
     self.DomContent = ko.observable(content);
-    self.Content = ko.computed(function(){
+    self.Content = ko.computed(function () {
         return self.DomContent() ? self.DomContent().outerHTML : '';
     });
 
@@ -52,7 +52,7 @@ function WindowViewModel(parameters, content) {
                 self.Icon(parameters.icon);
             }
 
-            if (parameters.background){
+            if (parameters.background) {
                 self.Background(parameters.background);
             }
 
