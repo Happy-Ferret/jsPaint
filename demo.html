@@ -970,14 +970,14 @@
 
 <!-- ko foreach: Windows -->
 <!-- Black thin border -->
-<div class="systemOuterBorder" data-bind="visible: IsVisible">
+<div class="systemOuterBorder" data-bind="visible: IsVisible, style: { 'top': Top, 'left': Left }">
     <!-- System color border -->
     <div class="systemBorder">
-        <div class="systemBar" onmousedown="beginDrag(event, this)" onmouseup="endDrag()">
+        <div class="systemBar" data-bind="event: { mousedown: BeginDrag, mouseup: EndDrag }">
             <div class="systemLeft">
                 <div class="top_icon systemAppIcon"></div>
                 <div class="systemSeparator"></div>
-                <span class="systemCaption">Untitled - Paint</span>
+                <span class="systemCaption" data-bind="text: Title"></span>
             </div>
 
             <div class="systemButtons">

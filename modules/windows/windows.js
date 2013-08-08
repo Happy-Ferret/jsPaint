@@ -1,23 +1,23 @@
-/*
-
- parameters: {
- title (string, ''),
- icon (url, null),
- system: {
- canMinimize (bool, false),
- canMaximize (bool, false),
- canClose (bool, true),
- resizable (bool, false)
- },
- size: {
- width (integer, 640),
- height (integer, 480)
- },
- background: (string, #FFFFFF),
- },
- content (DOMElement, null)
-
- */
+//  parameters: {
+//      title (string, ''),
+//      icon (url, null),
+//      system: {
+//          canMinimize (bool, false),
+//          canMaximize (bool, false),
+//          canClose (bool, true),
+//          resizable (bool, false)
+//      },
+//      size: {
+//          width (integer, 640),
+//          height (integer, 480)
+//      },
+//      position: {
+//          left (integer, 0),
+//          top (integer, 0)
+//      },
+//      background: (string, #FFFFFF),
+//  },
+//  content (DOMElement, null)
 
 function WindowViewModel(parameters, content) {
     var self = this;
@@ -42,6 +42,24 @@ function WindowViewModel(parameters, content) {
     self.Width = ko.observable(640);
     self.Height = ko.observable(480);
 
+    self.Size = {
+        Top: ko.observable(0),
+        Left: ko.observable(0)
+    };
+
+    self.Top = ko.computed(function () {
+        return self.Size.Top() + 'px';
+    });
+    self.Left = ko.computed(function () {
+        return self.Size.Left() + 'px';
+    });
+
+    self.IsDragging = false;
+    self.DragOffset = {
+        offsetX: 0,
+        offsetY: 0
+    };
+
     this.Init = function () {
         if (parameters) {
             if (parameters.title) {
@@ -65,7 +83,7 @@ function WindowViewModel(parameters, content) {
                     self.CanMaximize(parameters.system.canMaximize);
                 }
 
-                if (parameters.system.canCloze) {
+                if (parameters.system.canClose) {
                     self.CanClose(parameters.system.canClose);
                 }
 
@@ -84,6 +102,8 @@ function WindowViewModel(parameters, content) {
                 }
             }
         }
+
+        document.body.addEventListener('mousemove', self.Drag);
     };
 
     this.Minimize = function () {
@@ -98,31 +118,28 @@ function WindowViewModel(parameters, content) {
 
     };
 
+    this.BeginDrag = function (data, event) {
+        self.IsDragging = true;
+
+        var mouseCoordinates = getAbsoluteMousePos(event);
+        self.DragOffset = {
+            offsetX: mouseCoordinates.x - self.Size.Left(),
+            offsetY: mouseCoordinates.y - self.Size.Top()
+        };
+    };
+
+    this.EndDrag = function () {
+        self.IsDragging = false;
+    };
+
+    this.Drag = function (coordinates) {
+        if (self.IsDragging == false || !coordinates) {
+            return;
+        }
+
+        self.Size.Left(coordinates.x - self.DragOffset.offsetX);
+        self.Size.Top(coordinates.y - self.DragOffset.offsetY);
+    };
+
     self.Init();
-}
-
-var draggableWindow = null;
-var offsetX;
-var offsetY;
-
-function drag(e) {
-    if (draggableWindow == null)
-        return;
-
-    var coords = getAbsoluteMousePos(e);
-    draggableWindow.style.left = coords.x - offsetX;
-    draggableWindow.style.top = coords.y - offsetY;
-}
-
-function beginDrag(event, window) {
-    var mouseCoords = getAbsoluteMousePos(event);
-    var windowCoords = getAbsoluteElementPosition(window);
-
-    draggableWindow = window.parentNode.parentNode;
-    offsetX = mouseCoords.x - windowCoords.x;
-    offsetY = mouseCoords.y - windowCoords.y;
-}
-
-function endDrag() {
-    draggableWindow = null;
 }
