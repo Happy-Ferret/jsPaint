@@ -231,72 +231,7 @@
 	width: 56px;
 }
 
-.system_border
-{
-    border: 3px solid #BAD2EA;
-    -webkit-border-radius: 7px 7px 0 0;
-	border-radius: 7px 7px 0 0;
-}
-
-.system_bar
-{
-	background: rgb(152,180,208); /* Old browsers */
-	background: -moz-linear-gradient(top, rgba(152,180,208,1) 0%, rgba(185,209,234,1) 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(152,180,208,1)), color-stop(100%,rgba(185,209,234,1))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, rgba(152,180,208,1) 0%,rgba(185,209,234,1) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, rgba(152,180,208,1) 0%,rgba(185,209,234,1) 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top, rgba(152,180,208,1) 0%,rgba(185,209,234,1) 100%); /* IE10+ */
-	background: linear-gradient(to bottom, rgba(152,180,208,1) 0%,rgba(185,209,234,1) 100%); /* W3C */
-
-	-webkit-border-radius: 5px 5px 0 0;
-	border-radius: 5px 5px 0 0;
-}
-
-.outer_border
-{
-    border: 1px solid #444;
-
-    -webkit-border-radius: 6px 6px 0 0;
-	border-radius: 6px 6px 0 0;
-}
-
-.system_button
-{
-	height: 17px;
-	width: 31px;
-}
-
-#minimize_button
-{
-	background-image: url('../img/system_buttons/btn_minimize.png');
-}
-
-#minimize_button:hover
-{
-	background-image: url('../img/system_buttons/btn_minimize_hover.png');
-}
-
-#maximize_button
-{
-	background-image: url('../img/system_buttons/btn_maximize.png');
-}
-
-#maximize_button:hover
-{
-	background-image: url('../img/system_buttons/btn_maximize_hover.png');
-}
-
-#close_button
-{
-	background-image: url('../img/system_buttons/btn_close.png');
-}
-
-#close_button:hover
-{
-	background-image: url('../img/system_buttons/btn_close_hover.png');
-}
-
-.system_separator
+.windows_separator
 {
     border: 0 solid #C3DCF7;
     border-right-width: 1px;

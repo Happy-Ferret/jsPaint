@@ -80,6 +80,8 @@ function PaintViewModel() {
 
     self.StatusBarVisible = ko.observable(true);
 
+    self.Windows = ko.observableArray([]);
+
     self.UndoAvailable = ko.computed(function () {
 
     });

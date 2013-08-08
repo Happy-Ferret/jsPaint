@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="styles/helpers.css"/>
     <link rel="stylesheet" type="text/css" href="styles/top_icons.css"/>
     <link rel="stylesheet" type="text/css" href="styles/menu_icons.css"/>
+    <link rel="stylesheet" type="text/css" href="styles/windows.css" />
     <link rel="stylesheet" type="text/css" href="styles/print.css" media="print"/>
 
     <script type="text/javascript" src="scripts/knockout-2.2.1.js"></script>
@@ -21,24 +22,12 @@
 </head>
 
 <script type="text/javascript">
-    function readyHandler() {
-        ko.applyBindings(new PaintViewModel());
-    }
-
-    if (document.loaded) {
-        readyHandler();
-    } else {
-        if (window.addEventListener) {
-            window.addEventListener('load', readyHandler, false);
-        } else {
-            window.attachEvent('onload', readyHandler);
-        }
-    }
+    var appViewModel = new PaintViewModel();
 </script>
 
 <body onload="init()" onmouseup="mouseUp()" id="app">
 
-<div id="top_icons_properties" class="popup-container"
+<!--<div id="top_icons_properties" class="popup-container"
      data-bind="with: TopIcons, visible: TopIcons().PropertiesVisible, style: { left: TopIcons().PropertiesWindowPosition().left, top: TopIcons().PropertiesWindowPosition().top }">
     <div class="popup-container-header popup-container-header-top">Customize Quick Access Toolbar</div>
     <div class="full-width" data-bind="foreach: Icons">
@@ -55,24 +44,24 @@
             </tr>
         </table>
     </div>
-</div>
+</div>-->
 
-<div class="outer_border" style="position: absolute;">
+<div class="systemOuterBorder" style="position: absolute;">
 <!-- System border -->
-<div class="system_border">
-<div class="system_bar" onmousedown="beginDrag(event, this)" onmouseup="endDrag()">
+<div class="systemBorder">
+<div class="systemBar" onmousedown="beginDrag(event, this)" onmouseup="endDrag()">
     <table class="full-width">
         <tr>
             <td>
                 <table data-bind="with: TopIcons">
                     <tr>
-                        <td class="top-icon app-icon">&nbsp</td>
+                        <td class="top_icon systemAppIcon">&nbsp</td>
 
-                        <td class="system_separator"></td>
+                        <td class="windows_separator"></td>
 
                         <!-- ko foreach: VisibleIcons -->
                         <td data-bind="css: Enabled ? 'common_button' : '', attr: { 'title' : Name() + ': ' + Description() }">
-                            <div class="top-icon"
+                            <div class="top_icon"
                                  data-bind="style: { 'background-position':  BackgroundStyle }, click: Action"/>
                         </td>
                         <!-- /ko -->
@@ -81,7 +70,7 @@
                             <img src="img/top_icon_show_properties.png"/>
                         </td>
 
-                        <td class="system_separator"></td>
+                        <td class="windows_separator"></td>
 
                         <td style="font-size: 14px">Untitled - Paint</td>
                     </tr>
@@ -845,12 +834,12 @@
 
     <div align="right">
         <input type="button" value="OK" class="resize_window_button"/>
-        <input type="button" value="Cancel" class="resize_window_button" onclick="closeWindow(this)"/>
+        <input type="button" value="Cancel" class="resize_window_button"/>
     </div>
 </div>
 
 <!-- COLOR PICKER -->
-<div id="color_picker_window_content" style="background-color: #F0F0F0">
+<div id="color_picker_window_content">
     <table>
         <tr>
             <td>
@@ -872,7 +861,7 @@
 
                 <div>
                     <input type="button" value="OK" class="ok_button" onclick="chooseColorFromPalette(this)"/>
-                    <input type="button" value="Cancel" class="cancel_button" onclick="closeWindow(this)"/>
+                    <input type="button" value="Cancel" class="cancel_button"/>
                 </div>
             </td>
             <td>
@@ -944,7 +933,7 @@
     </table>
 </div>
 
-<div id="about_window_content" style="background-color: #F0F0F0">
+<div id="about_window_content" style="background-color: #F0F0F0; display: none">
     Windows 7 Professional
     <hr/>
 
@@ -962,7 +951,7 @@
     <input type="button" value="OK"/>
 </div>
 
-<div id="properties_window_content" style="background-color: #F0F0F0">
+<div id="properties_window_content" style="background-color: #F0F0F0; display: none">
     <fieldset>
         <legend>File Attributes</legend>
     </fieldset>
@@ -979,51 +968,29 @@
     <input type="button" value="OK"/><input type="button" value="Cancel"/>
 </div>
 
+<!-- ko foreach: Windows -->
 <!-- Black thin border -->
-<div class="outer_border" style="position: absolute; display: none" id="window_template">
+<div class="systemOuterBorder" data-bind="visible: IsVisible">
     <!-- System color border -->
-    <div class="system_border">
-        <!-- Top bar -->
-        <div class="system_bar" onmousedown="beginDrag(event, this)" onmouseup="endDrag()">
-            <table class="full-width">
-                <tr>
-                    <td>
-                        <table>
-                            <tr>
-                                <td class="top-icon app-icon">&nbsp</td>
+    <div class="systemBorder">
+        <div class="systemBar" onmousedown="beginDrag(event, this)" onmouseup="endDrag()">
+            <div class="systemLeft">
+                <div class="top_icon systemAppIcon"></div>
+                <div class="systemSeparator"></div>
+                <span class="systemCaption">Untitled - Paint</span>
+            </div>
 
-                                <td class="system_separator"></td>
-
-                                <td style="font-size: 14px" id="wt_title">Untitled - Paint</td>
-                            </tr>
-                        </table>
-                    </td>
-
-                    <td>
-                        <div class="full-width">
-                            <table align="right">
-                                <tr>
-                                    <td>
-                                        <div id="wt_minimize_button" class="system_button">&nbsp</div>
-                                    </td>
-                                    <td>
-                                        <div id="wt_maximize_button" class="system_button">&nbsp</div>
-                                    </td>
-                                    <td>
-                                        <div id="wt_close_button" class="system_button">&nbsp</div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </td>
-                </tr>
-            </table>
+            <div class="systemButtons">
+                <div class="systemButton systemMinimizeButton" data-bind="visible: CanMinimize"></div>
+                <div class="systemButton systemMaximizeButton" data-bind="visible: CanMaximize"></div>
+                <div class="systemButton systemCloseButton" data-bind="visible: CanClose"></div>
+            </div>
         </div>
 
-        <!-- Content -->
-        <div id="wt_content">
-        </div>
+        <div class="systemContent" data-bind="html: Content, style: { backgroundColor: Background, width: Width, height: Height }"></div>
     </div>
 </div>
+<!-- /ko -->
+
 </body>
 </html>

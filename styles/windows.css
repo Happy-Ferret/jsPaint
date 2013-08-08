@@ -1,0 +1,113 @@
+.systemOuterBorder
+{
+    border: 1px solid #444;
+
+    -webkit-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+
+    position: absolute;
+
+    min-width: 130px;
+}
+
+.systemBorder
+{
+    border: 3px solid #BAD2EA;
+    -webkit-border-radius: 7px 7px 0 0;
+    border-radius: 7px 7px 0 0;
+}
+
+.systemBar
+{
+    background: rgb(152,180,208); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(152,180,208,1) 0%, rgba(185,209,234,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(152,180,208,1)), color-stop(100%,rgba(185,209,234,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(152,180,208,1) 0%,rgba(185,209,234,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(152,180,208,1) 0%,rgba(185,209,234,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(152,180,208,1) 0%,rgba(185,209,234,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(152,180,208,1) 0%,rgba(185,209,234,1) 100%); /* W3C */
+
+    -webkit-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+
+    padding: 4px;
+
+    height: 18px;
+}
+
+.systemButton
+{
+    height: 17px;
+    width: 31px;
+    display: inline-block;
+}
+
+.systemMinimizeButton
+{
+    background-image: url('../img/system_buttons/btn_minimize.png');
+}
+
+.systemMinimizeButton:hover
+{
+    background-image: url('../img/system_buttons/btn_minimize_hover.png');
+}
+
+.systemMaximizeButton
+{
+    background-image: url('../img/system_buttons/btn_maximize.png');
+}
+
+.systemMaximizeButton:hover
+{
+    background-image: url('../img/system_buttons/btn_maximize_hover.png');
+}
+
+.systemCloseButton
+{
+    background-image: url('../img/system_buttons/btn_close.png');
+}
+
+.systemCloseButton:hover
+{
+    background-image: url('../img/system_buttons/btn_close_hover.png');
+}
+
+.systemCaption {
+    font-size: 14px;
+}
+
+.systemAppIcon
+{
+    background: no-repeat 0 0;
+    display: inline-block;
+}
+
+.systemSeparator
+{
+    border: 0 solid #C3DCF7;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    background-color: #7A8793;
+    padding: 0;
+
+    width: 1px;
+    height: 50%;
+
+    overflow: hidden;
+    display: inline-block;
+}
+
+.systemButtons {
+    right: 0;
+    left: auto;
+    display: inline-block;
+    float: right;
+}
+
+.systemLeft {
+    display: inline-block;
+}
+
+.systemContent {
+    height: 100%;
+}

@@ -8,6 +8,9 @@ function getAbsoluteElementPosition(element) {
 		x: 0,
 		y: 0
 	};
+
+    if (!element)
+        return coords;
 	
 	do {
 		coords.x += obj.offsetLeft;

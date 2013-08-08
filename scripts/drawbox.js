@@ -251,10 +251,25 @@ function tempMethod(e){
 }
 
 function initMiscWindows() {
-	createWindow({title: 'Test', canMinimize: false, canMaximize: false, canClose: true, resizable: false, icon: null, content: 'canvas_resize_window_content', id: 'canvas_resize_window'});
-	createWindow({title: 'Palette', canMinimize: false, canMaximize: false, canClose: true, resizable: false, icon: null, content: 'color_picker_window_content', id: 'color_picker_window'});
-    createWindow({title: 'About Paint', canMinimize: false, canMaximize: false, canClose: true, resizable: false, icon: null, content: 'about_window_content', id: 'about_window'});
-    createWindow({title: 'Image Properties', canMinimize: false, canMaximize: false, canClose: true, resizable: false, icon: null, content: 'properties_window_content', id: 'properties_window'});
+    //createWindow({title: 'Test', canMinimize: false, canMaximize: false, canClose: true, resizable: false, icon: null, content: 'canvas_resize_window_content', id: 'canvas_resize_window'});
+    appViewModel.Windows.push(new WindowViewModel({
+        title: 'test',
+        icon: '',
+        system: {
+            canMinimize: true,
+            canMaximize: true,
+            canClose: true,
+            resizable: true
+        },
+        size: {
+            width: 800,
+            height: 600
+        },
+        background: '#FFFFFF'
+    }, getElement('color_picker_window_content')));
+    //createWindow({title: 'Palette', canMinimize: false, canMaximize: false, canClose: true, resizable: false, icon: null, content: 'color_picker_window_content', id: 'color_picker_window'});
+    //createWindow({title: 'About Paint', canMinimize: false, canMaximize: false, canClose: true, resizable: false, icon: null, content: 'about_window_content', id: 'about_window'});
+    //createWindow({title: 'Image Properties', canMinimize: false, canMaximize: false, canClose: true, resizable: false, icon: null, content: 'properties_window_content', id: 'properties_window'});
 }
 
 function initVerticalRuler() {
@@ -317,6 +332,8 @@ function initRulers(){
 }
 
 function init() {
+    ko.applyBindings(appViewModel);
+
 	showRibbon('home');
 	
 	setPrimaryColor('#000000');
@@ -812,7 +829,6 @@ function chooseColorFromPalette(element) {
     customColorsChanged();
 
     changeColor(color);
-    closeWindow(element);
 }
 
 function changeRulersVisibility(isVisible) {
