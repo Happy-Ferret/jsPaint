@@ -5,7 +5,13 @@ function ApplicationViewModel() {
 
     this.Init = function () {
         self.Windows.push(new WindowViewModel({
-            title: 'jsPaint'
+            title: 'jsPaint',
+
+            system: {
+                canMinimize: true,
+                canMaximize: true,
+                canClose: true
+            }
         }));
     };
 

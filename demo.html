@@ -3,6 +3,7 @@
     <title>jPaint demo</title>
 
     <link rel="stylesheet" type="text/css" href="modules/windows/windows.css"/>
+    <link rel="stylesheet" type="text/css" href="styles/application.css"/>
 
     <script type="text/javascript" src="scripts/knockout-2.2.1.js"></script>
     <script type="text/javascript" src="scripts/position.js"></script>
@@ -23,10 +24,10 @@
 
 <!-- ko foreach: Windows -->
 <!-- Black thin border -->
-<div class="systemOuterBorder" data-bind="visible: IsVisible, style: { 'top': Top, 'left': Left }">
+<div class="systemOuterBorder" data-bind="visible: IsVisible, style: { top: Position.Top, left: Position.Left }">
     <!-- System color border -->
     <div class="systemBorder">
-        <div class="systemBar" data-bind="event: { mousedown: BeginDrag, mouseup: EndDrag }">
+        <div class="systemBar" data-bind="event: { mousedown: BeginDrag, mouseup: EndDrag, dblclick: ClickMaximize }">
             <div class="systemLeft">
                 <div class="top_icon systemAppIcon"></div>
                 <div class="systemSeparator"></div>
@@ -34,14 +35,17 @@
             </div>
 
             <div class="systemButtons">
-                <div class="systemButton systemMinimizeButton" data-bind="visible: CanMinimize"></div>
-                <div class="systemButton systemMaximizeButton" data-bind="visible: CanMaximize"></div>
-                <div class="systemButton systemCloseButton" data-bind="visible: CanClose"></div>
+                <div class="systemButton systemMinimizeButton"
+                     data-bind="visible: CanMinimize, click: Minimize, clickBubble: false"></div>
+                <div class="systemButton"
+                     data-bind="visible: CanMaximize, click: ClickMaximize, clickBubble: false, css: MaximizeStyle"></div>
+                <div class="systemButton systemCloseButton"
+                     data-bind="visible: CanClose, click: Close, clickBubble: false"></div>
             </div>
         </div>
 
         <div class="systemContent"
-             data-bind="html: Content, style: { backgroundColor: Background, width: Width, height: Height }"></div>
+             data-bind="html: Content, style: { backgroundColor: Background, width: Size.Width, height: Size.Height }"></div>
     </div>
 </div>
 <!-- /ko -->

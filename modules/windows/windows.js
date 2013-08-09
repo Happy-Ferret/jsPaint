@@ -22,7 +22,7 @@
 function WindowViewModel(parameters, content, viewModel) {
     var self = this;
 
-    // Properties
+    // Initial Properties
     self.Title = ko.observable('');
     self.Icon = ko.observable('');
     self.Background = ko.observable('#FFFFFF');
@@ -32,33 +32,34 @@ function WindowViewModel(parameters, content, viewModel) {
     self.CanClose = ko.observable(true);
     self.Resizable = ko.observable(false);
 
-    // Window state
+    // Window State
     self.IsVisible = ko.observable(true);
+    self.IsMaximized = ko.observable(false);
+
     self.DomContent = ko.observable(content);
     self.Content = ko.computed(function () {
         return self.DomContent() ? self.DomContent().outerHTML : '';
     });
 
-    self.Width = ko.observable(640);
-    self.Height = ko.observable(480);
-
     self.Size = {
+        Width: ko.observable(640),
+        Height: ko.observable(480)
+    };
+
+    self.Position = {
         Top: ko.observable(0),
         Left: ko.observable(0)
     };
 
-    self.Top = ko.computed(function () {
-        return self.Size.Top() + 'px';
-    });
-    self.Left = ko.computed(function () {
-        return self.Size.Left() + 'px';
+    self.IsDragging = false;
+    self.DragOffset = undefined;
+
+    self.MaximizeStyle = ko.computed(function () {
+        return self.IsMaximized() ? 'systemMaximizedButton' : 'systemMaximizeButton';
     });
 
-    self.IsDragging = false;
-    self.DragOffset = {
-        offsetX: 0,
-        offsetY: 0
-    };
+    self.previousSize = {};
+    self.previousPosition = {};
 
     this.Init = function () {
         if (parameters) {
@@ -103,6 +104,15 @@ function WindowViewModel(parameters, content, viewModel) {
             }
         }
 
+        self.previousPosition = {
+            left: self.Position.Left(),
+            top: self.Position.Top()
+        };
+        self.previousSize = {
+            width: self.Size.Width(),
+            height: self.Size.Height()
+        };
+
         document.body.addEventListener('mousemove', self.Drag);
     };
 
@@ -110,9 +120,48 @@ function WindowViewModel(parameters, content, viewModel) {
 
     };
 
-    this.Maximize = function () {
+    this.RestoreLastSize = function () {
+        if (self.IsMaximized() == false) {
+            return;
+        }
 
+        self.Size.Width(self.previousSize.width);
+        self.Size.Height(self.previousSize.height);
+        self.Position.Left(self.previousPosition.left);
+        self.Position.Top(self.previousPosition.top);
+
+        self.IsMaximized(false);
     };
+
+    this.Maximize = function () {
+        if (self.IsMaximized() == true) {
+            return;
+        }
+
+        self.previousSize = {
+            width: self.Size.Width(),
+            height: self.Size.Height()
+        };
+        self.previousPosition = {
+            left: self.Position.Left(),
+            top: self.Position.Top()
+        };
+
+        self.Size.Width(window.innerWidth);
+        self.Size.Height(window.InnerHeight);
+        self.Position.Left(0);
+        self.Position.Top(0);
+
+        self.IsMaximized(true);
+    };
+
+    this.ClickMaximize = function () {
+        if (self.IsMaximized() == true) {
+            this.RestoreLastSize();
+        } else {
+            this.Maximize();
+        }
+    }
 
     this.Close = function () {
 
@@ -120,16 +169,11 @@ function WindowViewModel(parameters, content, viewModel) {
 
     this.BeginDrag = function (data, event) {
         self.IsDragging = true;
-
-        var mouseCoordinates = getAbsoluteMousePos(event);
-        self.DragOffset = {
-            offsetX: mouseCoordinates.x - self.Size.Left(),
-            offsetY: mouseCoordinates.y - self.Size.Top()
-        };
     };
 
     this.EndDrag = function () {
         self.IsDragging = false;
+        self.DragOffset = undefined;
     };
 
     this.Drag = function (coordinates) {
@@ -137,8 +181,18 @@ function WindowViewModel(parameters, content, viewModel) {
             return;
         }
 
-        self.Size.Left(coordinates.x - self.DragOffset.offsetX);
-        self.Size.Top(coordinates.y - self.DragOffset.offsetY);
+        self.RestoreLastSize();
+
+        if (!self.DragOffset) {
+            var mouseCoordinates = getAbsoluteMousePos(event);
+            self.DragOffset = {
+                offsetX: mouseCoordinates.x - self.Position.Left(),
+                offsetY: mouseCoordinates.y - self.Position.Top()
+            };
+        }
+
+        self.Position.Left(coordinates.x - self.DragOffset.offsetX);
+        self.Position.Top(coordinates.y - self.DragOffset.offsetY);
     };
 
     self.Init();
