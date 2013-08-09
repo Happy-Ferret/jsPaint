@@ -332,7 +332,7 @@ function initRulers() {
 }
 
 function init() {
-    ko.applyBindings(appViewModel);
+    ko.applyBindings(appViewModel, document.body);
 
     showRibbon('home');
 

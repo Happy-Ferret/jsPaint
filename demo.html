@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="styles/print.css" media="print"/>
 
     <script type="text/javascript" src="scripts/knockout-2.2.1.js"></script>
+    <script type="text/javascript" src="scripts/application.js"></script>
     <script type="text/javascript" src="scripts/view_model.js"></script>
     <script type="text/javascript" src="scripts/color.js"></script>
     <script type="text/javascript" src="scripts/picker.js"></script>
@@ -22,7 +23,7 @@
 </head>
 
 <script type="text/javascript">
-    var appViewModel = new PaintViewModel();
+    var appViewModel = new ApplicationViewModel();
 </script>
 
 <body onload="init()" onmouseup="mouseUp()" id="app">
