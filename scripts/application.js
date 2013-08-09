@@ -59,12 +59,12 @@ function ApplicationViewModel() {
         var canvasClone = document.getElementById('printing_canvas');
 
         if (canvasClone)
-            document.getElementById('app').removeChild(canvasClone);
+            document.getElementById('application').removeChild(canvasClone);
 
         canvasClone = cloneCanvas(document.getElementById('canv'));
         canvasClone.id = 'printing_canvas';
 
-        document.getElementById('app').appendChild(canvasClone);
+        document.getElementById('application').appendChild(canvasClone);
 
         window.print();
     };

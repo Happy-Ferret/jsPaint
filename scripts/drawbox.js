@@ -276,7 +276,7 @@ function initVerticalRuler() {
     var canvasElement = getElement('vertical_ruler');
     var canvas = canvasElement.getContext("2d");
 
-    canvasElement.height = getElement('app').clientHeight;
+    canvasElement.height = getElement('application').clientHeight;
 
     var i;
     var maxHeight = parseInt(canvasElement.height);
@@ -303,7 +303,7 @@ function initHorizontalRuler() {
     var canvasElement = getElement('horizontal_ruler');
     var canvas = canvasElement.getContext("2d");
 
-    canvasElement.width = getElement('app').clientWidth;
+    canvasElement.width = getElement('application').clientWidth;
 
     var i;
     var maxWidth = parseInt(canvasElement.width);
@@ -331,7 +331,7 @@ function initRulers() {
     initHorizontalRuler();
 }
 
-function init() {
+function _init() {
     ko.applyBindings(appViewModel, document.body);
 
     showRibbon('home');
@@ -339,7 +339,7 @@ function init() {
     setPrimaryColor('#000000');
     setSecondaryColor('#FFFFFF');
 
-    getElement('app').onmousemove = tempMethod;
+    getElement('application').onmousemove = tempMethod;
     getElement('canv').onmousemove = mouseMove;
 
     generate_palette();
@@ -454,7 +454,7 @@ function initResizing() {
     newCanvas.height = oldCanvas.style.height;
     newCanvas.width = oldCanvas.style.width;
 
-    getElement('app').appendChild(newCanvas);
+    getElement('application').appendChild(newCanvas);
 }
 
 function startResizingEast() {
