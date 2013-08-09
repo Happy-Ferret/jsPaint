@@ -36,30 +36,39 @@
     height: 17px;
     width: 31px;
     display: inline-block;
+    background-image: url('../../img/system_buttons.png');
 }
 
 .systemMinimizeButton {
-    background-image: url('../../img/system_buttons/btn_minimize.png');
+    background-position: 0 0;
 }
 
 .systemMinimizeButton:hover {
-    background-image: url('../../img/system_buttons/btn_minimize_hover.png');
+    background-position: -34px 0;
 }
 
 .systemMaximizeButton {
-    background-image: url('../../img/system_buttons/btn_maximize.png');
+    background-position: -68px 0;
 }
 
 .systemMaximizeButton:hover {
-    background-image: url('../../img/system_buttons/btn_maximize_hover.png');
+    background-position: -102px 0;
+}
+
+.systemMaximizedButton {
+    background-position: -136px 0;
+}
+
+.systemMaximizedButton:hover {
+    background-position: -170px 0;
 }
 
 .systemCloseButton {
-    background-image: url('../../img/system_buttons/btn_close.png');
+    background-position: -204px 0;
 }
 
 .systemCloseButton:hover {
-    background-image: url('../../img/system_buttons/btn_close_hover.png');
+    background-position: -238px 0;
 }
 
 .systemCaption {
