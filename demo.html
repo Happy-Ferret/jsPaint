@@ -5,14 +5,16 @@
     <link rel="stylesheet" type="text/css" href="modules/windows/windows.css"/>
 
     <script type="text/javascript" src="scripts/knockout-2.2.1.js"></script>
+    <script type="text/javascript" src="scripts/position.js"></script>
     <script type="text/javascript" src="modules/windows/windows.js"></script>
     <script type="text/javascript" src="scripts/application.js"></script>
 </head>
 
 <script type="text/javascript">
-    var appViewModel = new ApplicationViewModel();
+    var appViewModel;
 
     function initApplication() {
+        appViewModel = new ApplicationViewModel();
         ko.applyBindings(appViewModel, document.body);
     }
 </script>

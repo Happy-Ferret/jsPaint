@@ -19,7 +19,7 @@
 //  },
 //  content (DOMElement, null)
 
-function WindowViewModel(parameters, content) {
+function WindowViewModel(parameters, content, viewModel) {
     var self = this;
 
     // Properties
