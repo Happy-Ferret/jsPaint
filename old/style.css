@@ -218,30 +218,6 @@
     padding-right: 15px;
 }
 
-#main_menu {
-    border: 1px solid #8492A6;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-
-    -webkit-box-shadow: 3px 3px 0 1px rgba(0, 0, 0, 0.3);
-    box-shadow: 3px 3px 0 1px rgba(0, 0, 0, 0.3);
-
-    position: absolute;
-    display: none;
-}
-
-#main_menu_bottom {
-    background: rgb(250, 253, 255); /* Old browsers */
-    background: -moz-linear-gradient(top, rgba(250, 253, 255, 1) 0%, rgba(226, 234, 249, 1) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(250, 253, 255, 1)), color-stop(100%, rgba(226, 234, 249, 1))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, rgba(250, 253, 255, 1) 0%, rgba(226, 234, 249, 1) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, rgba(250, 253, 255, 1) 0%, rgba(226, 234, 249, 1) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, rgba(250, 253, 255, 1) 0%, rgba(226, 234, 249, 1) 100%); /* IE10+ */
-    background: linear-gradient(to bottom, rgba(250, 253, 255, 1) 0%, rgba(226, 234, 249, 1) 100%); /* W3C */
-
-    border-top: 1px solid #C9D5E7;
-}
-
 #recent_pictures_block {
     background-color: #EFF5FA;
 
@@ -255,33 +231,6 @@
     width: 100%;
 }
 
-#main_menu_top {
-    background: rgb(241, 248, 254); /* Old browsers */
-    background: -moz-linear-gradient(top, rgba(241, 248, 254, 1) 46%, rgba(220, 231, 245, 1) 50%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(46%, rgba(241, 248, 254, 1)), color-stop(50%, rgba(220, 231, 245, 1))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, rgba(241, 248, 254, 1) 46%, rgba(220, 231, 245, 1) 50%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, rgba(241, 248, 254, 1) 46%, rgba(220, 231, 245, 1) 50%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, rgba(241, 248, 254, 1) 46%, rgba(220, 231, 245, 1) 50%); /* IE10+ */
-    background: linear-gradient(to bottom, rgba(241, 248, 254, 1) 46%, rgba(220, 231, 245, 1) 50%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f1f8fe', endColorstr='#dce7f5', GradientType=0); /* IE6-9 */
-
-    border-bottom: 1px solid #ABB8C9;
-}
-
-#main_menu_icons {
-    background-color: #FCFCFC;
-
-    border-right: 1px solid #CFDBEB;
-}
-
-.main_menu_item_text {
-    color: #254264;
-}
-
-.main_menu_item_text[disabled^="disabled"] {
-    color: #999;
-}
-
 .recent_image_item {
     color: #254264;
 }
@@ -292,29 +241,6 @@
 
 #recent_pictures_header {
     border-bottom: 1px solid #CFDBEB;
-}
-
-.common_button {
-    border: 1px solid transparent;
-}
-
-.button:hover, .common_button:hover {
-    border-color: #FFB700;
-    border-style: solid;
-
-    background: #fdecda; /* Old browsers */
-    background: -moz-linear-gradient(top, #fdecda 0%, #fde0bd 40%, #ffce69 42%, #fffeac 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fdecda), color-stop(40%, #fde0bd), color-stop(42%, #ffce69), color-stop(100%, #fffeac)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, #fdecda 0%, #fde0bd 40%, #ffce69 42%, #fffeac 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #fdecda 0%, #fde0bd 40%, #ffce69 42%, #fffeac 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #fdecda 0%, #fde0bd 40%, #ffce69 42%, #fffeac 100%); /* IE10+ */
-    background: linear-gradient(to bottom, #fdecda 0%, #fde0bd 40%, #ffce69 42%, #fffeac 100%); /* W3C */
-}
-
-.common_button:hover {
-    border-width: 1px;
-    border-radius: 2px;
-    -webkit-border-radius: 2px;
 }
 
 .tool_button_selected, .common_button_selected {
@@ -333,10 +259,6 @@
     border: 1px solid #C29B29;
     border-radius: 2px;
     -webkit-border-radius: 2px;
-}
-
-.main_menu_item {
-    height: 42px;
 }
 
 .size_line {

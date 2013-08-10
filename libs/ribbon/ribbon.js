@@ -8,18 +8,34 @@ function RibbonTabViewModel(caption, templateName, viewModel, isActive) {
     self.Data = ko.observable(viewModel);
 }
 
-function RibbonViewModel(tabs) {
+function MainMenuItemViewModel(title, iconClass, action) {
+    var self = this;
+
+    self.Title = ko.observable(title);
+    self.IconClass = ko.observable(iconClass);
+
+    this.Action = action;
+}
+
+function RibbonViewModel(tabs, mainMenuItems) {
     var self = this;
 
     self.Tabs = ko.observableArray(tabs);
+    self.MainMenuItems = ko.observableArray(mainMenuItems);
 
     self.SelectedIndex = ko.observable(0);
     self.SelectedTab = ko.computed(function () {
         return self.Tabs()[self.SelectedIndex()];
     });
 
-    this.ShowMenu = function () {
+    self.IsMenuShown = ko.observable(false);
 
+    this.ShowMenu = function () {
+        self.IsMenuShown(true);
+    };
+
+    this.HideMenu = function () {
+        self.IsMenuShown(false);
     };
 
     this.SelectTab = function (element) {

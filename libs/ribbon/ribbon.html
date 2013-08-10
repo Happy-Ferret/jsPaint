@@ -1,5 +1,133 @@
 <div class="ribbonMenuBar">
     <div class="ribbonTabItem ribbonMainMenuButton" data-bind="click: ShowMenu">&nbsp</div>
+
+    <div class="main_menu" data-bind="visible: IsMenuShown">
+        <div class="main_menu_top">
+            <div class="ribbonTabItem ribbonMainMenuButton" data-bind="click: HideMenu" style="margin: -1px">&nbsp</div>
+        </div>
+        <div class="mainMenuIcons" data-bind="foreach: MainMenuItems">
+            <div class="main_menu_item common_button">
+                <div class="menuItemBlock menu-icon" data-bind="css: IconClass"></div>
+                <div class="menuItemBlock main_menu_item_text" data-bind="text: Title, click: Action"></div>
+            </div>
+        </div>
+        <div class="mainMenuBottom">&nbsp</div>
+
+        <!--
+
+                                        <input type="file" class="trap_filepicker" data-bind="event: { change: Open }"
+                                               id="image_file_picker" accept="image/*"/>
+                                        <table style="height: 100%">
+                                            <tr>
+                                                <td class="menu-icon menu-icon-open">&nbsp</td>
+                                                <td class="main_menu_item_text">Open</td>
+                                            </tr>
+                                        </table>
+
+                                            <tr>
+                                                <td class="menu-icon menu-icon-save">&nbsp</td>
+                                                <td class="main_menu_item_text">Save</td>
+                                            </tr>
+
+                                <td colspan="3" class="main_menu_item_text main_menu_separator">
+                                    <div class="main_menu_item common_button" onclick="showSaveAdditionalWindow()">
+                                        <table style="height: 100%">
+                                            <tr>
+                                                <td class="menu-icon menu-icon-save-as">&nbsp</td>
+                                                <td class="main_menu_item_text">Save as</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                                <td colspan="3">
+                                    <div class="main_menu_item common_button" data-bind="click: Print">
+                                        <table style="height: 100%">
+                                            <tr>
+                                                <td class="menu-icon menu-icon-print">&nbsp</td>
+                                                <td class="main_menu_item_text">Print</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                                <td colspan="3">
+                                    <div class="main_menu_item">
+                                        <table style="height: 100%">
+                                            <tr>
+                                                <td class="menu-icon menu-icon-from-scanner">&nbsp</td>
+                                                <td class="main_menu_item_text" disabled="disabled">From scanner or camera
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                                <td colspan="3" class="main_menu_item_text main_menu_separator">
+                                    <div class="main_menu_item">
+                                        <table style="height: 100%">
+                                            <tr>
+                                                <td class="menu-icon menu-icon-send-mail">&nbsp</td>
+                                                <td class="main_menu_item_text" disabled="disabled">Send e-mail</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                                <td colspan="3" class="main_menu_item_text main_menu_separator">
+                                    <div class="main_menu_item">
+                                        <table style="height: 100%">
+                                            <tr>
+                                                <td class="menu-icon menu-icon-set-background">&nbsp</td>
+                                                <td class="main_menu_item_text" disabled="disabled">Set as desktop
+                                                    background
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                                <td colspan="3" class="main_menu_item_text main_menu_separator"
+                                    data-bind="click: ShowProperties">
+                                    <div class="main_menu_item common_button">
+                                        <table style="height: 100%">
+                                            <tr>
+                                                <td class="menu-icon menu-icon-properties">&nbsp</td>
+                                                <td class="main_menu_item_text">Properties</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                                <td colspan="3" class="main_menu_item_text main_menu_separator"
+                                    data-bind="click: ShowAbout">
+                                    <div class="main_menu_item common_button">
+                                        <table style="height: 100%">
+                                            <tr>
+                                                <td class="menu-icon menu-icon-about">&nbsp</td>
+                                                <td class="main_menu_item_text">About Paint</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                                <td colspan="3">
+                                    <div class="main_menu_item common_button" data-bind="click: Exit">
+                                        <table style="height: 100%">
+                                            <tr>
+                                                <td class="menu-icon menu-icon-exit">&nbsp</td>
+                                                <td class="main_menu_item_text">Exit</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                    <td style="vertical-align: top; background: #FFFFFF;">
+                        <div id="recent_pictures_block">
+                            <table id="recent_pictures_list">
+                                <tr>
+                                    <td colspan="2" class="recent_image_item" id="recent_pictures_header">Recent pictures
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+
+        </div>-->
+    </div>
+
     <!-- ko foreach: Tabs -->
     <div class="ribbonTabItem ribbonMenuItem"
          data-bind="text: Caption, css: { 'active': IsActive }, click: $parent.SelectTab">
@@ -10,6 +138,6 @@
 <div class="ribbonOuterBlock">
     <div class="ribbonMiddleBlock">
         <div class="ribbonInnerBlock"
-             data-bind="template: {name: SelectedTab().Template(), data: SelectedTab().Data}"></div>
+             data-bind="template: { name: SelectedTab().Template(), data: SelectedTab().Data }"></div>
     </div>
 </div>
