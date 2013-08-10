@@ -11,11 +11,6 @@
 }
 
 .ribbonMenuItem, .ribbonMenuItem:hover {
-    background-color: #FBFDFF;
-
-    border-width: 1px 1px 0 1px;
-    border-style: solid;
-
     -webkit-border-radius: 3px 3px 0 0;
     border-radius: 3px 3px 0 0;
 
@@ -28,8 +23,16 @@
     padding: 3px 10px 3px 10px;
 }
 
+.ribbonMenuItem:hover {
+    border-width: 1px 1px 0 1px;
+    border-style: solid;
+}
+
 .ribbonMenuBar .active, .ribbonMenuBar .active {
     height: 17px;
+    background-color: #FBFDFF;
+    border-width: 1px 1px 0 1px;
+    border-style: solid;
 }
 
 .ribbonMainMenuButton, .ribbonMainMenuButton:hover {
@@ -83,4 +86,15 @@
 
     border: solid #EEF5FD;
     border-width: 0 1px 1px 1px;
+}
+
+.ribbonBlock {
+    display: inline-block;
+}
+
+.ribbonBlockCaption {
+    font-family: Calibri, Verdana, Ariel, sans-serif;
+    font-size: 12px;
+    color: #7383A9;
+    text-align: center;
 }
