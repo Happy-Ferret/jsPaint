@@ -14,6 +14,10 @@
     <link rel="stylesheet" type="text/css" href="libs/ribbon/ribbon.css"/>
     <script type="text/javascript" src="libs/ribbon/ribbon.js"></script>
 
+    <script type="text/html" id="colorpickerTemplate"></script>
+    <link rel="stylesheet" type="text/css" href="libs/colorpicker/colorpicker.css"/>
+    <script type="text/javascript" src="libs/colorpicker/colorpicker.js"></script>
+
     <!-- MODULES -->
     <link rel="stylesheet" type="text/css" href="styles/application.css"/>
     <script type="text/javascript" src="scripts/application.js"></script>
@@ -44,6 +48,7 @@
     function loadTemplates() {
         includeModule(getElement('windowTemplate'), '/libs/windows/windows.html');
         includeModule(getElement('ribbonTemplate'), '/libs/ribbon/ribbon.html');
+        includeModule(getElement('colorpickerTemplate'), 'libs/colorpicker/colorpicker.html');
         includeModule(getElement('mainTemplate'), '/modules/main/mainMarkup.html');
         includeModule(getElement('canvasTemplate'), '/modules/canvas/canvasMarkup.html');
         includeModule(getElement('homeRibbonTabTemplate'), 'modules/ribbon/homeTabMarkup.html');
