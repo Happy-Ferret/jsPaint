@@ -194,8 +194,9 @@
                     style="width: 42px; height: 66px; text-align: center;"
                     data-bind="click: State.ActivatePrimaryColor">
                     <div class='color_selected' style="width: 28px; height: 28px; margin:0 auto;">
-                        <div id="primary_color_view" style="background-color: #000; width: 28px; height: 28px">
-                            &nbsp
+                        <div id="primary_color_view" style="width: 28px; height: 28px"
+                             data-bind="style: { backgroundColor: State.PrimaryColor }">
+                        &nbsp
                         </div>
                     </div>
                     <div>Color</div>
@@ -205,8 +206,9 @@
                     style="width: 42px; height: 66px; text-align: center;"
                     data-bind="click: State.ActivateSecondaryColor">
                     <div class='color_selected' style="width: 20px; height: 20px; margin:0 auto;">
-                        <div id="secondary_color_view" style="background-color: #FFF; width: 20px; height: 20px">
-                            &nbsp
+                        <div id="secondary_color_view" style="width: 20px; height: 20px"
+                             data-bind="style: { backgroundColor: State.SecondaryColor }">
+                        &nbsp
                         </div>
                     </div>
                     <div>Color</div>

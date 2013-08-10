@@ -1,8 +1,8 @@
 function ApplicationState() {
     var self = this;
 
-    self.PrimaryColor = ko.observable();
-    self.SecondaryColor = ko.observable();
+    self.PrimaryColor = ko.observable('#000000');
+    self.SecondaryColor = ko.observable('#FFFFFF');
     self.IsPrimaryColorSelected = ko.observable(true);
 
     this.ActivatePrimaryColor = function () {

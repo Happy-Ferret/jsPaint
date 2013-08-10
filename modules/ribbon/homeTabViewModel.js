@@ -4,7 +4,10 @@ function HomeTabViewModel(state) {
     self.State = state;
 
     this.ShowColorPicker = function () {
-        appViewModel.CreateWindow({}, 'colorpickerTemplate', new ColorPickerViewModel(), {
+        appViewModel.CreateWindow({
+            title: 'Edit Colors',
+            iconClass: 'systemAppIcon'
+        }, 'colorpickerTemplate', new ColorPickerViewModel(), {
             onDataChange: self.State.ChangeColor
         });
     };
