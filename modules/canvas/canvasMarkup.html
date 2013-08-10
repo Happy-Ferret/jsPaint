@@ -1,1 +1,49 @@
-<!DOCTYPE html>
+<table>
+    <tr>
+        <td></td>
+        <td>
+            <div class="rulers" id="horizontal_ruler_block" style="height: 18px;">
+                <canvas height="18" id="horizontal_ruler"></canvas>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="rulers" id="vertical_ruler_block" style="width: 18px;">
+                <canvas width="18" id="vertical_ruler"></canvas>
+            </div>
+        </td>
+        <td>
+            <div id="workzone">
+                <table id="canvas_block">
+                    <tr>
+                        <td>
+                            <canvas style="width: 500px; height: 500px" width="500px" height="500px"
+                                    id="canv"
+                                    onmousedown="return; mouseDown()" onmouseout="return; removeEraserCursor()"
+                                    onmouseover="return; createEraserCursor()"></canvas>
+                        </td>
+                        <td>
+                            <div class="resizing_adorner" id="east_resizing_adorner" onmousedown="startResizingEast()">
+                                &nbsp
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="resizing_adorner" id="south_resizing_adorner"
+                                 onmousedown="return; startResizingSouth()">&nbsp
+                            </div>
+                        </td>
+                        <td>
+                            <div class="resizing_adorner" id="se_resizing_adorner"
+                                 onmousedown="return; startResizingSe()">
+                                &nbsp
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+</table>

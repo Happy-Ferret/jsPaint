@@ -86,56 +86,6 @@
     </table>
 </div>
 
-
-<!-- Main part with canvas -->
-<table class="full-width" style="height: 100%">
-    <tr>
-        <td></td>
-        <td>
-            <div class="rulers" id="horizontal_ruler_block" style="height: 18px; display: none">
-                <canvas height="18" id="horizontal_ruler"></canvas>
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <div class="rulers" id="vertical_ruler_block" style="width: 18px; display: none">
-                <canvas width="18" id="vertical_ruler"></canvas>
-            </div>
-        </td>
-        <td>
-            <div id="workzone">
-                <table id="canvas_block">
-                    <tr>
-                        <td>
-                            <canvas style="width: 500px; height: 500px" width="500px" height="500px"
-                                    id="canv"
-                                    onmousedown="mouseDown()" onmouseout="removeEraserCursor()"
-                                    onmouseover="createEraserCursor()"></canvas>
-                        </td>
-                        <td>
-                            <div class="resizing_adorner" id="east_resizing_adorner" onmousedown="startResizingEast()">
-                                &nbsp
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="resizing_adorner" id="south_resizing_adorner"
-                                 onmousedown="startResizingSouth()">&nbsp
-                            </div>
-                        </td>
-                        <td>
-                            <div class="resizing_adorner" id="se_resizing_adorner" onmousedown="startResizingSe()">
-                                &nbsp
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </td>
-    </tr>
-</table>
 <!-- Bottom statusbar -->
 <div id="statusbar" data-bind="visible: StatusBarVisible">
     <div id="statusbar_inner">
