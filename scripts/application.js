@@ -3,8 +3,12 @@ function ApplicationViewModel() {
 
     self.Windows = ko.observableArray([]);
 
+    this.CreateWindow = function (parameters, templateName, viewModel) {
+        self.Windows.push(new WindowViewModel(parameters, templateName, viewModel));
+    };
+
     this.Init = function () {
-        self.Windows.push(new WindowViewModel({
+        self.CreateWindow({
             title: 'jsPaint',
 
             system: {
@@ -17,7 +21,7 @@ function ApplicationViewModel() {
                 width: 1024,
                 height: 600
             }
-        }, 'mainTemplate', new MainViewModel()));
+        }, 'mainTemplate', new MainViewModel());
     };
 
     self.Init();
