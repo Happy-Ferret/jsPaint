@@ -4,6 +4,14 @@ function ApplicationState() {
     self.PrimaryColor = ko.observable();
     self.SecondaryColor = ko.observable();
     self.IsPrimaryColorSelected = ko.observable(true);
+
+    this.ActivatePrimaryColor = function () {
+        self.IsPrimaryColorSelected(true);
+    };
+
+    this.ActivateSecondaryColor = function () {
+        self.IsPrimaryColorSelected(false);
+    };
 }
 
 function MainViewModel() {

@@ -424,20 +424,6 @@ function changeColor(color) {
         setSecondaryColor(color);
 }
 
-function makePrimaryColorActive() {
-    isPrimaryColorActive = true;
-
-    getElement('primary_color_button').setAttribute("class", "common_button_selected");
-    getElement('secondary_color_button').setAttribute("class", "common_button");
-}
-
-function makeSecondaryColorActive() {
-    isPrimaryColorActive = false;
-
-    getElement('primary_color_button').setAttribute("class", "common_button");
-    getElement('secondary_color_button').setAttribute("class", "common_button_selected");
-}
-
 /* RESIZING FUNCTIONS */
 function initResizing() {
     var oldCanvas = getElement('canv');
