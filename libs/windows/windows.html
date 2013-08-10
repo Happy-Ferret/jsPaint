@@ -30,7 +30,7 @@
                     </div>
 
                     <div class="systemContent"
-                         data-bind="html: Content, style: { backgroundColor: Background, width: Size.Width, height: Size.Height }"></div>
+                         data-bind="template: { name: Template(), data: Data }, style: { backgroundColor: Background, width: Size.Width, height: Size.Height }, attr: { id: ID }"></div>
                 </div>
             </td>
             <td class="eastResizingAdorner"></td>

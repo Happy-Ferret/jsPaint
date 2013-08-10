@@ -19,8 +19,10 @@
 //  },
 //  content (DOMElement, null)
 
-function WindowViewModel(parameters, content, viewModel) {
+function WindowViewModel(parameters, template, viewModel) {
     var self = this;
+
+    self.ID = ko.observable('container' + Math.floor((Math.random() * 100000000) + 1));
 
     // Initial Properties
     self.Title = ko.observable('');
@@ -36,10 +38,8 @@ function WindowViewModel(parameters, content, viewModel) {
     self.IsVisible = ko.observable(true);
     self.IsMaximized = ko.observable(false);
 
-    self.DomContent = ko.observable(content);
-    self.Content = ko.computed(function () {
-        return self.DomContent() ? self.DomContent().outerHTML : '';
-    });
+    self.Template = ko.observable(template);
+    self.Data = ko.observable(viewModel);
 
     self.Size = {
         Width: ko.observable(640),
@@ -114,6 +114,8 @@ function WindowViewModel(parameters, content, viewModel) {
         };
 
         document.body.addEventListener('mousemove', self.Drag);
+
+        //ko.applyBindings(viewModel, getElement(self.ID()));
     };
 
     this.Minimize = function () {

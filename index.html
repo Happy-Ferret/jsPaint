@@ -2,35 +2,50 @@
 <head>
     <title>jPaint demo</title>
 
+    <!-- EXTERNAL LIBS -->
     <script type="text/javascript" src="scripts/knockout-2.2.1.js"></script>
 
+    <!-- INTERNAL LIBS -->
     <link rel="stylesheet" type="text/css" href="libs/windows/windows.css"/>
     <script type="text/javascript" src="libs/windows/windows.js"></script>
 
     <link rel="stylesheet" type="text/css" href="styles/application.css"/>
     <script type="text/javascript" src="scripts/application.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="styles/resizing.css"/>
+    <!-- MODULES -->
+    <script type="text/javascript" src="modules/main/mainViewModel.js"></script>
 
+    <!-- HELPERS -->
     <script type="text/javascript" src="scripts/positionHelper.js"></script>
     <script type="text/javascript" src="scripts/ajaxHelper.js"></script>
     <script type="text/javascript" src="scripts/domHelper.js"></script>
+
+    <!-- OTHER -->
+    <link rel="stylesheet" type="text/css" href="styles/resizing.css"/>
 </head>
 
 <script type="text/javascript">
     var appViewModel;
 
+    function loadTemplates() {
+        includeModule(getElement('windowTemplate'), '/libs/windows/windows.html');
+        includeModule(getElement('mainTemplate'), '/modules/main/mainMarkup.html');
+    }
+
     function initApplication() {
-        loadModule(getElement('windowsContainer'), '/modules/windows/windows.html', function () {
-            appViewModel = new ApplicationViewModel();
-            ko.applyBindings(appViewModel, document.body);
-        });
+        loadTemplates();
+
+        appViewModel = new ApplicationViewModel();
+        ko.applyBindings(appViewModel, document.body);
     }
 </script>
 
 <body onload="initApplication()" id="application">
 
-<div class="container" id="windowsContainer" data-bind="foreach: Windows"></div>
+<script type="text/html" id="windowTemplate"></script>
+<script type="text/html" id="mainTemplate"></script>
+
+<div class="container" id="windowsContainer" data-bind="template: { name: 'windowTemplate', foreach: Windows }"></div>
 
 </body>
 </html>

@@ -17,7 +17,7 @@ function ApplicationViewModel() {
                 width: 1024,
                 height: 600
             }
-        }));
+        }, 'mainTemplate', new MainViewModel()));
     };
 
     self.Init();
