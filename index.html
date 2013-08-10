@@ -44,7 +44,7 @@
 </head>
 
 <script type="text/javascript">
-    var appViewModel;
+    var Application;
 
     function loadTemplates() {
         includeModule(getElement('windowTemplate'), '/libs/windows/windows.html');
@@ -59,8 +59,8 @@
     function initApplication() {
         loadTemplates();
 
-        appViewModel = new ApplicationViewModel();
-        ko.applyBindings(appViewModel, document.body);
+        Application = new ApplicationViewModel();
+        ko.applyBindings(Application, document.body);
     }
 </script>
 
