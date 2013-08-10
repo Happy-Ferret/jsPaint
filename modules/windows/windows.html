@@ -1,32 +1,3 @@
-<html>
-<head>
-    <title>jPaint demo</title>
-
-    <script type="text/javascript" src="scripts/knockout-2.2.1.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="modules/windows/windows.css"/>
-    <script type="text/javascript" src="modules/windows/windows.js"></script>
-
-    <link rel="stylesheet" tyle="text/css" href="styles/application.css"/>
-    <script type="text/javascript" src="scripts/application.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="styles/resizing.css"/>
-
-    <script type="text/javascript" src="scripts/position.js"></script>
-</head>
-
-<script type="text/javascript">
-    var appViewModel;
-
-    function initApplication() {
-        appViewModel = new ApplicationViewModel();
-        ko.applyBindings(appViewModel, document.body);
-    }
-</script>
-
-<body onload="initApplication()" id="application">
-
-<!-- ko foreach: Windows -->
 <!-- Black thin border -->
 <div class="systemOuterBorder" data-bind="visible: IsVisible, style: { top: Position.Top, left: Position.Left }">
     <!-- System color border -->
@@ -71,7 +42,3 @@
         </tr>
     </table>
 </div>
-<!-- /ko -->
-
-</body>
-</html>

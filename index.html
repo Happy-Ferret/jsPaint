@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>jPaint demo</title>
+
+    <script type="text/javascript" src="scripts/knockout-2.2.1.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="modules/windows/windows.css"/>
+    <script type="text/javascript" src="modules/windows/windows.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="styles/application.css"/>
+    <script type="text/javascript" src="scripts/application.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="styles/resizing.css"/>
+
+    <script type="text/javascript" src="scripts/positionHelper.js"></script>
+    <script type="text/javascript" src="scripts/ajaxHelper.js"></script>
+    <script type="text/javascript" src="scripts/domHelper.js"></script>
+</head>
+
+<script type="text/javascript">
+    var appViewModel;
+
+    function initApplication() {
+        loadModule(getElement('windowsContainer'), '/modules/windows/windows.html', function () {
+            appViewModel = new ApplicationViewModel();
+            ko.applyBindings(appViewModel, document.body);
+        });
+    }
+</script>
+
+<body onload="initApplication()" id="application">
+
+<div class="container" id="windowsContainer" data-bind="foreach: Windows"></div>
+
+</body>
+</html>
