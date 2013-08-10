@@ -24,6 +24,11 @@
     <script type="text/javascript" src="modules/canvas/canvasViewModel.js"></script>
     <script type="text/html" id="canvasTemplate"></script>
 
+    <script type="text/javascript" src="modules/ribbon/homeTabViewModel.js"></script>
+    <script type="text/html" id="homeRibbonTabTemplate"></script>
+    <script type="text/javascript" src="modules/ribbon/viewTabViewModel.js"></script>
+    <script type="text/html" id="viewRibbonTabTemplate"></script>
+
     <!-- HELPERS -->
     <script type="text/javascript" src="scripts/positionHelper.js"></script>
     <script type="text/javascript" src="scripts/ajaxHelper.js"></script>
@@ -41,6 +46,8 @@
         includeModule(getElement('ribbonTemplate'), '/libs/ribbon/ribbon.html');
         includeModule(getElement('mainTemplate'), '/modules/main/mainMarkup.html');
         includeModule(getElement('canvasTemplate'), '/modules/canvas/canvasMarkup.html');
+        includeModule(getElement('homeRibbonTabTemplate'), 'modules/ribbon/homeTabMarkup.html');
+        includeModule(getElement('viewRibbonTabTemplate'), 'modules/ribbon/viewTabMarkup.html');
     }
 
     function initApplication() {
