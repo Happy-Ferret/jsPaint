@@ -1,18 +1,18 @@
-<link rel="stylesheet" type="text/css" href="old/style.css"/>
-<link rel="stylesheet" type="text/css" href="old/picker_style.css"/>
-<link rel="stylesheet" type="text/css" href="old/helpers.css"/>
-<link rel="stylesheet" type="text/css" href="old/top_icons.css"/>
-<link rel="stylesheet" type="text/css" href="old/menu_icons.css"/>
-<link rel="stylesheet" type="text/css" href="old/print.css" media="print"/>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<link rel="stylesheet" type="text/css" href="picker_style.css"/>
+<link rel="stylesheet" type="text/css" href="helpers.css"/>
+<link rel="stylesheet" type="text/css" href="top_icons.css"/>
+<link rel="stylesheet" type="text/css" href="menu_icons.css"/>
+<link rel="stylesheet" type="text/css" href="print.css" media="print"/>
 
 
-<script type="text/javascript" src="old/view_model.js"></script>
-<script type="text/javascript" src="old/color.js"></script>
-<script type="text/javascript" src="old/picker.js"></script>
+<script type="text/javascript" src="view_model.js"></script>
+<script type="text/javascript" src="color.js"></script>
+<script type="text/javascript" src="picker.js"></script>
 
-<script type="text/javascript" src="old/drawbox.js"></script>
-<script type="text/javascript" src="scripts/domHelper.js"></script>
-<script type="text/javascript" src="old/file_functions.js"></script>
+<script type="text/javascript" src="drawbox.js"></script>
+<script type="text/javascript" src="../scripts/domHelper.js"></script>
+<script type="text/javascript" src="file_functions.js"></script>
 
 
 <!--<div id="top_icons_properties" class="popup-container"
@@ -55,7 +55,7 @@
                         <!-- /ko -->
 
                         <td id="top_icons_show_properties_btn" data-bind="click: ShowProperties" class="common_button">
-                            <img src="img/top_icon_show_properties.png"/>
+                            <img src="../img/top_icon_show_properties.png"/>
                         </td>
 
                         <td class="windows_separator"></td>
@@ -113,14 +113,14 @@
     <div>
         <table>
             <tr>
-                <td rowspan="2"><img src="img/ribbon_home_icons/paste_disabled.png"/></td>
-                <td><img src="img/cut_disabled.png"/></td>
+                <td rowspan="2"><img src="../img/ribbon_home_icons/paste_disabled.png"/></td>
+                <td><img src="../img/cut_disabled.png"/></td>
                 <td>
                     <div class="toolbar_caption">Cut</div>
                 </td>
             </tr>
             <tr>
-                <td><img src="img/copy_disabled.png"/></td>
+                <td><img src="../img/copy_disabled.png"/></td>
                 <td>
                     <div class="toolbar_caption">Copy</div>
                 </td>
@@ -129,7 +129,7 @@
                 <td>
                     <div style="text-align: center">
                         <div class="toolbar_caption">Paste</div>
-                        <img src="img/down_arrow.png"/>
+                        <img src="../img/down_arrow.png"/>
                     </div>
                 </td>
                 <td><!-- Empty cell --></td>
@@ -145,9 +145,9 @@
             <tr>
                 <td>
                     <div style="text-align: center">
-                        <div><img src="img/ribbon_home_icons/select.png"/></div>
+                        <div><img src="../img/ribbon_home_icons/select.png"/></div>
                         <div class="toolbar_caption">Select</div>
-                        <img src="img/down_arrow.png"/>
+                        <img src="../img/down_arrow.png"/>
                     </div>
                 </td>
                 <td>
@@ -156,7 +156,7 @@
                             <td class="common_button">
                                 <table>
                                     <tr>
-                                        <td><img src="img/crop_disabled.png"/></td>
+                                        <td><img src="../img/crop_disabled.png"/></td>
                                         <td>
                                             <div class="toolbar_caption">Crop</div>
                                         </td>
@@ -168,7 +168,7 @@
                             <td class="common_button" onclick="showCanvasResizeWindow()">
                                 <table>
                                     <tr>
-                                        <td><img src="img/resize.png"/></td>
+                                        <td><img src="../img/resize.png"/></td>
                                         <td>
                                             <div class="toolbar_caption">Resize</div>
                                         </td>
@@ -180,11 +180,11 @@
                             <td class="common_button" onclick="showRotateBlock()" id="rotate_block_button">
                                 <table>
                                     <tr>
-                                        <td><img src="img/rotate_icons/rotate_right.png"/></td>
+                                        <td><img src="../img/rotate_icons/rotate_right.png"/></td>
                                         <td>
                                             <div class="toolbar_caption">Rotate</div>
                                         </td>
-                                        <td><img src="img/down_arrow.png"/></td>
+                                        <td><img src="../img/down_arrow.png"/></td>
                                     </tr>
                                 </table>
                             </td>
@@ -201,20 +201,20 @@
     <table cellpadding="0" cellspacing="0" class="tool_table">
         <tr>
             <td id="tool_pencil" class="tool_item_left button" onclick="activatePencil()"><img
-                    src="img/pencil.png"/></td>
+                    src="../img/pencil.png"/></td>
             <td id="tool_fill" class="tool_item_center button" onclick="activateFill()"><img
-                    src="img/fill.png"/></td>
-            <td id="tool_text" class="tool_item_right button"><img src="img/text.png"/></td>
+                    src="../img/fill.png"/></td>
+            <td id="tool_text" class="tool_item_right button"><img src="../img/text.png"/></td>
         </tr>
     </table>
 
     <table cellpadding="0" cellspacing="0" class="tool_table">
         <tr>
             <td id="tool_eraser" class="tool_item_left button" onclick="activateEraser()"><img
-                    src="img/eraser.png"/></td>
+                    src="../img/eraser.png"/></td>
             <td id="tool_picker" class="tool_item_center button" onclick="activateColorPicker()"><img
-                    src="img/picker.png"/></td>
-            <td id="tool_zoom" class="tool_item_right button"><img src="img/zoom.png"/></td>
+                    src="../img/picker.png"/></td>
+            <td id="tool_zoom" class="tool_item_right button"><img src="../img/zoom.png"/></td>
         </tr>
     </table>
     <div class="toolbar_caption">Tools</div>
@@ -222,9 +222,9 @@
 <td class="toolbar_separator"></td>
 <td>
     <div style="text-align: center">
-        <div><img src="img/ribbon_home_icons/brushes.png"/></div>
+        <div><img src="../img/ribbon_home_icons/brushes.png"/></div>
         <div>Brushes</div>
-        <div><img src="img/down_arrow.png"/></div>
+        <div><img src="../img/down_arrow.png"/></div>
     </div>
 </td>
 <td class="toolbar_separator"></td>
@@ -265,14 +265,14 @@
             </td>
             <td>
                 <div>
-                    <img src="img/outline_disabled.png"/>
+                    <img src="../img/outline_disabled.png"/>
                     Outline
-                    <img src="img/down_arrow.png"/>
+                    <img src="../img/down_arrow.png"/>
                 </div>
                 <div>
-                    <img src="img/fill_shape_disabled.png"/>
+                    <img src="../img/fill_shape_disabled.png"/>
                     Fill
-                    <img src="img/down_arrow.png"/>
+                    <img src="../img/down_arrow.png"/>
                 </div>
             </td>
         </tr>
@@ -282,9 +282,9 @@
 <td class="toolbar_separator"></td>
 <td style="text-align:center; vertical-align: top; padding-top: 6px">
     <div id="brush_width_button" style="padding: 5px 0" class="common_button" onclick="showBrushWidthBlock()">
-        <div style="margin: 5px"><img src="img/ribbon_home_icons/brush_size.png"/></div>
+        <div style="margin: 5px"><img src="../img/ribbon_home_icons/brush_size.png"/></div>
         <div style="font-size: 14px; color: #1E395B; margin: 5px">Size</div>
-        <div style="margin: 5px"><img src="img/down_arrow.png"/></div>
+        <div style="margin: 5px"><img src="../img/down_arrow.png"/></div>
     </div>
 </td>
 <td class="toolbar_separator"></td>
@@ -316,7 +316,7 @@
             </td>
             <td class="common_button" style="width: 42px; height: 66px; text-align: center;"
                 onclick="showColorPicker()">
-                <div><img src="img/ribbon_home_icons/edit_colors.png"/></div>
+                <div><img src="../img/ribbon_home_icons/edit_colors.png"/></div>
                 <div>Edit</div>
                 <div>colors</div>
             </td>
@@ -334,18 +334,18 @@
                 <tr>
                     <td class="common_button" style="width: 42px; height: 66px; text-align: center;"
                         data-bind="click: ZoomIn">
-                        <div><img src="img/ribbon_view_icons/zoom_in.png"/></div>
+                        <div><img src="../img/ribbon_view_icons/zoom_in.png"/></div>
                         <div>Zoom</div>
                         <div>in</div>
                     </td>
                     <td class="common_button" style="width: 42px; height: 66px; text-align: center;"
                         data-bind="click: ZoomOut">
-                        <div><img src="img/ribbon_view_icons/zoom_out.png"/></div>
+                        <div><img src="../img/ribbon_view_icons/zoom_out.png"/></div>
                         <div>Zoom</div>
                         <div>out</div>
                     </td>
                     <td class="common_button" style="width: 42px; height: 66px; text-align: center;">
-                        <div><img src="img/ribbon_view_icons/100_percents.png"/></div>
+                        <div><img src="../img/ribbon_view_icons/100_percents.png"/></div>
                         <div>100</div>
                         <div>%</div>
                     </td>
@@ -373,12 +373,12 @@
             <table>
                 <tr>
                     <td class="common_button" style="width: 42px; height: 66px; text-align: center;">
-                        <div><img src="img/ribbon_view_icons/full_screen.png"/></div>
+                        <div><img src="../img/ribbon_view_icons/full_screen.png"/></div>
                         <div>Full</div>
                         <div>screen</div>
                     </td>
                     <td class="common_button" style="width: 42px; height: 66px; text-align: center;">
-                        <div><img src="img/ribbon_view_icons/thumbnail_disabled.png"/></div>
+                        <div><img src="../img/ribbon_view_icons/thumbnail_disabled.png"/></div>
                         <div>Thumbnail</div>
                     </td>
                 </tr>
@@ -445,16 +445,16 @@
     <div id="statusbar_inner">
         <table class="full-width">
             <tr>
-                <td class="statusbar_icon"><img src="img/statusbar_icons/position.png"/></td>
+                <td class="statusbar_icon"><img src="../img/statusbar_icons/position.png"/></td>
                 <td id="statusbar_coords" class="statusbar_text"></td>
 
-                <td class="statusbar_icon"><img src="img/statusbar_icons/selection_size.png"/></td>
+                <td class="statusbar_icon"><img src="../img/statusbar_icons/selection_size.png"/></td>
                 <td class="statusbar_text">SelectionSize</td>
 
-                <td class="statusbar_icon"><img src="img/statusbar_icons/canvas_size.png"/></td>
+                <td class="statusbar_icon"><img src="../img/statusbar_icons/canvas_size.png"/></td>
                 <td id="canvas_size_info" class="statusbar_text"></td>
 
-                <td class="statusbar_icon"><img src="img/statusbar_icons/file_size.png"/></td>
+                <td class="statusbar_icon"><img src="../img/statusbar_icons/file_size.png"/></td>
                 <td class="statusbar_text">Size: 0KB</td>
 
                 <td>
@@ -465,14 +465,14 @@
                                     <div id="zoom_text_value">100%</div>
                                 </td>
 
-                                <td><img src="img/statusbar_icons/zoom_out.png" data-bind="click: ZoomOut"/></td>
+                                <td><img src="../img/statusbar_icons/zoom_out.png" data-bind="click: ZoomOut"/></td>
 
                                 <td>
                                     <input id="zoom_value" type="range" value="100" min="25" max="800" step="25"
                                            style="width:100px; margin: 0;" onchange="raiseZoomChanged()"/>
                                 </td>
 
-                                <td><img src="img/statusbar_icons/zoom_in.png" data-bind="click: ZoomIn"/></td>
+                                <td><img src="../img/statusbar_icons/zoom_in.png" data-bind="click: ZoomIn"/></td>
                             </tr>
                         </table>
                     </div>
@@ -493,7 +493,7 @@
             <td class="common_button" onclick="turnRight()">
                 <table cellspacing="0">
                     <tr>
-                        <td class="rotate_block_image"><img src="img/rotate_icons/rotate_right.png"/></td>
+                        <td class="rotate_block_image"><img src="../img/rotate_icons/rotate_right.png"/></td>
                         <td class="rotate_block_text">Rotate right 90°</td>
                     </tr>
                 </table>
@@ -503,7 +503,7 @@
             <td class="common_button" onclick="turnLeft()">
                 <table cellspacing="0">
                     <tr>
-                        <td class="rotate_block_image"><img src="img/rotate_icons/rotate_left.png"/></td>
+                        <td class="rotate_block_image"><img src="../img/rotate_icons/rotate_left.png"/></td>
                         <td class="rotate_block_text">Rotate left 90°</td>
                     </tr>
                 </table>
@@ -513,7 +513,7 @@
             <td class="common_button" onclick="rotate()">
                 <table cellspacing="0">
                     <tr>
-                        <td class="rotate_block_image"><img src="img/rotate_icons/rotate_180.png"/></td>
+                        <td class="rotate_block_image"><img src="../img/rotate_icons/rotate_180.png"/></td>
                         <td class="rotate_block_text">Rotate 180°</td>
                     </tr>
                 </table>
@@ -523,7 +523,7 @@
             <td class="common_button" onclick="flipVertical()">
                 <table cellspacing="0">
                     <tr>
-                        <td class="rotate_block_image"><img src="img/rotate_icons/flip_vertical.png"/></td>
+                        <td class="rotate_block_image"><img src="../img/rotate_icons/flip_vertical.png"/></td>
                         <td class="rotate_block_text">Flip vertical</td>
                     </tr>
                 </table>
@@ -533,7 +533,7 @@
             <td class="common_button" onclick="flipHorizontal()">
                 <table cellspacing="0">
                     <tr>
-                        <td class="rotate_block_image"><img src="img/rotate_icons/flip_horizontal.png"/></td>
+                        <td class="rotate_block_image"><img src="../img/rotate_icons/flip_horizontal.png"/></td>
                         <td class="rotate_block_text">Flip horizontal</td>
                     </tr>
                 </table>
@@ -724,7 +724,7 @@
     <div class="main_menu_item common_button" onclick="saveAsPng()">
         <table>
             <tr>
-                <td><img src="img/imagetype_icons/png.png"/></td>
+                <td><img src="../img/imagetype_icons/png.png"/></td>
                 <td class="main_menu_additional_window_text"><b>PNG picture</b><br/>Save a photo or drawing with high
                     quality and use it on your computer or on the web.
                 </td>
@@ -735,7 +735,7 @@
     <div class="main_menu_item common_button" onclick="saveAsJpeg()">
         <table>
             <tr>
-                <td><img src="img/imagetype_icons/jpg.png"/></td>
+                <td><img src="../img/imagetype_icons/jpg.png"/></td>
                 <td class="main_menu_additional_window_text"><b>JPEG picture</b></br>Save a photo with good quality and
                     use it on your computer, in e-mail, or on the web.
                 </td>
@@ -746,7 +746,7 @@
     <div class="main_menu_item common_button">
         <table>
             <tr>
-                <td><img src="img/imagetype_icons/bmp.png"/></td>
+                <td><img src="../img/imagetype_icons/bmp.png"/></td>
                 <td class="main_menu_additional_window_text"><b>BMP picture</b><br/>Save any kind of picture with high
                     quality and use it on your computer.
                 </td>
@@ -757,7 +757,7 @@
     <div class="main_menu_item common_button">
         <table>
             <tr>
-                <td><img src="img/imagetype_icons/gif.png"/></td>
+                <td><img src="../img/imagetype_icons/gif.png"/></td>
                 <td class="main_menu_additional_window_text"><b>GIF picture</b><br/>Save a simple drawing with lower
                     quality and use it in e-mail or on the web.
                 </td>
@@ -768,7 +768,7 @@
     <div class="main_menu_item common_button">
         <table>
             <tr>
-                <td><img src="img/imagetype_icons/other.png"/></td>
+                <td><img src="../img/imagetype_icons/other.png"/></td>
                 <td class="main_menu_additional_window_text"><b>Other formats</b><br/>Open the Save As dialog box to
                     select from all possible file types.
                 </td>
@@ -790,12 +790,12 @@
         </div>
         <table>
             <tr>
-                <td><img src="img/resize_pics/resize_horizontal.png"/></td>
+                <td><img src="../img/resize_pics/resize_horizontal.png"/></td>
                 <td>Horizontal:</td>
                 <td><input type="text" value="100" class="resizing_window_input"/></td>
             </tr>
             <tr>
-                <td><img src="img/resize_pics/resize_vertical.png"/></td>
+                <td><img src="../img/resize_pics/resize_vertical.png"/></td>
                 <td>Vertical:</td>
                 <td><input type="text" value="100" class="resizing_window_input"/></td>
             </tr>
@@ -808,12 +808,12 @@
         <legend>Skew (degrees)</legend>
         <table>
             <tr>
-                <td><img src="img/resize_pics/skew_horizontal.png"/></td>
+                <td><img src="../img/resize_pics/skew_horizontal.png"/></td>
                 <td>Horizontal:</td>
                 <td><input type="text" value="100" class="resizing_window_input"/></td>
             </tr>
             <tr>
-                <td><img src="img/resize_pics/skew_vertical.png"/></td>
+                <td><img src="../img/resize_pics/skew_vertical.png"/></td>
                 <td>Vertical:</td>
                 <td><input type="text" value="100" class="resizing_window_input"/></td>
             </tr>
@@ -861,7 +861,7 @@
                                         style="border-color: #000; border-style: solid; border-width: 1px;"></canvas>
                                 <div id="palette_picker"
                                      style="position: relative; top: -240; width: 240px; height: 240px; z-index:10;">
-                                    <img src="img/colorpicker/crosshair.png" id="palette_crosshair"/>
+                                    <img src="../img/colorpicker/crosshair.png" id="palette_crosshair"/>
                                 </div>
                             </div>
                         </td>
@@ -878,7 +878,7 @@
                                         <div style="overflow: hidden; width: 10px; height: 190px;">
                                             <div style="vertical-align: top; margin-top: 0" id="luma_picker"
                                                  onmousedown="beginChangingLuma()" onmouseup="endChangingLuma()">
-                                                <img src="img/colorpicker/luma_picker.png" id="luma_slider"/>
+                                                <img src="../img/colorpicker/luma_picker.png" id="luma_slider"/>
                                             </div>
                                         </div>
                                     </td>
