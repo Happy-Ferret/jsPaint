@@ -3,7 +3,8 @@
     <title>jPaint demo</title>
 
     <link rel="stylesheet" type="text/css" href="modules/windows/windows.css"/>
-    <link rel="stylesheet" type="text/css" href="styles/application.css"/>
+    <link rel="stylesheet" tyle="text/css" href="styles/application.css"/>
+    <link rel="stylesheet" type="text/css" href="styles/resizing.css"/>
 
     <script type="text/javascript" src="scripts/knockout-2.2.1.js"></script>
     <script type="text/javascript" src="scripts/position.js"></script>
@@ -26,27 +27,46 @@
 <!-- Black thin border -->
 <div class="systemOuterBorder" data-bind="visible: IsVisible, style: { top: Position.Top, left: Position.Left }">
     <!-- System color border -->
-    <div class="systemBorder">
-        <div class="systemBar" data-bind="event: { mousedown: BeginDrag, mouseup: EndDrag, dblclick: ClickMaximize }">
-            <div class="systemLeft">
-                <div class="top_icon systemAppIcon"></div>
-                <div class="systemSeparator"></div>
-                <span class="systemCaption" data-bind="text: Title"></span>
-            </div>
+    <table cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="nwResizingAdorner"></td>
+            <td class="northResizingAdorner"></td>
+            <td class="neResizingAdorner"></td>
+        </tr>
+        <tr>
+            <td class="westResizingAdorner"></td>
+            <td>
+                <div class="systemBorder">
+                    <div class="systemBar"
+                         data-bind="event: { mousedown: BeginDrag, mouseup: EndDrag, dblclick: ClickMaximize }">
+                        <div class="systemLeft">
+                            <div class="top_icon systemAppIcon"></div>
+                            <div class="systemSeparator"></div>
+                            <span class="systemCaption" data-bind="text: Title"></span>
+                        </div>
 
-            <div class="systemButtons">
-                <div class="systemButton systemMinimizeButton"
-                     data-bind="visible: CanMinimize, click: Minimize, clickBubble: false"></div>
-                <div class="systemButton"
-                     data-bind="visible: CanMaximize, click: ClickMaximize, clickBubble: false, css: MaximizeStyle"></div>
-                <div class="systemButton systemCloseButton"
-                     data-bind="visible: CanClose, click: Close, clickBubble: false"></div>
-            </div>
-        </div>
+                        <div class="systemButtons">
+                            <div class="systemButton systemMinimizeButton"
+                                 data-bind="visible: CanMinimize, click: Minimize, clickBubble: false"></div>
+                            <div class="systemButton"
+                                 data-bind="visible: CanMaximize, click: ClickMaximize, clickBubble: false, css: MaximizeStyle"></div>
+                            <div class="systemButton systemCloseButton"
+                                 data-bind="visible: CanClose, click: Close, clickBubble: false"></div>
+                        </div>
+                    </div>
 
-        <div class="systemContent"
-             data-bind="html: Content, style: { backgroundColor: Background, width: Size.Width, height: Size.Height }"></div>
-    </div>
+                    <div class="systemContent"
+                         data-bind="html: Content, style: { backgroundColor: Background, width: Size.Width, height: Size.Height }"></div>
+                </div>
+            </td>
+            <td class="eastResizingAdorner"></td>
+        </tr>
+        <tr>
+            <td class="swResizingAdorner"></td>
+            <td class="southResizingAdorner"></td>
+            <td class="seResizingAdorner"></td>
+        </tr>
+    </table>
 </div>
 <!-- /ko -->
 

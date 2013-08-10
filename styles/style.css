@@ -136,9 +136,8 @@
 	height: 3px;
 }
 
-#south_resizing_adorner 
-{
-	cursor: s-resize;
+#south_resizing_adorner {
+    cursor: s-resize;
 	margin: 0 auto;
 }
 

@@ -1,0 +1,48 @@
+.northResizingAdorner {
+    cursor: n-resize;
+    height: 1px;
+    margin-bottom: -1px;
+}
+
+.eastResizingAdorner {
+    cursor: e-resize;
+    width: 1px;
+}
+
+.southResizingAdorner {
+    cursor: s-resize;
+    height: 1px;
+}
+
+.westResizingAdorner {
+    cursor: w-resize;
+    width: 1px;
+}
+
+.nwResizingAdorner {
+    cursor: nw-resize;
+    height: 1px;
+    width: 1px;
+
+    margin-bottom: 1px;
+}
+
+.neResizingAdorner {
+    cursor: ne-resize;
+    height: 1px;
+    width: 1px;
+
+    margin-bottom: 1px;
+}
+
+.swResizingAdorner {
+    cursor: sw-resize;
+    height: 1px;
+    width: 1px;
+}
+
+.seResizingAdorner {
+    cursor: se-resize;
+    height: 1px;
+    width: 1px;
+}
