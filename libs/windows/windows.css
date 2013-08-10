@@ -36,7 +36,7 @@
     height: 17px;
     width: 31px;
     display: inline-block;
-    background-image: url('../../img/system_buttons.png');
+    background-image: url('images/system_buttons.png');
 }
 
 .systemMinimizeButton {
