@@ -35,29 +35,6 @@
     overflow: hidden;
 }
 
-#outer_toolbar {
-    border-bottom: 1px solid #9FAEC2;
-}
-
-#toolbar {
-    border: 1px solid #B9D1EA;
-    border-top-color: #BAC9DB;
-    border-bottom-color: #CEDBEB;
-}
-
-#inner_toolbar {
-    /* gradient */
-    background: rgb(245, 250, 255); /* Old browsers */
-    background: -moz-linear-gradient(top, rgba(245, 250, 255, 1) 0%, rgba(220, 231, 245, 1) 50%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(245, 250, 255, 1)), color-stop(50%, rgba(220, 231, 245, 1))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, rgba(245, 250, 255, 1) 0%, rgba(220, 231, 245, 1) 50%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, rgba(245, 250, 255, 1) 0%, rgba(220, 231, 245, 1) 50%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, rgba(245, 250, 255, 1) 0%, rgba(220, 231, 245, 1) 50%); /* IE10+ */
-    background: linear-gradient(to bottom, rgba(245, 250, 255, 1) 0%, rgba(220, 231, 245, 1) 50%); /* W3C */
-
-    border: 1px solid #EEF5FD;
-}
-
 #brush_width_block {
     -webkit-border-radius: 2px;
     border-radius: 2px;
@@ -187,20 +164,6 @@
     border: 1px solid #AABBD2;
 }
 
-.main_menu_button {
-    background-image: url('../img/main_menu_button.png');
-
-    height: 22px;
-    width: 56px;
-}
-
-.main_menu_button:hover {
-    background-image: url('../img/main_menu_button_hover.png');
-
-    height: 22px;
-    width: 56px;
-}
-
 .windows_separator {
     border: 0 solid #C3DCF7;
     border-right-width: 1px;
@@ -212,39 +175,6 @@
     height: 50%;
 
     overflow: hidden;
-}
-
-.menu_item, .menu_item:hover {
-    background-color: #FBFDFF;
-
-    border-width: 1px 1px 0 1px;
-    border-style: solid;
-
-    -webkit-border-radius: 3px 3px 0 0;
-    border-radius: 3px 3px 0 0;
-
-    color: #15428B;
-    font-size: 13px;
-    font-family: Calibri, Verdana, Ariel, sans-serif;
-
-    Padding: 3px 10px 3px 10px;
-}
-
-.menu_item {
-    border-color: #9FAEC2;
-}
-
-.menu_item:hover {
-    border-color: #FFA90A;
-
-    -webkit-box-shadow: 0 0 2px 2px rgba(255, 169, 10, 0.3);
-    box-shadow: 0 0 2px 2px rgba(255, 169, 10, 0.3);
-}
-
-#menu_bar {
-    background-color: #DFE9F5;
-
-    height: 24px;
 }
 
 #rotate_block {

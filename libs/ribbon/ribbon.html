@@ -1,0 +1,233 @@
+<div class="ribbonMenuBar">
+    <div class="ribbonTabItem ribbonMainMenuButton" data-bind="click: ShowMenu">&nbsp</div>
+    <!-- ko foreach: Tabs -->
+    <div class="ribbonTabItem ribbonMenuItem" data-bind="text: Caption, css: { 'active': IsActive }">Home</div>
+    <!-- /ko -->
+</div>
+
+<div id="outer_toolbar">
+<div id="toolbar">
+<div id="inner_toolbar">
+<table id="ribbon_home">
+<tr>
+<td>
+    <div>
+        <table>
+            <tr>
+                <td rowspan="2"><img src="../img/ribbon_home_icons/paste_disabled.png"/></td>
+                <td><img src="../img/cut_disabled.png"/></td>
+                <td>
+                    <div class="toolbar_caption">Cut</div>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="../img/copy_disabled.png"/></td>
+                <td>
+                    <div class="toolbar_caption">Copy</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="text-align: center">
+                        <div class="toolbar_caption">Paste</div>
+                        <img src="../img/down_arrow.png"/>
+                    </div>
+                </td>
+                <td><!-- Empty cell --></td>
+            </tr>
+        </table>
+    </div>
+    <div class="toolbar_caption">Clipboard</div>
+</td>
+<td class="toolbar_separator"></td>
+<td>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <div style="text-align: center">
+                        <div><img src="../img/ribbon_home_icons/select.png"/></div>
+                        <div class="toolbar_caption">Select</div>
+                        <img src="../img/down_arrow.png"/>
+                    </div>
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <td class="common_button">
+                                <table>
+                                    <tr>
+                                        <td><img src="../img/crop_disabled.png"/></td>
+                                        <td>
+                                            <div class="toolbar_caption">Crop</div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="common_button" onclick="showCanvasResizeWindow()">
+                                <table>
+                                    <tr>
+                                        <td><img src="../img/resize.png"/></td>
+                                        <td>
+                                            <div class="toolbar_caption">Resize</div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="common_button" onclick="showRotateBlock()" id="rotate_block_button">
+                                <table>
+                                    <tr>
+                                        <td><img src="../img/rotate_icons/rotate_right.png"/></td>
+                                        <td>
+                                            <div class="toolbar_caption">Rotate</div>
+                                        </td>
+                                        <td><img src="../img/down_arrow.png"/></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="toolbar_caption">Image</div>
+</td>
+<td class="toolbar_separator"></td>
+<td>
+    <table cellpadding="0" cellspacing="0" class="tool_table">
+        <tr>
+            <td id="tool_pencil" class="tool_item_left button" onclick="activatePencil()"><img
+                    src="../img/pencil.png"/></td>
+            <td id="tool_fill" class="tool_item_center button" onclick="activateFill()"><img
+                    src="../img/fill.png"/></td>
+            <td id="tool_text" class="tool_item_right button"><img src="../img/text.png"/></td>
+        </tr>
+    </table>
+
+    <table cellpadding="0" cellspacing="0" class="tool_table">
+        <tr>
+            <td id="tool_eraser" class="tool_item_left button" onclick="activateEraser()"><img
+                    src="../img/eraser.png"/></td>
+            <td id="tool_picker" class="tool_item_center button" onclick="activateColorPicker()"><img
+                    src="../img/picker.png"/></td>
+            <td id="tool_zoom" class="tool_item_right button"><img src="../img/zoom.png"/></td>
+        </tr>
+    </table>
+    <div class="toolbar_caption">Tools</div>
+</td>
+<td class="toolbar_separator"></td>
+<td>
+    <div style="text-align: center">
+        <div><img src="../img/ribbon_home_icons/brushes.png"/></div>
+        <div>Brushes</div>
+        <div><img src="../img/down_arrow.png"/></div>
+    </div>
+</td>
+<td class="toolbar_separator"></td>
+<td>
+    <table>
+        <tr>
+            <td>
+                <!-- Real-table simulation -->
+                <table id="shape_table">
+                    <tr>
+                        <td>a</td>
+                        <td>b</td>
+                        <td>c</td>
+                        <td>d</td>
+                        <td>e</td>
+                        <td>f</td>
+                        <td>g</td>
+                    </tr>
+                    <tr>
+                        <td>a</td>
+                        <td>b</td>
+                        <td>c</td>
+                        <td>d</td>
+                        <td>e</td>
+                        <td>f</td>
+                        <td>g</td>
+                    </tr>
+                    <tr>
+                        <td>a</td>
+                        <td>b</td>
+                        <td>c</td>
+                        <td>d</td>
+                        <td>e</td>
+                        <td>f</td>
+                        <td>g</td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <div>
+                    <img src="../img/outline_disabled.png"/>
+                    Outline
+                    <img src="../img/down_arrow.png"/>
+                </div>
+                <div>
+                    <img src="../img/fill_shape_disabled.png"/>
+                    Fill
+                    <img src="../img/down_arrow.png"/>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <div class="toolbar_caption">Shapes</div>
+</td>
+<td class="toolbar_separator"></td>
+<td style="text-align:center; vertical-align: top; padding-top: 6px">
+    <div id="brush_width_button" style="padding: 5px 0" class="common_button" onclick="showBrushWidthBlock()">
+        <div style="margin: 5px"><img src="../img/ribbon_home_icons/brush_size.png"/></div>
+        <div style="font-size: 14px; color: #1E395B; margin: 5px">Size</div>
+        <div style="margin: 5px"><img src="../img/down_arrow.png"/></div>
+    </div>
+</td>
+<td class="toolbar_separator"></td>
+<td>
+    <table>
+        <tr>
+            <td id="primary_color_button" class="common_button_selected"
+                style="width: 42px; height: 66px; text-align: center;" onclick="makePrimaryColorActive()">
+                <div class='color_selected' style="width: 28px; height: 28px; margin:0 auto;">
+                    <div id="primary_color_view" style="background-color: #000; width: 28px; height: 28px">
+                        &nbsp
+                    </div>
+                </div>
+                <div>Color</div>
+                <div>1</div>
+            </td>
+            <td id="secondary_color_button" class="common_button"
+                style="width: 42px; height: 66px; text-align: center;" onclick="makeSecondaryColorActive()">
+                <div class='color_selected' style="width: 20px; height: 20px; margin:0 auto;">
+                    <div id="secondary_color_view" style="background-color: #FFF; width: 20px; height: 20px">
+                        &nbsp
+                    </div>
+                </div>
+                <div>Color</div>
+                <div>2</div>
+            </td>
+            <td>
+                <table id="palette"></table>
+            </td>
+            <td class="common_button" style="width: 42px; height: 66px; text-align: center;"
+                onclick="showColorPicker()">
+                <div><img src="../img/ribbon_home_icons/edit_colors.png"/></div>
+                <div>Edit</div>
+                <div>colors</div>
+            </td>
+        </tr>
+    </table>
+    <div class="toolbar_caption">Colors</div>
+</td>
+<td class="toolbar_separator"></td>
+</tr>
+</table>
+</div>
+</div>
+</div>

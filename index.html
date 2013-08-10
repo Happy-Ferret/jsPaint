@@ -6,14 +6,23 @@
     <script type="text/javascript" src="scripts/knockout-2.2.1.js"></script>
 
     <!-- INTERNAL LIBS -->
+    <script type="text/html" id="windowTemplate"></script>
     <link rel="stylesheet" type="text/css" href="libs/windows/windows.css"/>
     <script type="text/javascript" src="libs/windows/windows.js"></script>
 
+    <script type="text/html" id="ribbonTemplate"></script>
+    <link rel="stylesheet" type="text/css" href="libs/ribbon/ribbon.css"/>
+    <script type="text/javascript" src="libs/ribbon/ribbon.js"></script>
+
+    <!-- MODULES -->
     <link rel="stylesheet" type="text/css" href="styles/application.css"/>
     <script type="text/javascript" src="scripts/application.js"></script>
 
-    <!-- MODULES -->
     <script type="text/javascript" src="modules/main/mainViewModel.js"></script>
+    <script type="text/html" id="mainTemplate"></script>
+
+    <script type="text/javascript" src="modules/canvas/canvasViewModel.js"></script>
+    <script type="text/html" id="canvasTemplate"></script>
 
     <!-- HELPERS -->
     <script type="text/javascript" src="scripts/positionHelper.js"></script>
@@ -29,7 +38,9 @@
 
     function loadTemplates() {
         includeModule(getElement('windowTemplate'), '/libs/windows/windows.html');
+        includeModule(getElement('ribbonTemplate'), '/libs/ribbon/ribbon.html');
         includeModule(getElement('mainTemplate'), '/modules/main/mainMarkup.html');
+        includeModule(getElement('canvasTemplate'), '/modules/canvas/canvasMarkup.html');
     }
 
     function initApplication() {
@@ -41,9 +52,6 @@
 </script>
 
 <body onload="initApplication()" id="application">
-
-<script type="text/html" id="windowTemplate"></script>
-<script type="text/html" id="mainTemplate"></script>
 
 <div class="container" id="windowsContainer" data-bind="template: { name: 'windowTemplate', foreach: Windows }"></div>
 
