@@ -163,7 +163,7 @@ function WindowViewModel(parameters, template, viewModel) {
         } else {
             this.Maximize();
         }
-    }
+    };
 
     this.Close = function () {
 
