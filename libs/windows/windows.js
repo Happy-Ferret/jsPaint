@@ -17,9 +17,13 @@
 //      },
 //      background: (string, #FFFFFF),
 //  },
-//  content (DOMElement, null)
+//  events: {
+//      onDataSelect (function(newData), undefined)
+//  }
+//  template ID (string, '')
+//  viewModel (knockout viewModel, undefined)
 
-function WindowViewModel(parameters, template, viewModel) {
+function WindowViewModel(parameters, template, viewModel, events) {
     var self = this;
 
     self.ID = ko.observable('container' + Math.floor((Math.random() * 100000000) + 1));
@@ -116,6 +120,12 @@ function WindowViewModel(parameters, template, viewModel) {
         document.body.addEventListener('mousemove', self.Drag);
 
         //ko.applyBindings(viewModel, getElement(self.ID()));
+    };
+
+    this.DataSelect = function (newValue) {
+        if (events && events.onDataSelect) {
+            events.onDataSelect(newValue);
+        }
     };
 
     this.Minimize = function () {

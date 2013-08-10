@@ -3,8 +3,8 @@ function ApplicationViewModel() {
 
     self.Windows = ko.observableArray([]);
 
-    this.CreateWindow = function (parameters, templateName, viewModel) {
-        self.Windows.push(new WindowViewModel(parameters, templateName, viewModel));
+    this.CreateWindow = function (parameters, templateName, viewModel, events) {
+        self.Windows.push(new WindowViewModel(parameters, templateName, viewModel, events));
     };
 
     this.Init = function () {

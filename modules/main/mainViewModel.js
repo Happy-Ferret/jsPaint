@@ -12,6 +12,14 @@ function ApplicationState() {
     this.ActivateSecondaryColor = function () {
         self.IsPrimaryColorSelected(false);
     };
+
+    this.ChangeColor = function (newColor) {
+        if (self.IsPrimaryColorSelected == true) {
+            self.PrimaryColor(newColor);
+        } else {
+            self.SecondaryColor(newColor);
+        }
+    };
 }
 
 function MainViewModel() {
