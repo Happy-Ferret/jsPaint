@@ -90,6 +90,9 @@
 
 .ribbonBlock {
     display: inline-block;
+
+    border: 0 solid #000000;
+    border-right-width: 1px;
 }
 
 .ribbonBlockCaption {
