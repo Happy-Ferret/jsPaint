@@ -95,11 +95,11 @@ function WindowViewModel(parameters, content, viewModel) {
 
             if (parameters.size) {
                 if (parameters.size.width) {
-                    self.Width(parameters.size.width);
+                    self.Size.Width(parameters.size.width);
                 }
 
                 if (parameters.size.height) {
-                    self.Height(parameters.size.height);
+                    self.Size.Height(parameters.size.height);
                 }
             }
         }
