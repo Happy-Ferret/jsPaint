@@ -2,12 +2,6 @@
     width: 200px;
 }
 
-.top_icon {
-    background: url('../img/top_icons.png') no-repeat;
-    width: 18px;
-    height: 18px;
-}
-
 .popup-container-header {
     background-color: #EBF2F7;
     border: solid #CFDBEB;

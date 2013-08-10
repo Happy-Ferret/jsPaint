@@ -4,3 +4,7 @@ body {
     margin: 0;
     cursor: default;
 }
+
+.systemAppIcon {
+    background: url('../img/top_icons.png') no-repeat 0 0;
+}

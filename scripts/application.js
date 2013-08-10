@@ -10,6 +10,7 @@ function ApplicationViewModel() {
     this.Init = function () {
         self.CreateWindow({
             title: 'jsPaint',
+            iconClass: 'systemAppIcon',
 
             system: {
                 canMinimize: true,

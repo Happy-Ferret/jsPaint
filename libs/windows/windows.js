@@ -1,6 +1,6 @@
 //  parameters: {
 //      title (string, ''),
-//      icon (url, null),
+//      iconClass (string, ''),
 //      system: {
 //          canMinimize (bool, false),
 //          canMaximize (bool, false),
@@ -67,8 +67,8 @@ function WindowViewModel(parameters, template, viewModel) {
                 self.Title(parameters.title);
             }
 
-            if (parameters.icon) {
-                self.Icon(parameters.icon);
+            if (parameters.iconClass) {
+                self.Icon(parameters.iconClass);
             }
 
             if (parameters.background) {

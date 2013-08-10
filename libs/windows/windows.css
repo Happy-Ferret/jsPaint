@@ -75,8 +75,9 @@
     font-size: 14px;
 }
 
-.systemAppIcon {
-    background: no-repeat 0 0;
+.topIcon {
+    width: 18px;
+    height: 18px;
     display: inline-block;
 }
 
