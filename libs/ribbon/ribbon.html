@@ -1,7 +1,9 @@
 <div class="ribbonMenuBar">
     <div class="ribbonTabItem ribbonMainMenuButton" data-bind="click: ShowMenu">&nbsp</div>
     <!-- ko foreach: Tabs -->
-    <div class="ribbonTabItem ribbonMenuItem" data-bind="text: Caption, css: { 'active': IsActive }">Home</div>
+    <div class="ribbonTabItem ribbonMenuItem"
+         data-bind="text: Caption, css: { 'active': IsActive }, click: $parent.SelectTab">Home
+    </div>
     <!-- /ko -->
 </div>
 

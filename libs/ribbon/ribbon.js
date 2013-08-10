@@ -14,9 +14,9 @@ function RibbonViewModel(tabs) {
 
     };
 
-    this.Init = function () {
-
+    this.SelectTab = function (element) {
+        for (var i = 0; i < self.Tabs().length; i++) {
+            self.Tabs()[i].IsActive(self.Tabs()[i] == element);
+        }
     };
-
-    self.Init();
 }
