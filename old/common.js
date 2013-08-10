@@ -1,5 +1,5 @@
 function getElement(name) {
-	return document.getElementById(name);
+    return document.getElementById(name);
 }
 
 function elementIsClass(element, className) {

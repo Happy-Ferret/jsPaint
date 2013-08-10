@@ -1,17 +1,14 @@
-#top_icons_properties
-{
+#top_icons_properties {
     width: 200px;
 }
 
-.top_icon
-{
+.top_icon {
     background: url('../img/top_icons.png') no-repeat;
     width: 18px;
     height: 18px;
 }
 
-.popup-container-header
-{
+.popup-container-header {
     background-color: #EBF2F7;
     border: solid #CFDBEB;
     color: #254264;
@@ -19,30 +16,25 @@
     font-weight: bold;
 }
 
-.popup-container-header-top
-{
+.popup-container-header-top {
     border-bottom-width: 1px;
 }
 
-.popup-container-header-middle
-{
+.popup-container-header-middle {
     border-top-width: 1px;
     border-bottom-width: 1px;
 }
 
-.popup-container-header-bottom
-{
+.popup-container-header-bottom {
     border-top-width: 1px;
 }
 
-.top-icon-customize-outer
-{
+.top-icon-customize-outer {
     background-color: #F3F7FB;
     padding: 2px;
 }
 
-.top-icon-customize-checked
-{
+.top-icon-customize-checked {
     border-color: #F29536;
     width: 100%;
     height: 100%;
@@ -50,8 +42,7 @@
     border-right: 1px solid #CFDBEB;
 }
 
-.top-icon-customize-checked-inner
-{
+.top-icon-customize-checked-inner {
     border-color: #FFE395;
     background-color: #FFE082;
     width: 100%;
