@@ -11,6 +11,11 @@ function ApplicationViewModel() {
                 canMinimize: true,
                 canMaximize: true,
                 canClose: true
+            },
+
+            size: {
+                width: 1024,
+                height: 600
             }
         }));
     };
