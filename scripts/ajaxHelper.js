@@ -1,13 +1,13 @@
 function loadHtmlSync(url, callback) {
-    var xmlhttp;
+    var request;
     if (window.XMLHttpRequest) {
-        xmlhttp = new XMLHttpRequest();
+        request = new XMLHttpRequest();
     }
 
-    xmlhttp.open("GET", url, false);
-    xmlhttp.send();
+    request.open("GET", url, false);
+    request.send();
 
-    return (xmlhttp.readyState == 4 || xmlhttp.status == 200) ? xmlhttp.responseText : '';
+    return (request.readyState == 4 || request.status == 200) ? request.responseText : '';
 }
 
 function includeModule(container, url) {

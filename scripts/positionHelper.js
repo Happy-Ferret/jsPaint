@@ -4,20 +4,20 @@
 function getAbsoluteElementPosition(element) {
     var obj = element;
 
-    var coords = {
+    var coordinates = {
         x: 0,
         y: 0
     };
 
     if (!element)
-        return coords;
+        return coordinates;
 
     do {
-        coords.x += obj.offsetLeft;
-        coords.y += obj.offsetTop;
+        coordinates.x += obj.offsetLeft;
+        coordinates.y += obj.offsetTop;
     } while (obj = obj.offsetParent);
 
-    return coords;
+    return coordinates;
 }
 
 function getElementPositionInWindow(element) {

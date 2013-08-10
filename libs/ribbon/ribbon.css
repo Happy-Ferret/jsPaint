@@ -32,7 +32,7 @@
     height: 17px;
 }
 
-.ribbonMainMenuButton, .ribbonMainMenuBotton:hover {
+.ribbonMainMenuButton, .ribbonMainMenuButton:hover {
     background-image: url('images/main_menu_button.png');
 }
 
