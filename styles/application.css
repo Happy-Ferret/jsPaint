@@ -35,3 +35,8 @@ body {
 .gridlines {
     position: absolute;
 }
+
+.resizing_canvas {
+    border: 1px dotted #000;
+    position: absolute;
+}
