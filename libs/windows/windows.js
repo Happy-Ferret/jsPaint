@@ -209,5 +209,11 @@ function WindowViewModel(parameters, template, viewModel, events) {
         self.Position.Top(coordinates.y - self.DragOffset.offsetY);
     };
 
+    this.RenderCompleted = function () {
+        if (self.Data().RenderCompleted) {
+            self.Data().RenderCompleted();
+        }
+    };
+
     self.Init();
 }
