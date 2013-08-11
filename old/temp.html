@@ -18,218 +18,208 @@
 </div>-->
 
 <div class="systemOuterBorder" style="position: absolute;">
-<!-- System border -->
-<div class="systemBorder">
-<div class="systemBar" onmousedown="beginDrag(event, this)" onmouseup="endDrag()">
-    <table class="full-width">
-        <tr>
-            <td>
-                <table data-bind="with: TopIcons">
-                    <tr>
-                        <td class="top_icon systemAppIcon">&nbsp</td>
-
-                        <td class="windows_separator"></td>
-
-                        <!-- ko foreach: VisibleIcons -->
-                        <td data-bind="css: Enabled ? 'common_button' : '', attr: { 'title' : Name() + ': ' + Description() }">
-                            <div class="top_icon"
-                                 data-bind="style: { 'background-position':  BackgroundStyle }, click: Action"></div>
-                        </td>
-                        <!-- /ko -->
-
-                        <td id="top_icons_show_properties_btn" data-bind="click: ShowProperties" class="common_button">
-                            <img src="../img/top_icon_show_properties.png"/>
-                        </td>
-
-                        <td class="windows_separator"></td>
-
-                        <td style="font-size: 14px">Untitled - Paint</td>
-                    </tr>
-                </table>
-            </td>
-
-            <td>
-                <div class="full-width">
-                    <table align="right">
-                        <tr>
-                            <td>
-                                <div id="minimize_button" class="system_button">&nbsp</div>
-                            </td>
-                            <td>
-                                <div id="maximize_button" class="system_button">&nbsp</div>
-                            </td>
-                            <td>
-                                <div id="close_button" class="system_button" data-bind="click: Exit">&nbsp</div>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </td>
-        </tr>
-    </table>
-</div>
-
-<!-- Bottom statusbar -->
-<div id="statusbar" data-bind="visible: StatusBarVisible">
-    <div id="statusbar_inner">
-        <table class="full-width">
-            <tr>
-                <td class="statusbar_icon"><img src="../img/statusbar_icons/position.png"/></td>
-                <td id="statusbar_coords" class="statusbar_text"></td>
-
-                <td class="statusbar_icon"><img src="../img/statusbar_icons/selection_size.png"/></td>
-                <td class="statusbar_text">SelectionSize</td>
-
-                <td class="statusbar_icon"><img src="../img/statusbar_icons/canvas_size.png"/></td>
-                <td id="canvas_size_info" class="statusbar_text"></td>
-
-                <td class="statusbar_icon"><img src="../img/statusbar_icons/file_size.png"/></td>
-                <td class="statusbar_text">Size: 0KB</td>
-
-                <td>
-                    <div align="right">
-                        <table style="margin: 0">
+    <!-- System border -->
+    <div class="systemBorder">
+        <div class="systemBar" onmousedown="beginDrag(event, this)" onmouseup="endDrag()">
+            <table class="full-width">
+                <tr>
+                    <td>
+                        <table data-bind="with: TopIcons">
                             <tr>
-                                <td>
-                                    <div id="zoom_text_value">100%</div>
+                                <td class="top_icon systemAppIcon">&nbsp</td>
+
+                                <td class="windows_separator"></td>
+
+                                <!-- ko foreach: VisibleIcons -->
+                                <td data-bind="css: Enabled ? 'common_button' : '', attr: { 'title' : Name() + ': ' + Description() }">
+                                    <div class="top_icon"
+                                         data-bind="style: { 'background-position':  BackgroundStyle }, click: Action"></div>
+                                </td>
+                                <!-- /ko -->
+
+                                <td id="top_icons_show_properties_btn" data-bind="click: ShowProperties"
+                                    class="common_button">
+                                    <img src="../img/top_icon_show_properties.png"/>
                                 </td>
 
-                                <td><img src="../img/statusbar_icons/zoom_out.png" data-bind="click: ZoomOut"/></td>
+                                <td class="windows_separator"></td>
 
-                                <td>
-                                    <input id="zoom_value" type="range" value="100" min="25" max="800" step="25"
-                                           style="width:100px; margin: 0;" onchange="raiseZoomChanged()"/>
-                                </td>
-
-                                <td><img src="../img/statusbar_icons/zoom_in.png" data-bind="click: ZoomIn"/></td>
+                                <td style="font-size: 14px">Untitled - Paint</td>
                             </tr>
                         </table>
-                    </div>
-                </td>
-            </tr>
-        </table>
-    </div>
-</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
-<!-- External blocks -->
-<!-- Brush width block -->
-<div id="brush_width_block"></div>
-
-<!-- Rotate block -->
-<div id="rotate_block">
-    <table cellspacing="0">
-        <tr>
-            <td class="common_button" onclick="turnRight()">
-                <table cellspacing="0">
+        <!-- Bottom statusbar -->
+        <div id="statusbar" data-bind="visible: StatusBarVisible">
+            <div id="statusbar_inner">
+                <table class="full-width">
                     <tr>
-                        <td class="rotate_block_image"><img src="../img/rotate_icons/rotate_right.png"/></td>
-                        <td class="rotate_block_text">Rotate right 90°</td>
+                        <td class="statusbar_icon"><img src="../img/statusbar_icons/position.png"/></td>
+                        <td id="statusbar_coords" class="statusbar_text"></td>
+
+                        <td class="statusbar_icon"><img src="../img/statusbar_icons/selection_size.png"/></td>
+                        <td class="statusbar_text">SelectionSize</td>
+
+                        <td class="statusbar_icon"><img src="../img/statusbar_icons/canvas_size.png"/></td>
+                        <td id="canvas_size_info" class="statusbar_text"></td>
+
+                        <td class="statusbar_icon"><img src="../img/statusbar_icons/file_size.png"/></td>
+                        <td class="statusbar_text">Size: 0KB</td>
+
+                        <td>
+                            <div align="right">
+                                <table style="margin: 0">
+                                    <tr>
+                                        <td>
+                                            <div id="zoom_text_value">100%</div>
+                                        </td>
+
+                                        <td><img src="../img/statusbar_icons/zoom_out.png" data-bind="click: ZoomOut"/>
+                                        </td>
+
+                                        <td>
+                                            <input id="zoom_value" type="range" value="100" min="25" max="800" step="25"
+                                                   style="width:100px; margin: 0;" onchange="raiseZoomChanged()"/>
+                                        </td>
+
+                                        <td><img src="../img/statusbar_icons/zoom_in.png" data-bind="click: ZoomIn"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
                     </tr>
                 </table>
-            </td>
-        </tr>
-        <tr>
-            <td class="common_button" onclick="turnLeft()">
-                <table cellspacing="0">
+            </div>
+        </div>
+
+        <!-- External blocks -->
+        <!-- Brush width block -->
+        <div id="brush_width_block"></div>
+
+        <!-- Rotate block -->
+        <div id="rotate_block">
+            <table cellspacing="0">
+                <tr>
+                    <td class="common_button" onclick="turnRight()">
+                        <table cellspacing="0">
+                            <tr>
+                                <td class="rotate_block_image"><img src="../img/rotate_icons/rotate_right.png"/></td>
+                                <td class="rotate_block_text">Rotate right 90°</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="common_button" onclick="turnLeft()">
+                        <table cellspacing="0">
+                            <tr>
+                                <td class="rotate_block_image"><img src="../img/rotate_icons/rotate_left.png"/></td>
+                                <td class="rotate_block_text">Rotate left 90°</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="common_button" onclick="rotate()">
+                        <table cellspacing="0">
+                            <tr>
+                                <td class="rotate_block_image"><img src="../img/rotate_icons/rotate_180.png"/></td>
+                                <td class="rotate_block_text">Rotate 180°</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="common_button" onclick="flipVertical()">
+                        <table cellspacing="0">
+                            <tr>
+                                <td class="rotate_block_image"><img src="../img/rotate_icons/flip_vertical.png"/></td>
+                                <td class="rotate_block_text">Flip vertical</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="common_button" onclick="flipHorizontal()">
+                        <table cellspacing="0">
+                            <tr>
+                                <td class="rotate_block_image"><img src="../img/rotate_icons/flip_horizontal.png"/></td>
+                                <td class="rotate_block_text">Flip horizontal</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Eraser cursor -->
+        <div id="eraser_cursor"></div>
+
+        <!-- SAVE AS ADDITIONAL WINDOW -->
+        <div class="main_menu_additional_window" style="display: none" id="save_as_additional_window">
+            <div class="main_menu_item common_button" onclick="saveAsPng()">
+                <table>
                     <tr>
-                        <td class="rotate_block_image"><img src="../img/rotate_icons/rotate_left.png"/></td>
-                        <td class="rotate_block_text">Rotate left 90°</td>
+                        <td><img src="../img/imagetype_icons/png.png"/></td>
+                        <td class="main_menu_additional_window_text"><b>PNG picture</b><br/>Save a photo or drawing with
+                            high
+                            quality and use it on your computer or on the web.
+                        </td>
                     </tr>
                 </table>
-            </td>
-        </tr>
-        <tr>
-            <td class="common_button" onclick="rotate()">
-                <table cellspacing="0">
+            </div>
+
+            <div class="main_menu_item common_button" onclick="saveAsJpeg()">
+                <table>
                     <tr>
-                        <td class="rotate_block_image"><img src="../img/rotate_icons/rotate_180.png"/></td>
-                        <td class="rotate_block_text">Rotate 180°</td>
+                        <td><img src="../img/imagetype_icons/jpg.png"/></td>
+                        <td class="main_menu_additional_window_text"><b>JPEG picture</b></br>Save a photo with good
+                            quality and
+                            use it on your computer, in e-mail, or on the web.
+                        </td>
                     </tr>
                 </table>
-            </td>
-        </tr>
-        <tr>
-            <td class="common_button" onclick="flipVertical()">
-                <table cellspacing="0">
+            </div>
+
+            <div class="main_menu_item common_button">
+                <table>
                     <tr>
-                        <td class="rotate_block_image"><img src="../img/rotate_icons/flip_vertical.png"/></td>
-                        <td class="rotate_block_text">Flip vertical</td>
+                        <td><img src="../img/imagetype_icons/bmp.png"/></td>
+                        <td class="main_menu_additional_window_text"><b>BMP picture</b><br/>Save any kind of picture
+                            with high
+                            quality and use it on your computer.
+                        </td>
                     </tr>
                 </table>
-            </td>
-        </tr>
-        <tr>
-            <td class="common_button" onclick="flipHorizontal()">
-                <table cellspacing="0">
+            </div>
+
+            <div class="main_menu_item common_button">
+                <table>
                     <tr>
-                        <td class="rotate_block_image"><img src="../img/rotate_icons/flip_horizontal.png"/></td>
-                        <td class="rotate_block_text">Flip horizontal</td>
+                        <td><img src="../img/imagetype_icons/gif.png"/></td>
+                        <td class="main_menu_additional_window_text"><b>GIF picture</b><br/>Save a simple drawing with
+                            lower
+                            quality and use it in e-mail or on the web.
+                        </td>
                     </tr>
                 </table>
-            </td>
-        </tr>
-    </table>
-</div>
+            </div>
 
-<!-- Eraser cursor -->
-<div id="eraser_cursor"></div>
-
-<!-- SAVE AS ADDITIONAL WINDOW -->
-<div class="main_menu_additional_window" style="display: none" id="save_as_additional_window">
-    <div class="main_menu_item common_button" onclick="saveAsPng()">
-        <table>
-            <tr>
-                <td><img src="../img/imagetype_icons/png.png"/></td>
-                <td class="main_menu_additional_window_text"><b>PNG picture</b><br/>Save a photo or drawing with high
-                    quality and use it on your computer or on the web.
-                </td>
-            </tr>
-        </table>
+            <div class="main_menu_item common_button">
+                <table>
+                    <tr>
+                        <td><img src="../img/imagetype_icons/other.png"/></td>
+                        <td class="main_menu_additional_window_text"><b>Other formats</b><br/>Open the Save As dialog
+                            box to
+                            select from all possible file types.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
-
-    <div class="main_menu_item common_button" onclick="saveAsJpeg()">
-        <table>
-            <tr>
-                <td><img src="../img/imagetype_icons/jpg.png"/></td>
-                <td class="main_menu_additional_window_text"><b>JPEG picture</b></br>Save a photo with good quality and
-                    use it on your computer, in e-mail, or on the web.
-                </td>
-            </tr>
-        </table>
-    </div>
-
-    <div class="main_menu_item common_button">
-        <table>
-            <tr>
-                <td><img src="../img/imagetype_icons/bmp.png"/></td>
-                <td class="main_menu_additional_window_text"><b>BMP picture</b><br/>Save any kind of picture with high
-                    quality and use it on your computer.
-                </td>
-            </tr>
-        </table>
-    </div>
-
-    <div class="main_menu_item common_button">
-        <table>
-            <tr>
-                <td><img src="../img/imagetype_icons/gif.png"/></td>
-                <td class="main_menu_additional_window_text"><b>GIF picture</b><br/>Save a simple drawing with lower
-                    quality and use it in e-mail or on the web.
-                </td>
-            </tr>
-        </table>
-    </div>
-
-    <div class="main_menu_item common_button">
-        <table>
-            <tr>
-                <td><img src="../img/imagetype_icons/other.png"/></td>
-                <td class="main_menu_additional_window_text"><b>Other formats</b><br/>Open the Save As dialog box to
-                    select from all possible file types.
-                </td>
-            </tr>
-        </table>
-    </div>
-</div>
-</div>
 </div>

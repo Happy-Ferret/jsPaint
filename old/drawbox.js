@@ -351,10 +351,6 @@ function chooseBrushWidth(index) {
     hideBrushWidthBlock();
 }
 
-function generateMarkup(size) {
-    return "<div style='border-top-color: #000; border-top-width: " + size + "px; border-top-style: solid; margin-top: 20px;'>\xa0</div>";
-}
-
 function initBrushWidthBlock() {
     var block = getElement('brush_width_block');
     block.innerHTML = "";
@@ -489,7 +485,6 @@ function endResizing() {
 
     resizingStatus = 0;
 }
-
 
 /* TOOLS */
 function deactivateAll() {
@@ -754,7 +749,6 @@ function showRibbon(ribbonName) {
     getElement('ribbon_' + ribbonName).style.display = "table";
 }
 
-/* */
 function showSaveAdditionalWindow() {
     var element = getElement('save_as_additional_window');
 

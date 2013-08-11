@@ -82,14 +82,6 @@ function ApplicationViewModel() {
 
     self.StatusBarVisible = ko.observable(true);
 
-    self.UndoAvailable = ko.computed(function () {
-
-    });
-
-    self.RedoAvailable = ko.computed(function () {
-
-    });
-
     this.New = function () {
         init();
 
