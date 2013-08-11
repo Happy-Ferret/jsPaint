@@ -8,3 +8,11 @@ body {
 .systemAppIcon {
     background: url('../img/top_icons.png') no-repeat 0 0;
 }
+
+.canvasResizingAdorner {
+    background-color: #FFF;
+
+    border: 1px solid #555555;
+    width: 3px;
+    height: 3px;
+}

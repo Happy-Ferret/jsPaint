@@ -109,3 +109,35 @@
 .systemContent {
     height: 100%;
 }
+
+.northResizingAdorner {
+    cursor: n-resize;
+}
+
+.eastResizingAdorner {
+    cursor: e-resize;
+}
+
+.southResizingAdorner {
+    cursor: s-resize;
+}
+
+.westResizingAdorner {
+    cursor: w-resize;
+}
+
+.nwResizingAdorner {
+    cursor: nw-resize;
+}
+
+.neResizingAdorner {
+    cursor: ne-resize;
+}
+
+.swResizingAdorner {
+    cursor: sw-resize;
+}
+
+.seResizingAdorner {
+    cursor: se-resize;
+}
