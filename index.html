@@ -43,6 +43,10 @@
     <link rel="stylesheet" type="text/css" href="styles/resizing.css"/>
     <link rel="stylesheet" type="text/css" href="styles/menu_icons.css"/>
     <link ref="stylesheet" type="text/css" href="styles/print.css"/>
+
+    <script type="text/html" id="propertiesWindowTemplate"></script>
+    <script type="text/html" id="aboutWindowTemplate"></script>
+    <script type="text/html" id="resizeWindowTemplate"></script>
 </head>
 
 <script type="text/javascript">
@@ -52,10 +56,15 @@
         includeModule(getElement('windowTemplate'), '/libs/windows/windows.html');
         includeModule(getElement('ribbonTemplate'), '/libs/ribbon/ribbon.html');
         includeModule(getElement('colorpickerTemplate'), 'libs/colorpicker/colorpicker.html');
+
         includeModule(getElement('mainTemplate'), '/modules/main/mainMarkup.html');
         includeModule(getElement('canvasTemplate'), '/modules/canvas/canvasMarkup.html');
         includeModule(getElement('homeRibbonTabTemplate'), 'modules/ribbon/homeTabMarkup.html');
         includeModule(getElement('viewRibbonTabTemplate'), 'modules/ribbon/viewTabMarkup.html');
+
+        includeModule(getElement('propertiesWindowTemplate'), 'modules/modal/propertiesMarkup.html');
+        includeModule(getElement('aboutWindowTemplate'), 'modules/modal/aboutMarkup.html');
+        includeModule(getElement('resizeWindowTemplate'), 'modules/modal/resizeMarkup.html');
     }
 
     function initApplication() {

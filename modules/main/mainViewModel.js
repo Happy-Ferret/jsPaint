@@ -27,6 +27,14 @@ function MainViewModel() {
 
     self.State = new ApplicationState();
 
+    this.ShowProperties = function () {
+        Application.CreateWindow({}, 'propertiesWindowTemplate');
+    };
+
+    this.ShowAbout = function () {
+        Application.CreateWindow({}, 'aboutWindowTemplate');
+    };
+
     self.Ribbon = new RibbonViewModel([
         new RibbonTabViewModel('Home', 'homeRibbonTabTemplate', new HomeTabViewModel(self.State), true),
         new RibbonTabViewModel('View', 'viewRibbonTabTemplate', new ViewTabViewModel(self.State), false)
@@ -39,8 +47,8 @@ function MainViewModel() {
         new MainMenuItemViewModel('From scanner or camera', 'menu-icon-from-scanner'),
         new MainMenuItemViewModel('Send in e-mail', 'menu-icon-send-mail'),
         new MainMenuItemViewModel('Set as desktop background', 'menu-icon-set-background'),
-        new MainMenuItemViewModel('Properties', 'menu-icon-properties'),
-        new MainMenuItemViewModel('About Paint', 'menu-icon-about'),
+        new MainMenuItemViewModel('Properties', 'menu-icon-properties', self.ShowProperties),
+        new MainMenuItemViewModel('About Paint', 'menu-icon-about', self.ShowAbout),
         new MainMenuItemViewModel('Exit', 'menu-icon-exit')
     ]);
 

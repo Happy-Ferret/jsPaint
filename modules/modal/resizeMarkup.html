@@ -1,0 +1,46 @@
+<!-- Canvas resize window -->
+<!-- Window Content -->
+<div id="canvas_resize_window_content" style="display: none">
+    <fieldset style="border-radius: 5px; -webkit-border-radius: 5px">
+        <legend>Resize</legend>
+        <div>
+            By:<input type="radio" checked="true" name="change_size_by_radiobtn" value="1">Percentage</input><input
+                type="radio" name="change_size_by_radiobtn" value="2">Pixels</input>
+        </div>
+        <table>
+            <tr>
+                <td><img src="../img/resize_pics/resize_horizontal.png"/></td>
+                <td>Horizontal:</td>
+                <td><input type="text" value="100" class="resizing_window_input"/></td>
+            </tr>
+            <tr>
+                <td><img src="../img/resize_pics/resize_vertical.png"/></td>
+                <td>Vertical:</td>
+                <td><input type="text" value="100" class="resizing_window_input"/></td>
+            </tr>
+        </table>
+        <div>
+            <input type="checkbox"/>Maintain aspect ratio
+        </div>
+    </fieldset>
+    <fieldset style="border-radius: 5px; -webkit-border-radius: 5px">
+        <legend>Skew (degrees)</legend>
+        <table>
+            <tr>
+                <td><img src="../img/resize_pics/skew_horizontal.png"/></td>
+                <td>Horizontal:</td>
+                <td><input type="text" value="100" class="resizing_window_input"/></td>
+            </tr>
+            <tr>
+                <td><img src="../img/resize_pics/skew_vertical.png"/></td>
+                <td>Vertical:</td>
+                <td><input type="text" value="100" class="resizing_window_input"/></td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <div align="right">
+        <input type="button" value="OK" class="resize_window_button"/>
+        <input type="button" value="Cancel" class="resize_window_button"/>
+    </div>
+</div>
