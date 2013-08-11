@@ -1,49 +1,23 @@
-<table>
+<table id="canvas_block">
     <tr>
-        <td></td>
         <td>
-            <div class="rulers" id="horizontal_ruler_block" style="height: 18px;">
-                <canvas height="18" id="horizontal_ruler"></canvas>
-            </div>
+            <canvas style="background-color: red" id="canv"
+                    onmousedown="return; mouseDown()" onmouseout="return; removeEraserCursor()"
+                    onmouseover="return; createEraserCursor()"
+                    data-bind="style: { width: CanvasWidth, height: CanvasHeight }, attr: { width: CanvasWidth, height: CanvasHeight }"></canvas>
+        </td>
+        <td>
+            <div class="canvasResizingAdorner eastResizingAdorner"
+                 data-bind="event: { mousedown: StartResizeEast }"></div>
         </td>
     </tr>
     <tr>
         <td>
-            <div class="rulers" id="vertical_ruler_block" style="width: 18px;">
-                <canvas width="18" id="vertical_ruler"></canvas>
-            </div>
+            <div class="canvasResizingAdorner southResizingAdorner"
+                 data-bind="event: { mousedown: StartResizeSouth }"></div>
         </td>
         <td>
-            <div id="workzone">
-                <table id="canvas_block">
-                    <tr>
-                        <td>
-                            <canvas style="width: 500px; height: 500px" width="500px" height="500px"
-                                    id="canv"
-                                    onmousedown="return; mouseDown()" onmouseout="return; removeEraserCursor()"
-                                    onmouseover="return; createEraserCursor()"></canvas>
-                        </td>
-                        <td>
-                            <div class="canvasResizingAdorner eastResizingAdorner" onmousedown="startResizingEast()">
-                            &nbsp
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="canvasResizingAdorner southResizingAdorner"
-                                 onmousedown="return; startResizingSouth()">&nbsp
-                            </div>
-                        </td>
-                        <td>
-                            <div class="canvasResizingAdorner seResizingAdorner"
-                                 onmousedown="return; startResizingSe()">
-                                &nbsp
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </div>
+            <div class="canvasResizingAdorner seResizingAdorner" data-bind="event: { mousedown: StartResizeSE }"></div>
         </td>
     </tr>
 </table>

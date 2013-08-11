@@ -39,6 +39,65 @@ function MainViewModel() {
         Application.CreateWindow({}, 'aboutWindowTemplate');
     };
 
+    this.InitVerticalRuler = function () {
+        var canvasElement = getElement('vertical_ruler');
+        var canvas = canvasElement.getContext("2d");
+
+        canvasElement.height = getElement('application').clientHeight;
+
+        var i;
+        var maxHeight = parseInt(canvasElement.height);
+        for (i = 0; i < maxHeight; i += 10) {
+            canvas.beginPath();
+            canvas.strokeStyle = '#8E9CAF';
+            canvas.moveTo(canvasElement.width - 4, i);
+            canvas.lineTo(canvasElement.width, i);
+            canvas.stroke();
+        }
+
+        for (i = 0; i < maxHeight; i += 100) {
+            canvas.beginPath();
+            canvas.strokeStyle = '#8E9CAF';
+            canvas.moveTo(0, i);
+            canvas.lineTo(canvasElement.width, i);
+            canvas.stroke();
+
+            canvas.strokeText(i, 0, i);
+        }
+    };
+
+    this.InitHorizontalRuler = function () {
+        var canvasElement = getElement('horizontal_ruler');
+        var canvas = canvasElement.getContext("2d");
+
+        canvasElement.width = getElement('application').clientWidth;
+
+        var i;
+        var maxWidth = parseInt(canvasElement.width);
+        for (i = 0; i < maxWidth; i += 10) {
+            canvas.beginPath();
+            canvas.strokeStyle = '#8E9CAF';
+            canvas.moveTo(i, canvasElement.height - 4);
+            canvas.lineTo(i, canvasElement.height);
+            canvas.stroke();
+        }
+
+        for (i = 0; i < maxWidth; i += 100) {
+            canvas.beginPath();
+            canvas.strokeStyle = '#8E9CAF';
+            canvas.moveTo(i, 0);
+            canvas.lineTo(i, canvasElement.height);
+            canvas.stroke();
+
+            canvas.strokeText(i, i + 5, canvasElement.height / 2);
+        }
+    };
+
+    this.RenderCompleted = function () {
+        self.InitHorizontalRuler();
+        self.InitVerticalRuler();
+    };
+
     self.Ribbon = new RibbonViewModel([
         new RibbonTabViewModel('Home', 'homeRibbonTabTemplate', new HomeTabViewModel(self.State), true),
         new RibbonTabViewModel('View', 'viewRibbonTabTemplate', new ViewTabViewModel(self.State), false)

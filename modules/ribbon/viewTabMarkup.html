@@ -28,10 +28,14 @@
         <table>
             <tr>
                 <td>
-                    <div><input type="checkbox" onclick="changeRulersVisibility(this.checked)">Rulers</input></div>
-                    <div><input type="checkbox">Gridlines</input></div>
                     <div>
-                        <input type="checkbox">Status bar</input>
+                        <input type="checkbox" data-bind="checked: State.RulersVisible">Rulers</input>
+                    </div>
+                    <div>
+                        <input type="checkbox" data-bind="checked: State.GridlinesVisible">Gridlines</input>
+                    </div>
+                    <div>
+                        <input type="checkbox" data-bind="checked: State.StatusbarVisible">Status bar</input>
                     </div>
                 </td>
             </tr>

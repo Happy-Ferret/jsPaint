@@ -1,3 +1,23 @@
 <div data-bind="template: { name: 'ribbonTemplate', data: Ribbon }"></div>
-<div data-bind="template: { name: 'canvasTemplate', data: Canvas }"></div>
+
+<table>
+    <tr>
+        <td></td>
+        <td>
+            <div class="rulers" id="horizontal_ruler_block" data-bind="visible: State.RulersVisible">
+                <canvas height="18" id="horizontal_ruler"></canvas>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="rulers" id="vertical_ruler_block" data-bind="visible: State.RulersVisible">
+                <canvas width="18" id="vertical_ruler"></canvas>
+            </div>
+        </td>
+        <td>
+            <div id="workzone" data-bind="template: { name: 'canvasTemplate', data: Canvas }"></div>
+        </td>
+    </tr>
+</table>
 

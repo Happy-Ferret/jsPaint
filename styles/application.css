@@ -16,3 +16,18 @@ body {
     width: 3px;
     height: 3px;
 }
+
+.rulers {
+    background-color: #F1F3F8;
+    border: 0 solid #8E9CAF;
+}
+
+.horizontal_ruler_block {
+    height: 18px;
+    border-bottom-width: 1px;
+}
+
+.vertical_ruler_block {
+    width: 18px;
+    border-right-width: 1px;
+}
