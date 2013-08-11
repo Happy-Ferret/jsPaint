@@ -1,7 +1,3 @@
-/* GLOBAL VARIABLES */
-
-var isMouseDown = false;
-
 var predefinedBrushWidth = [ 1, 2, 3, 4 ];
 var predefinedEraserSize = [ 4, 6, 8, 10 ];
 var predefinedColors = [
@@ -30,19 +26,6 @@ var resizingStatus = 0;
 // tools
 // 0 - nether selected; 1 - pencil; 2 - fill; 3 - text; 4 - eraser; 5 - color picker; 6 - zooming
 var selectedTool = 0;
-
-/* FUNCTIONS */
-
-function mouseDown() {
-    isMouseDown = true;
-}
-
-function mouseUp() {
-    isMouseDown = false;
-
-    if (resizingStatus != 0)
-        endResizing();
-}
 
 function mouseMove(event) {
     var canvas = getElement('canvas_block');
@@ -257,65 +240,6 @@ function initMiscWindows() {
     //createWindow({title: 'Image Properties', canMinimize: false, canMaximize: false, canClose: true, resizable: false, icon: null, content: 'properties_window_content', id: 'properties_window'});
 }
 
-function initVerticalRuler() {
-    var canvasElement = getElement('vertical_ruler');
-    var canvas = canvasElement.getContext("2d");
-
-    canvasElement.height = getElement('application').clientHeight;
-
-    var i;
-    var maxHeight = parseInt(canvasElement.height);
-    for (i = 0; i < maxHeight; i += 10) {
-        canvas.beginPath();
-        canvas.strokeStyle = '#8E9CAF';
-        canvas.moveTo(canvasElement.width - 4, i);
-        canvas.lineTo(canvasElement.width, i);
-        canvas.stroke();
-    }
-
-    for (i = 0; i < maxHeight; i += 100) {
-        canvas.beginPath();
-        canvas.strokeStyle = '#8E9CAF';
-        canvas.moveTo(0, i);
-        canvas.lineTo(canvasElement.width, i);
-        canvas.stroke();
-
-        canvas.strokeText(i, 0, i);
-    }
-}
-
-function initHorizontalRuler() {
-    var canvasElement = getElement('horizontal_ruler');
-    var canvas = canvasElement.getContext("2d");
-
-    canvasElement.width = getElement('application').clientWidth;
-
-    var i;
-    var maxWidth = parseInt(canvasElement.width);
-    for (i = 0; i < maxWidth; i += 10) {
-        canvas.beginPath();
-        canvas.strokeStyle = '#8E9CAF';
-        canvas.moveTo(i, canvasElement.height - 4);
-        canvas.lineTo(i, canvasElement.height);
-        canvas.stroke();
-    }
-
-    for (i = 0; i < maxWidth; i += 100) {
-        canvas.beginPath();
-        canvas.strokeStyle = '#8E9CAF';
-        canvas.moveTo(i, 0);
-        canvas.lineTo(i, canvasElement.height);
-        canvas.stroke();
-
-        canvas.strokeText(i, i + 5, canvasElement.height / 2);
-    }
-}
-
-function initRulers() {
-    initVerticalRuler();
-    initHorizontalRuler();
-}
-
 function _init() {
     ko.applyBindings(Application, document.body);
 
@@ -403,87 +327,6 @@ function changeColor(color) {
         setPrimaryColor(color);
     else
         setSecondaryColor(color);
-}
-
-/* RESIZING FUNCTIONS */
-function initResizing() {
-    var oldCanvas = getElement('canv');
-
-    var newCanvas = document.createElement('canvas');
-    newCanvas.setAttribute("class", "resizing_canvas");
-    newCanvas.setAttribute("id", "resizing_canvas");
-
-    var position = getAbsoluteElementPosition(oldCanvas);
-    newCanvas.style.left = position.x;
-    newCanvas.style.top = position.y;
-    newCanvas.style.zIndex = "100";
-
-    newCanvas.height = oldCanvas.style.height;
-    newCanvas.width = oldCanvas.style.width;
-
-    getElement('application').appendChild(newCanvas);
-}
-
-function startResizingEast() {
-    initResizing();
-
-    resizingStatus = 1;
-}
-
-function startResizingSouth() {
-    initResizing();
-
-    resizingStatus = 2;
-}
-
-function startResizingSe() {
-    initResizing();
-
-    resizingStatus = 3;
-}
-
-function processResizing(event) {
-    if (resizingStatus == 0)
-        return;
-
-    var app = getElement('app');
-    var coords = getRelativeMousePos(app, event);
-
-    var resizingCanvas = getElement('resizing_canvas');
-
-    var x = coords.x - parseInt(resizingCanvas.style.left);
-    var y = coords.y - parseInt(resizingCanvas.style.top);
-
-    updateCanvasSize({ width: x, height: y });
-
-    if (resizingStatus == 1) {
-        resizingCanvas.width = x;
-        resizingCanvas.height = getElement('canv').height;
-    } else if (resizingStatus == 2) {
-        resizingCanvas.height = y;
-        resizingCanvas.width = getElement('canv').width;
-    } else if (resizingStatus == 3) {
-        resizingCanvas.width = x;
-        resizingCanvas.height = y;
-    }
-}
-
-function endResizing() {
-    var canvas = getElement('canv');
-    var resizingCanvas = getElement('resizing_canvas');
-    var app = getElement('app');
-
-    canvas.style.width = resizingCanvas.width;
-    canvas.style.height = resizingCanvas.height;
-
-    canvas.width = parseInt(canvas.style.width) / getZoomValue();
-    canvas.height = parseInt(canvas.style.height) / getZoomValue();
-
-    getElement('workzone').style.height = canvas.height + "px";
-
-    app.removeChild(resizingCanvas);
-
-    resizingStatus = 0;
 }
 
 /* TOOLS */
@@ -736,11 +579,6 @@ function showCanvasResizeWindow() {
     getElement('canvas_resize_window').style.display = "block";
 }
 
-/* COLOR PICKER */
-function showColorPicker() {
-    getElement('color_picker_window').style.display = "block";
-}
-
 /* RIBBON */
 function showRibbon(ribbonName) {
     getElement('ribbon_home').style.display = "none";
@@ -794,11 +632,6 @@ function chooseColorFromPalette(element) {
     customColorsChanged();
 
     changeColor(color);
-}
-
-function changeRulersVisibility(isVisible) {
-    getElement('horizontal_ruler_block').style.display = isVisible ? "block" : "none";
-    getElement('vertical_ruler_block').style.display = isVisible ? "block" : "none";
 }
 
 function cloneCanvas(oldCanvas) {
