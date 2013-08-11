@@ -2,15 +2,17 @@
     <table>
         <tr>
             <td>
-                <table id="predefined_colors_table">
-                    <tr>
-                        <td colspan="8">Basic colors:</td>
+                <div>Basic colors:</div>
+                <table data-bind="foreach: PREDEFINED_PICKER_COLORS">
+                    <tr data-bind="foreach: $data">
+                        <td class="color_cell" data-bind="style: { backgroundColor: $data }"></td>
                     </tr>
                 </table>
 
-                <table id="custom_colors_table">
-                    <tr>
-                        <td colspan="8">Custom colors:</td>
+                <div>Custom colors:</div>
+                <table data-bind="foreach: CustomPickerColors">
+                    <tr data-bind="foreach: $data">
+                        <td class="color_cell" data-bind="style: { backgroundColor: $data }"></td>
                     </tr>
                 </table>
 
@@ -19,8 +21,9 @@
                 </div>
 
                 <div>
-                    <input type="button" value="OK" class="ok_button" onclick="chooseColorFromPalette(this)"/>
-                    <input type="button" value="Cancel" class="cancel_button"/>
+                    <input type="button" value="OK" class="ok_button"
+                           data-bind="click: function(){ $parent.DataSelect(ColorHelpers.toHtmlRGB(Red(), Green(), Blue())); }"/>
+                    <input type="button" value="Cancel" class="cancel_button" data-bind="click: $parent.Close"/>
                 </div>
             </td>
             <td>
@@ -66,21 +69,21 @@
                             <div>Color|Solid</div>
                         </td>
                         <td>Hue:</td>
-                        <td><input type="text" class="color_param" id="hue_text" maxlength="3"/></td>
+                        <td><input type="text" class="color_param" maxlength="3" data-bind="value: Hue"/></td>
                         <td>Red:</td>
-                        <td><input type="text" class="color_param" id="red_text" maxlength="3"/></td>
+                        <td><input type="text" class="color_param" maxlength="3" data-bind="value: Red"/></td>
                     </tr>
                     <tr>
                         <td>Sat:</td>
-                        <td><input type="text" class="color_param" id="saturation_text" maxlength="3"/></td>
+                        <td><input type="text" class="color_param" maxlength="3" data-bind="value: Saturation"/></td>
                         <td>Green:</td>
-                        <td><input type="text" class="color_param" id="green_text" maxlength="3"/></td>
+                        <td><input type="text" class="color_param" maxlength="3" data-bind="value: Green"/></td>
                     </tr>
                     <tr>
                         <td>Lum:</td>
-                        <td><input type="text" class="color_param" id="luma_text" maxlength="3"/></td>
+                        <td><input type="text" class="color_param" maxlength="3" data-bind="value: Luma"/></td>
                         <td>Blue:</td>
-                        <td><input type="text" class="color_param" id="blue_text" maxlength="3"/></td>
+                        <td><input type="text" class="color_param" maxlength="3" data-bind="value: Blue"/></td>
                     </tr>
                     <tr>
                         <td colspan="4"><input type="button" class="add_to_custom" value="Add to Custom Colors"

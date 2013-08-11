@@ -8,7 +8,7 @@ function HomeTabViewModel(state) {
             title: 'Edit Colors',
             iconClass: 'systemAppIcon'
         }, 'colorpickerTemplate', new ColorPickerViewModel(), {
-            onDataChange: self.State.ChangeColor
+            onDataSelect: self.State.ChangeColor
         });
     };
 }

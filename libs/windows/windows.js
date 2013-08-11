@@ -126,6 +126,8 @@ function WindowViewModel(parameters, template, viewModel, events) {
         if (events && events.onDataSelect) {
             events.onDataSelect(newValue);
         }
+
+        self.Close();
     };
 
     this.Minimize = function () {
@@ -176,7 +178,7 @@ function WindowViewModel(parameters, template, viewModel, events) {
     };
 
     this.Close = function () {
-
+        self.IsVisible(false);
     };
 
     this.BeginDrag = function (data, event) {
