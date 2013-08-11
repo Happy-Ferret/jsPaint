@@ -1,0 +1,65 @@
+.aboutWindow {
+    background-color: #F0F0F0;
+
+    width: 100%;
+    height: 100%;
+}
+
+.aboutWindow .aboutWindowContainer {
+    padding: 10px;
+
+    height: 100%;
+}
+
+.aboutWindow .aboutWindowContainer .aboutWindowLogoBlock {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.aboutWindow .aboutWindowContainer .aboutWindowTextBlock {
+    display: inline-block;
+    width: 400px;
+}
+
+.aboutWindow .aboutWindowContainer .aboutWindowWinLogo {
+    vertical-align: top;
+}
+
+.aboutWindow .aboutWindowContainer .aboutWindowTitle {
+    text-align: center;
+}
+
+.aboutWindow .aboutWindowContainer p {
+    font-size: 13px;
+}
+
+.aboutWindow .windowsTitle {
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.aboutWindow .sevenTitle {
+    font-size: 40px;
+    font-weight: 400;
+
+    margin: 0 8px 0 8px;
+}
+
+.aboutWindow .professionalTitle {
+    font-size: 36px;
+}
+
+.aboutWindow .buttonsContainer {
+    width: 100%;
+
+    padding-bottom: 10px;
+}
+
+.aboutWindow .buttonsContainer .okButton {
+    width: 73px;
+    height: 23px;
+
+    margin: 0 0 0 auto;
+
+    display: block;
+}

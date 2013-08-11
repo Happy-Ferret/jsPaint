@@ -1,17 +1,30 @@
-<div style="background-color: #F0F0F0;">
-    Windows 7 Professional
-    <hr/>
+<div class="aboutWindow">
+    <div class="aboutWindowContainer">
+        <div class="aboutWindowTitle">
+            <img class="aboutWindowWinLogo" src="../img/window_logo.png"/><span class="windowsTitle">Windows</span><span
+                class="sevenTitle">7</span><span class="professionalTitle">Professional</span>
+        </div>
+        <hr/>
+        <div>
+            <div class="aboutWindowLogoBlock">
+                <img src="../img/app_icon.png"/>
+            </div>
+            <div class="aboutWindowTextBlock">
+                <p>Javascript Paint
+                    Version 3.8 (Build 3838: ServicePack 1)
+                    Copyright ©</p>
 
-    <p>Javascript Paint
-        Version 3.8 (Build 3838: ServicePack 1)
-        Copyright ©</p>
+                <p>The Windows 7 Professional operating system and its user interface are
+                    protected by trademark and other pending or existing intellectual property
+                    rights in the United States and other countries.</p>
 
-    <p>The Windows 7 Professional operating system and its user interface are
-        protected by trademark and other pending or existing intellectual property
-        rights in the United States and other countries.</p>
+                <p>This product is licensed under the GNU license to:<br/>
+                    everybody.</p>
+            </div>
+        </div>
 
-    <p>This product is licensed under the GNU license to:<br/>
-        everybody.</p>
-
-    <input type="button" value="OK" data-bind="click: $parent.Close"/>
+        <div class="buttonsContainer">
+            <input class="okButton" type="button" value="OK" data-bind="click: $parent.Close"/>
+        </div>
+    </div>
 </div>

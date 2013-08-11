@@ -36,7 +36,14 @@ function MainViewModel() {
     };
 
     this.ShowAbout = function () {
-        Application.CreateWindow({}, 'aboutWindowTemplate');
+        Application.CreateWindow({
+            title: 'About Paint',
+            iconClass: 'systemAppIcon',
+            size: {
+                width: 458,
+                height: 374
+            }
+        }, 'aboutWindowTemplate');
     };
 
     this.InitVerticalRuler = function () {
