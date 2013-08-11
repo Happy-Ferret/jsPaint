@@ -5,6 +5,10 @@ function ApplicationState() {
     self.SecondaryColor = ko.observable('#FFFFFF');
     self.IsPrimaryColorSelected = ko.observable(true);
 
+    self.RulersVisible = ko.observable(false);
+    self.GridlinesVisible = ko.observable(false);
+    self.StatusbarVisible = ko.observable(true);
+
     this.ActivatePrimaryColor = function () {
         self.IsPrimaryColorSelected(true);
     };
