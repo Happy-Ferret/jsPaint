@@ -11,11 +11,6 @@ var customColors = ["Transparent", "Transparent", "Transparent", "Transparent", 
 var oldX = 0;
 var oldY = 0;
 
-// color variables section
-var isPrimaryColorActive = true;
-var primaryColor;
-var secondaryColor;
-
 // brush variables section
 var selectedBrushIndex = 1;
 
@@ -67,8 +62,6 @@ function mouseMove(event) {
     oldY = coords.y;
 }
 
-/* DRAWING FUNCTIONS */
-
 function erase(x, y) {
     var canvas = getElement('canv').getContext("2d");
 
@@ -94,7 +87,6 @@ function drawLine(prevX, prevY, newX, newY) {
     canvas.stroke();
 }
 
-/* FILL TOOL */
 function getPointColor(x, y) {
     var imageData = getElement('canv').getContext("2d").getImageData(x, y, 1, 1);
 
@@ -174,7 +166,6 @@ function fill(x, y) {
     fillRec(getPointColor(x, y), targetColor, x, y);
 }
 
-/* PICK COLOR TOOL */
 function pickColor(x, y) {
     var pixelData = getElement('canv').getContext("2d").getImageData(x, y, 1, 1).data;
     return {
@@ -233,28 +224,13 @@ function tempMethod(e) {
     processResizing(e);
 }
 
-function initMiscWindows() {
-    //createWindow({title: 'Test', canMinimize: false, canMaximize: false, canClose: true, resizable: false, icon: null, content: 'canvas_resize_window_content', id: 'canvas_resize_window'});
-    //createWindow({title: 'Palette', canMinimize: false, canMaximize: false, canClose: true, resizable: false, icon: null, content: 'color_picker_window_content', id: 'color_picker_window'});
-    //createWindow({title: 'About Paint', canMinimize: false, canMaximize: false, canClose: true, resizable: false, icon: null, content: 'about_window_content', id: 'about_window'});
-    //createWindow({title: 'Image Properties', canMinimize: false, canMaximize: false, canClose: true, resizable: false, icon: null, content: 'properties_window_content', id: 'properties_window'});
-}
-
 function _init() {
-    ko.applyBindings(Application, document.body);
-
-    showRibbon('home');
-
-    setPrimaryColor('#000000');
-    setSecondaryColor('#FFFFFF');
-
     getElement('application').onmousemove = tempMethod;
     getElement('canv').onmousemove = mouseMove;
 
     generate_palette();
 
     initCanvas();
-    initMiscWindows();
 
     initPicker();
 }
@@ -308,13 +284,6 @@ function showBrushWidthBlock() {
 function hideBrushWidthBlock() {
     var block = getElement('brush_width_block');
     block.style.visibility = 'collapse';
-}
-
-function changeColor(color) {
-    if (isPrimaryColorActive)
-        setPrimaryColor(color);
-    else
-        setSecondaryColor(color);
 }
 
 /* TOOLS */
@@ -384,8 +353,6 @@ function removeEraserCursor() {
     cursor.style.visibility = "collapse";
 }
 
-/* ZOOM FUNCTIONS */
-// get zoom value
 function getZoomValue() {
     return getElement('zoom_value').value / 100.0;
 }
@@ -538,41 +505,6 @@ function flipVertical() {
     context.putImageData(imageData, 0, 0);
 
     hideRotateBlock();
-}
-
-/* MAIN MENU */
-function showMainMenu() {
-    var mainMenu = getElement('main_menu');
-    mainMenu.style.display = "block";
-
-    var buttonPosition = getElementPositionInWindow(getElement('main_menu_button_block'));
-
-    mainMenu.style.left = buttonPosition.x + "px";
-    mainMenu.style.top = buttonPosition.y + "px";
-
-    var loadButton = getElement('main_menu_open_image_button');
-    var imagePicker = getElement('image_file_picker');
-
-    imagePicker.style.width = loadButton.clientWidth;
-    imagePicker.style.height = loadButton.clientHeight;
-}
-
-function hideMainMenu() {
-    getElement('main_menu').style.display = "none";
-    hideSaveAdditionalWindow();
-}
-
-/* CANVAS RESIZE WINDOW */
-function showCanvasResizeWindow() {
-    getElement('canvas_resize_window').style.display = "block";
-}
-
-/* RIBBON */
-function showRibbon(ribbonName) {
-    getElement('ribbon_home').style.display = "none";
-    getElement('ribbon_view').style.display = "none";
-
-    getElement('ribbon_' + ribbonName).style.display = "table";
 }
 
 function customColorsChanged() {
