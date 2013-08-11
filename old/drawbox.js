@@ -257,8 +257,6 @@ function _init() {
     initMiscWindows();
 
     initPicker();
-
-    initRulers();
 }
 
 function updateCoords(coords) {
@@ -305,16 +303,6 @@ function showBrushWidthBlock() {
     block.style.visibility = 'visible';
     block.style.left = coords.x;
     block.style.top = coords.y + button.clientHeight;
-}
-
-function setPrimaryColor(color) {
-    primaryColor = color;
-    getElement('primary_color_view').style.backgroundColor = color;
-}
-
-function setSecondaryColor(color) {
-    secondaryColor = color;
-    getElement('secondary_color_view').style.backgroundColor = color;
 }
 
 function hideBrushWidthBlock() {
@@ -585,18 +573,6 @@ function showRibbon(ribbonName) {
     getElement('ribbon_view').style.display = "none";
 
     getElement('ribbon_' + ribbonName).style.display = "table";
-}
-
-function showSaveAdditionalWindow() {
-    var element = getElement('save_as_additional_window');
-
-    element.style.display = "block";
-    element.style.top = 0;
-    element.style.left = 0;
-}
-
-function hideSaveAdditionalWindow() {
-    getElement('save_as_additional_window').style.display = "none";
 }
 
 function customColorsChanged() {
