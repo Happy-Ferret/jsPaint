@@ -1,8 +1,67 @@
-function CanvasViewModel() {
+function CanvasViewModel(state) {
     var self = this;
+
+    self.State = state;
 
     self.CanvasWidth = ko.observable(500);
     self.CanvasHeight = ko.observable(500);
+
+    this.InitGridlines = function () {
+        var step = 10;
+
+        var gridlinesCanvasElement = getElement('gridlines');
+        var canvasElement = getElement('canv');
+
+        var width = self.CanvasWidth();
+        var height = self.CanvasHeight();
+        var pixelWidth = width + 'px';
+        var pixelHeight = height + 'px';
+
+        canvasElement.style.width = pixelWidth;
+        gridlinesCanvasElement.style.width = pixelWidth;
+        canvasElement.width = width;
+        gridlinesCanvasElement.width = width;
+
+        canvasElement.style.height = pixelHeight;
+        gridlinesCanvasElement.style.height = pixelHeight;
+        canvasElement.height = height;
+        gridlinesCanvasElement.height = height;
+
+        gridlinesCanvasElement.style.marginTop = '-' + pixelHeight;
+
+        var gridlinesCanvas = gridlinesCanvasElement.getContext("2d");
+
+        gridlinesCanvas.setLineDash([0.5, 1]);
+        gridlinesCanvas.lineWidth = 0.75;
+        gridlinesCanvas.strokeStyle = '#000000';
+        for (var x = 0.5; x < gridlinesCanvasElement.width; x += step) {
+            gridlinesCanvas.beginPath();
+            gridlinesCanvas.moveTo(x, 0);
+            gridlinesCanvas.lineTo(x, gridlinesCanvasElement.height);
+            gridlinesCanvas.stroke();
+        }
+
+        for (var y = 0.5; y < gridlinesCanvasElement.height; y += step) {
+            gridlinesCanvas.beginPath();
+            gridlinesCanvas.moveTo(0, y);
+            gridlinesCanvas.lineTo(gridlinesCanvasElement.width, y);
+            gridlinesCanvas.stroke();
+        }
+    };
+
+    self.CanvasWidth.subscribe(self.InitGridlines);
+    self.CanvasHeight.subscribe(self.InitGridlines);
+
+    this.Init = function () {
+        state.GridlinesVisible.subscribe(function (newValue) {
+            if (newValue == true) {
+                getElement('gridlines').style.display = 'block';
+                self.InitGridlines();
+            } else {
+                getElement('gridlines').style.display = 'none';
+            }
+        });
+    };
 
     this.BeginResize = function () {
 
@@ -23,6 +82,12 @@ function CanvasViewModel() {
     this.EndResize = function () {
 
     };
+
+    this.RenderCompleted = function () {
+        self.InitGridlines();
+    };
+
+    self.Init();
 }
 
 function initResizing() {

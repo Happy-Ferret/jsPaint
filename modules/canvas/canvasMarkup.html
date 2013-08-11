@@ -3,8 +3,8 @@
         <td>
             <canvas style="background-color: red" id="canv"
                     onmousedown="return; mouseDown()" onmouseout="return; removeEraserCursor()"
-                    onmouseover="return; createEraserCursor()"
-                    data-bind="style: { width: CanvasWidth, height: CanvasHeight }, attr: { width: CanvasWidth, height: CanvasHeight }"></canvas>
+                    onmouseover="return; createEraserCursor()"></canvas>
+            <canvas class="gridlines" id="gridlines" style="display: none"></canvas>
         </td>
         <td>
             <div class="canvasResizingAdorner eastResizingAdorner"

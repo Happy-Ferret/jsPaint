@@ -31,3 +31,7 @@ body {
     width: 18px;
     border-right-width: 1px;
 }
+
+.gridlines {
+    position: absolute;
+}

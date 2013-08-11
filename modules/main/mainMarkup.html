@@ -16,7 +16,8 @@
             </div>
         </td>
         <td>
-            <div id="workzone" data-bind="template: { name: 'canvasTemplate', data: Canvas }"></div>
+            <div id="workzone"
+                 data-bind="template: { name: 'canvasTemplate', data: Canvas, afterRender: RenderCompleted }"></div>
         </td>
     </tr>
 </table>

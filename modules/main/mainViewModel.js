@@ -93,11 +93,6 @@ function MainViewModel() {
         }
     };
 
-    this.RenderCompleted = function () {
-        self.InitHorizontalRuler();
-        self.InitVerticalRuler();
-    };
-
     self.Ribbon = new RibbonViewModel([
         new RibbonTabViewModel('Home', 'homeRibbonTabTemplate', new HomeTabViewModel(self.State), true),
         new RibbonTabViewModel('View', 'viewRibbonTabTemplate', new ViewTabViewModel(self.State), false)
@@ -115,5 +110,13 @@ function MainViewModel() {
         new MainMenuItemViewModel('Exit', 'menu-icon-exit')
     ]);
 
-    self.Canvas = new CanvasViewModel();
+    self.Canvas = new CanvasViewModel(self.State);
+
+    this.RenderCompleted = function () {
+        self.InitHorizontalRuler();
+        self.InitVerticalRuler();
+        if (self.Canvas.RenderCompleted) {
+            self.Canvas.RenderCompleted();
+        }
+    };
 }
