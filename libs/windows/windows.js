@@ -210,7 +210,7 @@ function WindowViewModel(parameters, template, viewModel, events) {
     };
 
     this.RenderCompleted = function () {
-        if (self.Data().RenderCompleted) {
+        if (self.Data() && self.Data().RenderCompleted) {
             self.Data().RenderCompleted();
         }
     };
