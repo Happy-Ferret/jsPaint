@@ -5,19 +5,19 @@
                 <td rowspan="2"><img src="../img/ribbon_home_icons/paste_disabled.png"/></td>
                 <td><img src="../img/cut_disabled.png"/></td>
                 <td>
-                    <div class="ribbonBlockCaption">Cut</div>
+                    <div class="buttonText">Cut</div>
                 </td>
             </tr>
             <tr>
                 <td><img src="../img/copy_disabled.png"/></td>
                 <td>
-                    <div class="ribbonBlockCaption">Copy</div>
+                    <div class="buttonText">Copy</div>
                 </td>
             </tr>
             <tr>
                 <td>
                     <div style="text-align: center">
-                        <div class="ribbonBlockCaption">Paste</div>
+                        <div class="buttonText">Paste</div>
                         <img src="../img/down_arrow.png"/>
                     </div>
                 </td>
@@ -42,8 +42,8 @@
                 <td>
                     <table>
                         <tr>
-                            <td class="common_button">
-                                <table>
+                            <td class="button">
+                            <table>
                                     <tr>
                                         <td><img src="../img/crop_disabled.png"/></td>
                                         <td>
@@ -54,8 +54,8 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="common_button" onclick="showCanvasResizeWindow()">
-                                <table>
+                            <td class="button" onclick="showCanvasResizeWindow()">
+                            <table>
                                     <tr>
                                         <td><img src="../img/resize.png"/></td>
                                         <td>
@@ -66,8 +66,8 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="common_button" onclick="showRotateBlock()" id="rotate_block_button">
-                                <table>
+                            <td class="button" onclick="showRotateBlock()" id="rotate_block_button">
+                            <table>
                                     <tr>
                                         <td><img src="../img/rotate_icons/rotate_right.png"/></td>
                                         <td>
@@ -177,8 +177,8 @@
 
 <div class="ribbonBlock">
     <div class="ribbonInnerBlock">
-    <div id="brush_width_button" style="padding: 5px 0" class="common_button" onclick="showBrushWidthBlock()">
-            <div style="margin: 5px"><img src="../img/ribbon_home_icons/brush_size.png"/></div>
+        <div id="brush_width_button" style="padding: 5px 0" class="button" onclick="showBrushWidthBlock()">
+        <div style="margin: 5px"><img src="../img/ribbon_home_icons/brush_size.png"/></div>
             <div style="font-size: 14px; color: #1E395B; margin: 5px">Size</div>
             <div style="margin: 5px"><img src="../img/down_arrow.png"/></div>
         </div>
@@ -202,7 +202,7 @@
                     <div>Color</div>
                     <div>1</div>
                 </td>
-                <td id="secondary_color_button" class="common_button"
+                <td id="secondary_color_button" class="button"
                     style="width: 42px; height: 66px; text-align: center;"
                     data-bind="click: State.ActivateSecondaryColor">
                     <div class='color_selected' style="width: 20px; height: 20px; margin:0 auto;">
@@ -217,7 +217,7 @@
                 <td>
                     <table id="palette"></table>
                 </td>
-                <td class="common_button" style="width: 42px; height: 66px; text-align: center;"
+                <td class="button" style="width: 42px; height: 66px; text-align: center;"
                     data-bind="click: ShowColorPicker">
                     <div><img src="../img/ribbon_home_icons/edit_colors.png"/></div>
                     <div>Edit</div>

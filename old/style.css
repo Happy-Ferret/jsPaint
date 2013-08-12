@@ -138,7 +138,7 @@
     z-index: 1000;
 }
 
-.common_button:hover .rotate_block_image {
+.button:hover .rotate_block_image {
     background-color: transparent;
 }
 
