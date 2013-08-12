@@ -23,28 +23,21 @@
 
 <div class="ribbonBlock">
     <div class="ribbonInnerBlock">
-        <table>
-        <tr>
-                <td>
-                    <div>
-                        <input type="checkbox" data-bind="checked: State.RulersVisible">Rulers</input>
-                    </div>
-                    <div>
-                        <input type="checkbox" data-bind="checked: State.GridlinesVisible">Gridlines</input>
-                    </div>
-                    <div>
-                        <input type="checkbox" data-bind="checked: State.StatusbarVisible">Status bar</input>
-                    </div>
-                </td>
-            </tr>
-        </table>
+        <div>
+            <input type="checkbox" data-bind="checked: State.RulersVisible">Rulers</input>
+        </div>
+        <div>
+            <input type="checkbox" data-bind="checked: State.GridlinesVisible">Gridlines</input>
+        </div>
+        <div>
+            <input type="checkbox" data-bind="checked: State.StatusbarVisible">Status bar</input>
+        </div>
     </div>
     <div class="ribbonBlockCaption">Show or hide</div>
 </div>
 
 <div class="ribbonBlock">
     <div class="ribbonInnerBlock">
-
         <div class="button verticalButton" data-bind="click: State.GoFullScreen">
             <div><img src="../img/ribbon_view_icons/full_screen.png"/></div>
             <div class="buttonText">Full</div>
@@ -54,8 +47,6 @@
             <div><img src="../img/ribbon_view_icons/thumbnail_disabled.png"/></div>
             <div class="buttonText">Thumbnail</div>
         </div>
-        </tr>
-        </table>
     </div>
     <div class="ribbonBlockCaption">Display</div>
 </div>
