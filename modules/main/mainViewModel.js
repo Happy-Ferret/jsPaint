@@ -32,7 +32,7 @@ function MainViewModel() {
     self.State = new ApplicationState();
 
     this.ShowProperties = function () {
-        Application.CreateWindow({}, 'propertiesWindowTemplate');
+        Application.CreateWindow({}, { windowTemplate: 'propertiesWindowTemplate' });
     };
 
     this.ShowAbout = function () {
@@ -43,7 +43,9 @@ function MainViewModel() {
                 width: 458,
                 height: 374
             }
-        }, 'aboutWindowTemplate');
+        }, {
+            windowTemplate: 'aboutWindowTemplate'
+        });
     };
 
     this.InitVerticalRuler = function () {

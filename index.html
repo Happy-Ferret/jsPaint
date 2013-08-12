@@ -26,6 +26,9 @@
     <script type="text/javascript" src="modules/main/mainViewModel.js"></script>
     <script type="text/html" id="mainTemplate"></script>
 
+    <script type="text/javascript" src="modules/main/mainStatusbarViewModel.js"></script>
+    <script type="text/html" id="mainStatusbarTemplate"></script>
+
     <script type="text/javascript" src="modules/canvas/canvasViewModel.js"></script>
     <script type="text/html" id="canvasTemplate"></script>
 
@@ -58,6 +61,7 @@
         includeModule(getElement('colorpickerTemplate'), 'libs/colorpicker/colorpicker.html');
 
         includeModule(getElement('mainTemplate'), '/modules/main/mainMarkup.html');
+        includeModule(getElement('mainStatusbarTemplate'), '/modules/main/mainStatusbarMarkup.html');
         includeModule(getElement('canvasTemplate'), '/modules/canvas/canvasMarkup.html');
         includeModule(getElement('homeRibbonTabTemplate'), 'modules/ribbon/homeTabMarkup.html');
         includeModule(getElement('viewRibbonTabTemplate'), 'modules/ribbon/viewTabMarkup.html');

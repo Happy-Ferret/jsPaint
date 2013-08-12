@@ -31,6 +31,9 @@
 
                     <div class="systemContent"
                          data-bind="template: { name: Template(), data: Data, afterRender: RenderCompleted }, style: { backgroundColor: Background, width: Size.Width, height: Size.Height }, attr: { id: ID }"></div>
+
+                    <div class="statusBar"
+                         data-bind="template: { name: StatusbarTemplate(), data: StatusbarViewModel }"></div>
                 </div>
             </td>
             <td class="eastResizingAdorner"></td>

@@ -17,13 +17,21 @@
 //      },
 //      background: (string, #FFFFFF),
 //  },
+//  templates: {
+//      windowTemplate (string, ''),
+//      statusbarTemplate (string, '')
+//  },
+//  viewModels: {
+//      windowViewModel (object, undefined)
+//      statusbarViewModel (object, undefined)
+//  }
 //  events: {
 //      onDataSelect (function(newData), undefined)
 //  }
 //  template ID (string, '')
 //  viewModel (knockout viewModel, undefined)
 
-function WindowViewModel(parameters, template, viewModel, events) {
+function WindowViewModel(parameters, templates, viewModels, events) {
     var self = this;
 
     self.ID = ko.observable('container' + Math.floor((Math.random() * 100000000) + 1));
@@ -42,8 +50,11 @@ function WindowViewModel(parameters, template, viewModel, events) {
     self.IsVisible = ko.observable(true);
     self.IsMaximized = ko.observable(false);
 
-    self.Template = ko.observable(template);
-    self.Data = ko.observable(viewModel);
+    self.Template = ko.observable('');
+    self.Data = ko.observable(undefined);
+
+    self.StatusbarTemplate = ko.observable('');
+    self.StatusbarViewModel = ko.observable(undefined);
 
     self.Size = {
         Width: ko.observable(640),
@@ -104,6 +115,26 @@ function WindowViewModel(parameters, template, viewModel, events) {
 
                 if (parameters.size.height) {
                     self.Size.Height(parameters.size.height);
+                }
+            }
+
+            if (templates) {
+                if (templates.windowTemplate) {
+                    self.Template(templates.windowTemplate);
+                }
+
+                if (templates.statusbarTemplate) {
+                    self.StatusbarTemplate(templates.statusbarTemplate);
+                }
+            }
+
+            if (viewModels) {
+                if (viewModels.windowViewModel) {
+                    self.Data(viewModels.windowViewModel);
+                }
+
+                if (viewModels.statusbarViewModel) {
+                    self.StatusbarViewModel(viewModels.statusbarViewModel);
                 }
             }
         }

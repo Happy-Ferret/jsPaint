@@ -7,7 +7,11 @@ function HomeTabViewModel(state) {
         Application.CreateWindow({
             title: 'Edit Colors',
             iconClass: 'systemAppIcon'
-        }, 'colorpickerTemplate', new ColorPickerViewModel(), {
+        }, {
+            windowTemplate: 'colorpickerTemplate'
+        }, {
+            windowViewModel: new ColorPickerViewModel()
+        }, {
             onDataSelect: self.State.ChangeColor
         });
     };
