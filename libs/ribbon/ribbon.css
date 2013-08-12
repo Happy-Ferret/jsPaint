@@ -64,17 +64,17 @@
     box-shadow: 0 -1px 1px 1px rgba(255, 169, 10, 0.3);
 }
 
-.ribbonOuterBlock {
+.ribbonOuter {
     border-bottom: 1px solid #9FAEC2;
 }
 
-.ribbonMiddleBlock {
+.ribbonMiddle {
     border: 1px solid #B9D1EA;
     border-top-color: #BAC9DB;
     border-bottom-color: #CEDBEB;
 }
 
-.ribbonInnerBlock {
+.ribbonInner {
     /* gradient */
     background: rgb(245, 250, 255); /* Old browsers */
     background: -moz-linear-gradient(top, rgba(245, 250, 255, 1) 0%, rgba(220, 231, 245, 1) 50%); /* FF3.6+ */
@@ -86,13 +86,21 @@
 
     border: solid #EEF5FD;
     border-width: 0 1px 1px 1px;
+
+    height: 90px;
 }
 
 .ribbonBlock {
     display: inline-block;
+    vertical-align: top;
+    padding-top: 5px;
 
     border: 0 solid #000000;
     border-right-width: 1px;
+}
+
+.ribbonInnerBlock {
+    height: 70px;
 }
 
 .ribbonBlockCaption {
