@@ -71,8 +71,9 @@ function ApplicationState() {
         self.ZoomValue(self.DefaultZoom);
     };
 
+    self.IsFullScreened = ko.observable(false);
     this.GoFullScreen = function () {
-        var element = document.documentElement;
+        var element = getElement('canv');
 
         if (element.requestFullscreen) {
             element.requestFullscreen();
@@ -89,6 +90,33 @@ function MainViewModel(state) {
 
     self.State = state;
 
+    this.Print = function () {
+        function cloneCanvas(oldCanvas) {
+            var newCanvas = document.createElement('canvas');
+            var context = newCanvas.getContext('2d');
+
+            newCanvas.width = oldCanvas.width;
+            newCanvas.height = oldCanvas.height;
+
+            context.drawImage(oldCanvas, 0, 0);
+
+            return newCanvas;
+        }
+
+        var canvasClone = document.getElementById('printing_canvas');
+
+        if (canvasClone) {
+            document.getElementById('application').removeChild(canvasClone);
+        }
+
+        canvasClone = cloneCanvas(document.getElementById('canv'));
+        canvasClone.id = 'printing_canvas';
+
+        document.getElementById('application').appendChild(canvasClone);
+
+        window.print();
+    };
+
     this.ShowProperties = function () {
         Application.CreateWindow({}, { windowTemplate: 'propertiesWindowTemplate' });
     };
@@ -104,6 +132,11 @@ function MainViewModel(state) {
         }, {
             windowTemplate: 'aboutWindowTemplate'
         });
+    };
+
+    this.Exit = function () {
+        window.open('', '_self', '');
+        window.close();
     };
 
     this.InitVerticalRuler = function () {
@@ -168,13 +201,13 @@ function MainViewModel(state) {
         new MainMenuItemViewModel('Open', 'menu-icon-open'),
         new MainMenuItemViewModel('Save', 'menu-icon-save'),
         new MainMenuItemViewModel('Save as', 'menu-icon-save-as'),
-        new MainMenuItemViewModel('Print', 'menu-icon-print'),
+        new MainMenuItemViewModel('Print', 'menu-icon-print', self.Print),
         new MainMenuItemViewModel('From scanner or camera', 'menu-icon-from-scanner'),
         new MainMenuItemViewModel('Send in e-mail', 'menu-icon-send-mail'),
         new MainMenuItemViewModel('Set as desktop background', 'menu-icon-set-background'),
         new MainMenuItemViewModel('Properties', 'menu-icon-properties', self.ShowProperties),
         new MainMenuItemViewModel('About Paint', 'menu-icon-about', self.ShowAbout),
-        new MainMenuItemViewModel('Exit', 'menu-icon-exit')
+        new MainMenuItemViewModel('Exit', 'menu-icon-exit', self.Exit)
     ]);
 
     self.Canvas = new CanvasViewModel(self.State);
@@ -186,4 +219,19 @@ function MainViewModel(state) {
             self.Canvas.RenderCompleted();
         }
     };
+
+    this.Init = function () {
+        document.addEventListener('keyup', function (e) {
+            if (e.which == 122) {
+                if (self.State.IsFullScreened() == true) {
+                    self.State.IsFullScreened(false);
+                } else {
+                    self.State.IsFullScreened(true);
+                    self.State.GoFullScreen();
+                }
+            }
+        });
+    };
+
+    self.Init();
 }
