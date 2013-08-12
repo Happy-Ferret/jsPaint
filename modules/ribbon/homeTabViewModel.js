@@ -6,7 +6,12 @@ function HomeTabViewModel(state) {
     this.ShowColorPicker = function () {
         Application.CreateWindow({
             title: 'Edit Colors',
-            iconClass: 'systemAppIcon'
+            iconClass: 'systemAppIcon',
+
+            size: {
+                width: 450,
+                height: 300
+            }
         }, {
             windowTemplate: 'colorpickerTemplate'
         }, {

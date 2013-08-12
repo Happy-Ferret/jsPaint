@@ -12,7 +12,7 @@
                 <div>Custom colors:</div>
                 <table data-bind="foreach: CustomPickerColors">
                     <tr data-bind="foreach: $data">
-                        <td class="color_cell" data-bind="style: { backgroundColor: $data }"></td>
+                        <td class="color_cell" data-bind="style: { backgroundColor: $data.HtmlColor }"></td>
                     </tr>
                 </table>
 
@@ -21,21 +21,21 @@
                 </div>
 
                 <div>
-                    <input type="button" value="OK" class="ok_button"
-                           data-bind="click: function(){ $parent.DataSelect(ColorHelpers.toHtmlRGB(Red(), Green(), Blue())); }"/>
+                    <input type="button" value="OK" class="okButton"
+                           data-bind="click: function(){ $parent.DataSelect(CurrentColor().HtmlColor()); }"/>
                     <input type="button" value="Cancel" class="cancel_button" data-bind="click: $parent.Close"/>
                 </div>
             </td>
             <td>
                 <table>
                     <tr>
-                        <td onmousedown="beginChangingPalette()" onmouseup="endChangingPalette()">
+                        <td>
                             <div style="overflow: hidden; height: 242px;">
-                                <canvas id="color_picker_palette" width="240px" height="240px"
-                                        style="border-color: #000; border-style: solid; border-width: 1px;"></canvas>
-                                <div id="palette_picker"
-                                     style="position: relative; top: -240; width: 240px; height: 240px; z-index:10;">
-                                    <img src="../img/colorpicker/crosshair.png" id="palette_crosshair"/>
+                                <canvas width="240px" height="240px"
+                                        style="border-color: #000; border-style: solid; border-width: 1px;"
+                                        data-bind="attr: { id: ID }"></canvas>
+                                <div id="palette_picker">
+                                <img src="../img/colorpicker/crosshair.png" id="palette_crosshair"/>
                                 </div>
                             </div>
                         </td>
@@ -43,16 +43,12 @@
                             <table>
                                 <tr>
                                     <td>
-                                        <canvas id="lum_palette" width="10" height="185"
-                                                style="border-color: #000; border-style: solid; border-width: 1px;">
-                                            &nbsp
-                                        </canvas>
+                                        <canvas id="lum_palette" width="10" height="185">&nbsp</canvas>
                                     </td>
                                     <td>
                                         <div style="overflow: hidden; width: 10px; height: 190px;">
-                                            <div style="vertical-align: top; margin-top: 0" id="luma_picker"
-                                                 onmousedown="beginChangingLuma()" onmouseup="endChangingLuma()">
-                                                <img src="../img/colorpicker/luma_picker.png" id="luma_slider"/>
+                                            <div id="luma_picker">
+                                            <img src="../img/colorpicker/luma_picker.png" id="luma_slider"/>
                                             </div>
                                         </div>
                                     </td>
@@ -65,29 +61,38 @@
                 <table>
                     <tr>
                         <td rowspan="3">
-                            <div id="color_example"></div>
+                            <div id="color_example"
+                                 data-bind="style: { backgroundColor: CurrentColor().HtmlColor }"></div>
                             <div>Color|Solid</div>
                         </td>
                         <td>Hue:</td>
-                        <td><input type="text" class="color_param" maxlength="3" data-bind="value: Hue"/></td>
+                        <td><input type="text" class="color_param" maxlength="3" data-bind="value: CurrentColor().Hue"/>
+                        </td>
                         <td>Red:</td>
-                        <td><input type="text" class="color_param" maxlength="3" data-bind="value: Red"/></td>
+                        <td><input type="text" class="color_param" maxlength="3" data-bind="value: CurrentColor().Red"/>
+                        </td>
                     </tr>
                     <tr>
                         <td>Sat:</td>
-                        <td><input type="text" class="color_param" maxlength="3" data-bind="value: Saturation"/></td>
+                        <td><input type="text" class="color_param" maxlength="3"
+                                   data-bind="value: CurrentColor().Saturation"/></td>
                         <td>Green:</td>
-                        <td><input type="text" class="color_param" maxlength="3" data-bind="value: Green"/></td>
+                        <td><input type="text" class="color_param" maxlength="3"
+                                   data-bind="value: CurrentColor().Green"/></td>
                     </tr>
                     <tr>
                         <td>Lum:</td>
-                        <td><input type="text" class="color_param" maxlength="3" data-bind="value: Luma"/></td>
+                        <td><input type="text" class="color_param" maxlength="3"
+                                   data-bind="value: CurrentColor().Luma"/></td>
                         <td>Blue:</td>
-                        <td><input type="text" class="color_param" maxlength="3" data-bind="value: Blue"/></td>
+                        <td><input type="text" class="color_param" maxlength="3"
+                                   data-bind="value: CurrentColor().Blue"/></td>
                     </tr>
                     <tr>
-                        <td colspan="4"><input type="button" class="add_to_custom" value="Add to Custom Colors"
-                                               onclick="addToCustomColors()"/>
+                        <td colspan="4">
+                            <input type="button" class="add_to_custom" value="Add to Custom Colors"
+                                   data-bind="click: AddToCustomColors"/>
+                        </td>
                     </tr>
                 </table>
             </td>

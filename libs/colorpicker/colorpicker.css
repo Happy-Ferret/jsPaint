@@ -34,7 +34,7 @@
     -webkit-user-drag: none;
 }
 
-.ok_button {
+.okButton {
     height: 21px;
     width: 64px;
 }
@@ -47,4 +47,21 @@
 input.add_to_custom {
     height: 21px;
     width: 211px;
+}
+
+#palette_picker {
+    position: relative;
+    top: -240;
+    width: 240px;
+    height: 240px;
+    z-index: 10;
+}
+
+#lum_palette {
+    border: 1px solid #000;
+}
+
+#luma_picker {
+    vertical-align: top;
+    margin-top: 0
 }

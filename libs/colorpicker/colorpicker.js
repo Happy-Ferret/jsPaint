@@ -1,38 +1,25 @@
-function ColorPickerViewModel() {
+function ColorModel(r, g, b, colorChangedCallback) {
     var self = this;
 
     self.MAX_HSL = 240;
     self.MAX_RGB = 255;
 
-    self.PREDEFINED_PICKER_COLORS = [
-        [ "#FF8080", "#FFFF80", "#80FF80", "#00FF80", "#80FFFF", "#0080FF", "#FF80C0", "#FF80FF" ],
-        [ "#FF0000", "#FFFF00", "#80FF00", "#00FF40", "#00FF40", "#0080C0", "#8080C0", "#FF00FF" ],
-        [ "#804040", "#FF8040", "#00FF00", "#008080", "#004080", "#8080FF", "#800040", "#FF0080" ],
-        [ "#800000", "#FF8000", "#008000", "#008040", "#0000FF", "#0000A0", "#800080", "#8000FF" ],
-        [ "#400000", "#804000", "#004000", "#004040", "#000080", "#000040", "#400040", "#400080" ],
-        [ "#000000", "#808000", "#808040", "#808080", "#408080", "#C0C0C0", "#400040", "#FFFFFF" ]
-    ];
-
-    self.CustomPickerColors = ko.observableArray([
-        [ "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF" ],
-        [ "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF" ]
-    ]);
-
+    /**
+     * @return {number}
+     */
     this.ValidateValue = function (value, maxValue) {
-        if (isNaN(value) || value < 0)
+        if (!value || isNaN(value))
             return 0;
 
-        if (value > maxValue)
-            return maxValue;
-
-        return value;
+        return Math.max(0, Math.min(value, maxValue));
     };
 
     self.CurrentColorRGB = ko.observable({
-        red: 0,
-        green: 0,
-        blue: 0
+        red: self.ValidateValue(r, self.MAX_RGB),
+        green: self.ValidateValue(g, self.MAX_RGB),
+        blue: self.ValidateValue(b, self.MAX_RGB)
     });
+
     self.CurrentColorHSL = ko.observable({
         hue: 0,
         luma: 0,
@@ -45,14 +32,22 @@ function ColorPickerViewModel() {
         var hsl = ColorHelpers.fromRGB(r, g, b);
 
         self.CurrentColorHSL({hue: hsl.hue, luma: hsl.luma, saturation: hsl.saturation});
+
+        if (colorChangedCallback) {
+            colorChangedCallback();
+        }
     };
 
     this.ProcessHSLInput = function (h, s, l) {
         self.CurrentColorHSL({hue: h, luma: l, saturation: s});
 
-        var rgbSet = ColorHelpers.fromHSL(h * 360.0 / 240.0, s / 240.0, l / 240.0);
+        var rgb = ColorHelpers.fromHSL(h * 360.0 / 240.0, s / 240.0, l / 240.0);
 
-        self.CurrentColorRGB({red: rgbSet.red, green: rgbSet.green, blue: rgbSet.blue});
+        self.CurrentColorRGB({red: rgb.red, green: rgb.green, blue: rgb.blue});
+
+        if (colorChangedCallback) {
+            colorChangedCallback();
+        }
     };
 
     self.Red = ko.computed({
@@ -63,6 +58,7 @@ function ColorPickerViewModel() {
             self.ProcessRGBInput(self.ValidateValue(value, self.MAX_RGB), self.CurrentColorRGB().green, self.CurrentColorRGB().blue);
         }
     });
+
     self.Green = ko.computed({
         read: function () {
             return self.CurrentColorRGB().green;
@@ -71,6 +67,7 @@ function ColorPickerViewModel() {
             self.ProcessRGBInput(self.CurrentColorRGB().red, self.ValidateValue(value, self.MAX_RGB), self.CurrentColorRGB().blue);
         }
     });
+
     self.Blue = ko.computed({
         read: function () {
             return self.CurrentColorRGB().blue;
@@ -88,6 +85,7 @@ function ColorPickerViewModel() {
             self.ProcessHSLInput(self.ValidateValue(value, self.MAX_HSL), self.CurrentColorHSL().saturation, self.CurrentColorHSL().luma);
         }
     });
+
     self.Luma = ko.computed({
         read: function () {
             return self.CurrentColorHSL().luma;
@@ -96,6 +94,7 @@ function ColorPickerViewModel() {
             self.ProcessHSLInput(self.CurrentColorHSL().hue, self.CurrentColorHSL().saturation, self.ValidateValue(value, self.MAX_HSL));
         }
     });
+
     self.Saturation = ko.computed({
         read: function () {
             return self.CurrentColorHSL().saturation;
@@ -105,167 +104,166 @@ function ColorPickerViewModel() {
         }
     });
 
-    /*var customColorRowIndex = 0;
-     var customColorColumnIndex = 0;
+    self.HtmlColor = ko.computed(function () {
+        return ColorHelpers.toHtmlRGB(self.Red(), self.Green(), self.Blue());
+    });
 
-     function initHandlers() {
-     document.getElementById('luma_picker').onmousemove = changeLuma;
-     document.getElementById('palette_picker').onmousemove = changePalette;
+    this.Init = function () {
+        self.ProcessRGBInput(self.CurrentColorRGB().red, self.CurrentColorRGB().green, self.CurrentColorRGB().blue);
+    };
 
-     }
+    self.Init();
+}
 
-     function initPicker() {
-     generatePredefined();
-     generateCustom();
+function ColorPickerViewModel() {
+    var self = this;
 
-     generatePalette();
-     generateLumPalette(160 * 360.0 / MAX_LUMA, 0);
+    self.ID = ko.observable(Math.random() * 10000000);
 
-     initHandlers();
+    self.MAX_HSL = 240;
+    self.MAX_RGB = 255;
 
-     document.getElementById('palette_crosshair').draggable = false;
+    self.PREDEFINED_PICKER_COLORS = [
+        [ "#FF8080", "#FFFF80", "#80FF80", "#00FF80", "#80FFFF", "#0080FF", "#FF80C0", "#FF80FF" ],
+        [ "#FF0000", "#FFFF00", "#80FF00", "#00FF40", "#00FF40", "#0080C0", "#8080C0", "#FF00FF" ],
+        [ "#804040", "#FF8040", "#00FF00", "#008080", "#004080", "#8080FF", "#800040", "#FF0080" ],
+        [ "#800000", "#FF8000", "#008000", "#008040", "#0000FF", "#0000A0", "#800080", "#8000FF" ],
+        [ "#400000", "#804000", "#004000", "#004040", "#000080", "#000040", "#400040", "#400080" ],
+        [ "#000000", "#808000", "#808040", "#808080", "#408080", "#C0C0C0", "#400040", "#FFFFFF" ]
+    ];
 
-     document.getElementById('define_custom_colors').disabled = true;
-     }
+    self.Rendered = ko.observable(false);
 
-     function generateLumPalette(hue, saturation) {
-     var canv = document.getElementById('lum_palette');
-     var canvas = canv.getContext("2d");
+    self.CurrentCustomIndex = 0;
+    self.CustomPickerColors = ko.observableArray([]);
 
+    self.CustomColorsRowCnt = ko.observable(0);
+    self.CustomColorsColumnCnt = ko.observable(0);
 
-     for (var lum = MAX_LUMA; lum >= 0; lum--) {
-     var tempColor = fromHSL(hue * 360.0 / 240.0, saturation / 240.0, lum / 240.0);
-     canvas.fillStyle = toHtmlRGB(tempColor.red, tempColor.green, tempColor.blue);
-     canvas.fillRect(0, MAX_LUMA - lum, canv.width, 1);
-     }
-     }
+    this.GenerateLumPalette = function () {
+        if (self.Rendered() == false) {
+            return;
+        }
 
-     function generatePalette() {
-     var canvas = document.getElementById('color_picker_palette').getContext("2d");
+        var hue = self.CurrentColor().Hue();
+        var saturation = self.CurrentColor().Saturation();
 
-     for (var saturation = MAX_SATURATION; saturation >= 0; saturation--) {
-     for (var hue = 0; hue <= MAX_HUE; hue++) {
-     var tmpColor = fromHSL(hue * 360.0 / 240.0, saturation / 240.0, 0.5);
-     canvas.fillStyle = toHtmlRGB(tmpColor.red, tmpColor.green, tmpColor.blue);
-     canvas.fillRect(hue, MAX_SATURATION - saturation, 1, 1);
-     }
-     }
-     }
+        var canv = document.getElementById('lum_palette');
+        var canvas = canv.getContext("2d");
 
-     function colorChanged(color) {
-     document.getElementById('color_example').style.backgroundColor = toHtmlRGB(color.red, color.green, color.blue);
+        for (var lum = self.MAX_HSL; lum >= 0; lum--) {
+            var tempColor = ColorHelpers.fromHSL(hue * 360.0 / 240.0, saturation / 240.0, lum / 240.0);
+            canvas.fillStyle = ColorHelpers.toHtmlRGB(tempColor.red, tempColor.green, tempColor.blue);
+            canvas.fillRect(0, self.MAX_HSL - lum, canv.width, 1);
+        }
+    };
 
-     generateLumPalette(color.hue, color.saturation);
+    self.CurrentColor = ko.observable(new ColorModel(0, 0, 0, self.GenerateLumPalette));
+    self.CurrentColor.subscribe(self.GenerateLumPalette);
 
-     var paletteCrosshair = document.getElementById('palette_crosshair');
-     var lumaSlider = document.getElementById('luma_slider');
-     paletteCrosshair.style.marginLeft = color.hue + "px";
-     paletteCrosshair.style.marginTop = (MAX_SATURATION - color.saturation) + "px";
-     lumaSlider.style.marginTop = (MAX_LUMA - color.luma) + "px";
-     }
+    this.GeneratePalette = function () {
+        var canvas = document.getElementById(self.ID()).getContext("2d");
 
-     var isLumaChanging = false;
+        for (var saturation = self.MAX_HSL; saturation >= 0; saturation--) {
+            for (var hue = 0; hue <= self.MAX_HSL; hue++) {
+                var tmpColor = ColorHelpers.fromHSL(hue * 360.0 / 240.0, saturation / 240.0, 0.5);
+                canvas.fillStyle = ColorHelpers.toHtmlRGB(tmpColor.red, tmpColor.green, tmpColor.blue);
+                canvas.fillRect(hue, self.MAX_HSL - saturation, 1, 1);
+            }
+        }
+    };
 
-     function beginChangingLuma() {
-     isLumaChanging = true;
-     }
+    this.AddToCustomColors = function () {
+        var row = Math.floor(self.CurrentCustomIndex / self.CustomColorsColumnCnt());
+        var column = self.CurrentCustomIndex % self.CustomColorsColumnCnt();
+        var elemCnt = self.CustomColorsRowCnt() * self.CustomColorsColumnCnt();
 
-     function endChangingLuma() {
-     isLumaChanging = false;
-     }
+        var newColor = new ColorModel(self.CurrentColor().Red(), self.CurrentColor().Green(), self.CurrentColor().Blue());
+        self.CustomPickerColors()[row]()[column](newColor);
 
-     function changeLuma(event) {
-     if (!isLumaChanging)
-     return;
+        self.CurrentCustomIndex = (self.CurrentCustomIndex + 1) % elemCnt;
+    };
 
-     var picker = document.getElementById('luma_picker');
-     var slider = document.getElementById('luma_slider');
+    this.RenderCompleted = function () {
+        self.Rendered(true);
+        self.GeneratePalette();
+        self.GenerateLumPalette();
+    };
 
-     slider.style.marginTop = (getAbsoluteMousePos(event).y - getAbsoluteElementPosition(picker).y) + "px";
+    this.Init = function () {
+        var rowCnt = 2;
+        var columnCnt = 8;
 
-     colorChanged(defineColor());
-     }
+        for (var i = 0; i < rowCnt; i++) {
+            self.CustomPickerColors.push(ko.observableArray([]));
+            for (var j = 0; j < columnCnt; j++) {
+                self.CustomPickerColors()[i].push(ko.observable(new ColorModel(255, 255, 255)));
+            }
+        }
 
-     var isPaletteChanging = false;
+        self.CustomColorsRowCnt(rowCnt);
+        self.CustomColorsColumnCnt(columnCnt);
+    };
 
-     function beginChangingPalette() {
-     isPaletteChanging = true;
-     document.getElementById('palette_picker').style.cursor = "none";
-     }
+    self.Init();
+}
 
-     function endChangingPalette() {
-     isPaletteChanging = false;
-     document.getElementById('palette_picker').style.cursor = "default";
-     }
+function initPicker() {
+    generateLumPalette(160 * 360.0 / MAX_LUMA, 0);
 
-     function changePalette(event) {
-     if (!isPaletteChanging)
-     return;
+    document.getElementById('palette_crosshair').draggable = false;
 
-     var picker = document.getElementById('palette_picker');
-     var crosshair = document.getElementById('palette_crosshair');
+    document.getElementById('define_custom_colors').disabled = true;
+}
 
-     var hue = getAbsoluteMousePos(event).x - getAbsoluteElementPosition(picker).x - (crosshair.width * 0.5);
-     var saturation = getAbsoluteMousePos(event).y - getAbsoluteElementPosition(picker).y - (crosshair.height * 0.5);
-     crosshair.style.marginLeft = hue + "px";
-     crosshair.style.marginTop = saturation + "px";
+function colorChanged(color) {
+    generateLumPalette(color.hue, color.saturation);
 
-     generateLumPalette(hue, MAX_SATURATION - saturation);
-     colorChanged(defineColor());
-     }
+    var paletteCrosshair = document.getElementById('palette_crosshair');
+    var lumaSlider = document.getElementById('luma_slider');
+    paletteCrosshair.style.marginLeft = color.hue + "px";
+    paletteCrosshair.style.marginTop = (MAX_SATURATION - color.saturation) + "px";
+    lumaSlider.style.marginTop = (MAX_LUMA - color.luma) + "px";
+}
 
-     function defineColor() {
-     var crosshair = document.getElementById('palette_crosshair');
-     var lumaSlider = document.getElementById('luma_slider');
+function changeLuma(event) {
+    var picker = document.getElementById('luma_picker');
+    var slider = document.getElementById('luma_slider');
 
-     var h = parseInt(crosshair.style.marginLeft);
-     var s = MAX_SATURATION - parseInt(crosshair.style.marginTop);
-     var l = MAX_LUMA - parseInt(lumaSlider.style.marginTop);
-     var rgbClr = fromHSL(h * 360.0 / 240.0, s / 240.0, l / 240.0);
+    slider.style.marginTop = (getAbsoluteMousePos(event).y - getAbsoluteElementPosition(picker).y) + "px";
 
-     return {
-     red: rgbClr.red,
-     green: rgbClr.green,
-     blue: rgbClr.blue,
-     hue: h,
-     saturation: s,
-     luma: l
-     };
-     }
+    colorChanged(defineColor());
+}
 
-     function pickPredefined(color) {
-     var r = parseInt(color.substring(1, 3), 16);
-     var g = parseInt(color.substring(3, 5), 16);
-     var b = parseInt(color.substring(5, 7), 16);
+function changePalette(event) {
+    var picker = document.getElementById('palette_picker');
+    var crosshair = document.getElementById('palette_crosshair');
 
-     var hsl = fromRGB(r, g, b);
+    var hue = getAbsoluteMousePos(event).x - getAbsoluteElementPosition(picker).x - (crosshair.width * 0.5);
+    var saturation = getAbsoluteMousePos(event).y - getAbsoluteElementPosition(picker).y - (crosshair.height * 0.5);
+    crosshair.style.marginLeft = hue + "px";
+    crosshair.style.marginTop = saturation + "px";
 
-     colorChanged({
-     hue: Math.round(hsl.hue * 240.0 / 360.0),
-     saturation: Math.round(hsl.saturation * 240.0),
-     luma: Math.round(hsl.luma * 240.0),
-     red: Math.round(r),
-     green: Math.round(g),
-     blue: Math.round(b)
-     });
-     }
+    generateLumPalette(hue, MAX_SATURATION - saturation);
+    colorChanged(defineColor());
+}
 
-     function raiseCustomColorsChanged() {
-     for (var i = 0; i < customPickerColors.length; i++)
-     for (var j = 0; j < customPickerColors[i].length; j++)
-     document.getElementById('custom_color_' + i + '_' + j).style.backgroundColor = customPickerColors[i][j];
-     }
+function defineColor() {
+    var crosshair = document.getElementById('palette_crosshair');
+    var lumaSlider = document.getElementById('luma_slider');
 
-     function addToCustomColors() {
-     customPickerColors[customColorRowIndex][customColorColumnIndex++] = getCurrentColor();
-     if (customColorColumnIndex == customPickerColors[customColorRowIndex].length) {
-     customColorColumnIndex = 0;
-     customColorRowIndex++;
+    var h = parseInt(crosshair.style.marginLeft);
+    var s = MAX_SATURATION - parseInt(crosshair.style.marginTop);
+    var l = MAX_LUMA - parseInt(lumaSlider.style.marginTop);
+    var rgbClr = fromHSL(h * 360.0 / 240.0, s / 240.0, l / 240.0);
+}
 
-     if (customColorRowIndex == customPickerColors.length)
-     customColorRowIndex = 0;
-     }
+function pickPredefined(color) {
+    var hsl = fromRGB(r, g, b);
 
-     raiseCustomColorsChanged();
-     }*/
+    colorChanged({
+        hue: Math.round(hsl.hue * 240.0 / 360.0),
+        saturation: Math.round(hsl.saturation * 240.0),
+        luma: Math.round(hsl.luma * 240.0)
+    });
 }
