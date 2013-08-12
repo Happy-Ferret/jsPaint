@@ -7,10 +7,6 @@ function TopIconViewModel(parent, name, description, enabled, offset, action) {
     self.Description = ko.observable(description);
     self.Offset = ko.observable(offset);
 
-    self.BackgroundStyle = ko.computed(function () {
-        return ' ' + self.Offset() + 'px 0';
-    });
-
     this.ChangeState = function () {
         self.Visible(!self.Visible());
         parent.HideProperties();
@@ -49,14 +45,6 @@ function TopIconsViewModel(parent) {
         return result;
     });
 
-    this.ShowProperties = function () {
-        self.PropertiesVisible(true);
-    };
-
-    this.HideProperties = function () {
-        self.PropertiesVisible(false);
-    };
-
     this.Init = function () {
         self.Icons([
             new TopIconViewModel(self, 'New', 'Create a new picture.', true, -17, parent.New),
@@ -74,19 +62,9 @@ function TopIconsViewModel(parent) {
 }
 
 function ApplicationViewModel() {
-    var self = this;
-
-    self.Windows = ko.observableArray([]);
-
     self.TopIcons = ko.observable();
 
     self.StatusBarVisible = ko.observable(true);
-
-    this.New = function () {
-        init();
-
-        hideMainMenu();
-    };
 
     this.Open = function () {
         var reader = new FileReader();
@@ -106,8 +84,6 @@ function ApplicationViewModel() {
             };
         };
         reader.readAsDataURL(getElement('image_file_picker').files[0]);
-
-        hideMainMenu();
     };
 
     this.Save = function () {
@@ -119,30 +95,7 @@ function ApplicationViewModel() {
             saveAsJpeg();
     };
 
-    this.SaveAs = function () {
-    };
-
-    this.Print = function () {
-        var canvasClone = document.getElementById('printing_canvas');
-
-        if (canvasClone)
-            document.getElementById('application').removeChild(canvasClone);
-
-        canvasClone = cloneCanvas(document.getElementById('canv'));
-        canvasClone.id = 'printing_canvas';
-
-        document.getElementById('application').appendChild(canvasClone);
-
-        window.print();
-    };
-
-    this.Exit = function () {
-        window.close();
-    };
-
     this.Init = function () {
         self.TopIcons(new TopIconsViewModel(self));
     };
-
-    self.Init();
 }
