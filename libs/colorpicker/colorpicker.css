@@ -1,18 +1,14 @@
 #picker_block {
     background-color: #F0F0F0;
 
-    border-style: solid;
-    border-color: black;
-    border-width: 1px;
+    border: 1px solid black;
 
     height: 400px;
     width: 500px;
 }
 
 .color_cell {
-    border-width: 1px;
-    border-style: inset;
-    border-color: #909090;
+    border: 1px inset #909090;
 
     height: 15px;
     width: 15px;
@@ -26,17 +22,10 @@
 }
 
 #color_example {
-    border-width: 1px;
-    border-style: solid;
-    border-color: #000000;
+    border: 1px solid #000000;
 
     height: 40px;
     width: 58px;
-}
-
-#app {
-    -moz-user-select: none;
-    -webkit-user-select: none;
 }
 
 #palette_crosshair {
