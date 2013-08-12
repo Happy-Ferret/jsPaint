@@ -14,20 +14,6 @@
     height: 500px;
 }
 
-#statusbar {
-    border-top: 1px solid #919191;
-    height: 26px;
-
-    padding: 1px;
-}
-
-#statusbar_inner {
-    background-color: #F1EDED;
-    height: 26px;
-
-    overflow: hidden;
-}
-
 #brush_width_block {
     -webkit-border-radius: 2px;
     border-radius: 2px;
@@ -95,17 +81,6 @@
     border: 1px solid #B0C0D5;
     -webkit-border-radius: 0 2px 2px 0;
     border-radius: 0 2px 2px 0;
-}
-
-.statusbar_icon {
-    width: 20px;
-}
-
-.statusbar_text {
-    font-size: 13px;
-
-    border-right: 1px solid #D7D7D7;
-    width: 135px;
 }
 
 #eraser_cursor {

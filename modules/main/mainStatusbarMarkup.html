@@ -1,0 +1,36 @@
+<div class="statusbar">
+    <div class="statusbar_inner">
+        <div class="statusbarBlock">
+            <div class="statusbar_icon"><img src="../img/statusbar_icons/position.png"/></div>
+            <span class="statusbar_text" data-bind="text: Coordinates"></span>
+        </div>
+
+        <div class="statusbarBlock">
+            <div class="statusbar_icon"><img src="../img/statusbar_icons/selection_size.png"/></div>
+            <span class="statusbar_text" data-bind="text: SelectionSize"></span>
+        </div>
+
+        <div class="statusbarBlock">
+            <div class="statusbar_icon"><img src="../img/statusbar_icons/canvas_size.png"/></div>
+            <span class="statusbar_text" data-bind="text: CanvasSize"></span>
+        </div>
+
+        <div class="statusbarBlock">
+            <div class="statusbar_icon"><img src="../img/statusbar_icons/file_size.png"/></div>
+            <span class="statusbar_text" data-bind="text: FileSize">Size: 0KB</span>
+        </div>
+
+        <div class="statusbarBlock"></div>
+
+        <div class="statusbarBlock">
+            <span data-bind="text: ZoomValue"></span>
+
+            <img src="../img/statusbar_icons/zoom_out.png" data-bind="click: State.ZoomOut"/>
+
+            <input id="zoom_value" type="range"
+                   data-bind="value: State.ZoomValue, attr: { 'min': State.MinZoom, 'max': State.MaxZoom, 'step': State.ZoomStep }"
+                   style="width:100px; margin: 0;"/>
+            <img src="../img/statusbar_icons/zoom_in.png" data-bind="click: State.ZoomIn"/>
+        </div>
+    </div>
+</div>

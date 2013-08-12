@@ -8,6 +8,8 @@ function ApplicationViewModel() {
     };
 
     this.Init = function () {
+        var state = new ApplicationState();
+
         self.CreateWindow({
             title: 'jsPaint',
             iconClass: 'systemAppIcon',
@@ -26,8 +28,8 @@ function ApplicationViewModel() {
             windowTemplate: 'mainTemplate',
             statusbarTemplate: 'mainStatusbarTemplate'
         }, {
-            windowViewModel: new MainViewModel(),
-            statusbarViewModel: new MainStatusbarViewModel()
+            windowViewModel: new MainViewModel(state),
+            statusbarViewModel: new MainStatusbarViewModel(state)
         });
     };
 

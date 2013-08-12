@@ -235,14 +235,6 @@ function _init() {
     initPicker();
 }
 
-function updateCoords(coords) {
-    getElement('statusbar_coords').innerHTML = coords.x + ", " + coords.y + "px";
-}
-
-function updateCanvasSize(size) {
-    getElement('canvas_size_info').innerHTML = size.width + " x " + size.height + "px";
-}
-
 function chooseBrushWidth(index) {
     selectedBrushIndex = index;
 
@@ -351,19 +343,6 @@ function createEraserCursor() {
 function removeEraserCursor() {
     var cursor = getElement('eraser_cursor');
     cursor.style.visibility = "collapse";
-}
-
-function getZoomValue() {
-    return getElement('zoom_value').value / 100.0;
-}
-
-function raiseZoomChanged() {
-    var zoomValue = getZoomValue() * 100.0;
-    getElement('zoom_text_value').innerHTML = zoomValue + "%";
-
-    var canvas = getElement('canv');
-    canvas.style.width = parseInt(canvas.width) * zoomValue / 100.0;
-    canvas.style.height = parseInt(canvas.height) * zoomValue / 100.0;
 }
 
 function showRotateBlock() {

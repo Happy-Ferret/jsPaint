@@ -9,6 +9,32 @@ function ApplicationState() {
     self.GridlinesVisible = ko.observable(false);
     self.StatusbarVisible = ko.observable(true);
 
+    self.MousePosition = ko.observable({
+        X: ko.observable(0),
+        Y: ko.observable(0)
+    });
+
+    self.SelectionSize = ko.observable({
+        Width: ko.observable(0),
+        Height: ko.observable(0)
+    });
+
+    self.CanvasSize = ko.observable({
+        Width: ko.observable(500),
+        Height: ko.observable(500)
+    });
+
+    self.FileSize = ko.observable(0);
+
+    self.MinZoom = 25;
+    self.MaxZoom = 800;
+    self.ZoomStep = 25;
+    self.DefaultZoom = 100;
+    self.ZoomValue = ko.observable(self.DefaultZoom);
+    self.DecimalZoom = ko.computed(function () {
+        return self.ZoomValue() / 100.0;
+    });
+
     this.ActivatePrimaryColor = function () {
         self.IsPrimaryColorSelected(true);
     };
@@ -24,12 +50,44 @@ function ApplicationState() {
             self.SecondaryColor(newColor);
         }
     };
+
+    this.ZoomIn = function () {
+        self.ZoomValue(Math.min(self.MaxZoom, self.ZoomValue() + self.ZoomStep));
+
+        /*var canvas = getElement('canv');
+         canvas.style.width = parseInt(canvas.width) * zoomValue / 100.0;
+         canvas.style.height = parseInt(canvas.height) * zoomValue / 100.0;*/
+    };
+
+    this.ZoomOut = function () {
+        self.ZoomValue(Math.max(0, self.ZoomValue() - self.ZoomStep));
+
+        /*var canvas = getElement('canv');
+         canvas.style.width = parseInt(canvas.width) * zoomValue / 100.0;
+         canvas.style.height = parseInt(canvas.height) * zoomValue / 100.0;*/
+    };
+
+    this.ResetZoom = function () {
+        self.ZoomValue(self.DefaultZoom);
+    };
+
+    this.GoFullScreen = function () {
+        var element = document.documentElement;
+
+        if (element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) {
+            element.webkitRequestFullscreen();
+        }
+    };
 }
 
-function MainViewModel() {
+function MainViewModel(state) {
     var self = this;
 
-    self.State = new ApplicationState();
+    self.State = state;
 
     this.ShowProperties = function () {
         Application.CreateWindow({}, { windowTemplate: 'propertiesWindowTemplate' });

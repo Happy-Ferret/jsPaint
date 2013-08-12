@@ -2,18 +2,21 @@
     <div class="ribbonInnerBlock">
     <table>
             <tr>
-                <td class="common_button" style="width: 42px; height: 66px; text-align: center;">
-                    <div><img src="../img/ribbon_view_icons/zoom_in.png"/></div>
+                <td class="common_button" style="width: 42px; height: 66px; text-align: center;"
+                    data-bind="click: State.ZoomIn">
+                <div><img src="../img/ribbon_view_icons/zoom_in.png"/></div>
                     <div>Zoom</div>
                     <div>in</div>
                 </td>
-                <td class="common_button" style="width: 42px; height: 66px; text-align: center;">
-                    <div><img src="../img/ribbon_view_icons/zoom_out.png"/></div>
+                <td class="common_button" style="width: 42px; height: 66px; text-align: center;"
+                    data-bind="click: State.ZoomOut">
+                <div><img src="../img/ribbon_view_icons/zoom_out.png"/></div>
                     <div>Zoom</div>
                     <div>out</div>
                 </td>
-                <td class="common_button" style="width: 42px; height: 66px; text-align: center;">
-                    <div><img src="../img/ribbon_view_icons/100_percents.png"/></div>
+                <td class="common_button" style="width: 42px; height: 66px; text-align: center;"
+                    data-bind="click: State.ResetZoom">
+                <div><img src="../img/ribbon_view_icons/100_percents.png"/></div>
                     <div>100</div>
                     <div>%</div>
                 </td>
@@ -48,8 +51,9 @@
     <div class="ribbonInnerBlock">
     <table>
             <tr>
-                <td class="common_button" style="width: 42px; height: 66px; text-align: center;">
-                    <div><img src="../img/ribbon_view_icons/full_screen.png"/></div>
+                <td class="common_button" style="width: 42px; height: 66px; text-align: center;"
+                    data-bind="click: State.GoFullScreen">
+                <div><img src="../img/ribbon_view_icons/full_screen.png"/></div>
                     <div>Full</div>
                     <div>screen</div>
                 </td>

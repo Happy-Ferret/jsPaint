@@ -52,50 +52,6 @@
             </table>
         </div>
 
-        <!-- Bottom statusbar -->
-        <div id="statusbar" data-bind="visible: StatusBarVisible">
-            <div id="statusbar_inner">
-                <table class="full-width">
-                    <tr>
-                        <td class="statusbar_icon"><img src="../img/statusbar_icons/position.png"/></td>
-                        <td id="statusbar_coords" class="statusbar_text"></td>
-
-                        <td class="statusbar_icon"><img src="../img/statusbar_icons/selection_size.png"/></td>
-                        <td class="statusbar_text">SelectionSize</td>
-
-                        <td class="statusbar_icon"><img src="../img/statusbar_icons/canvas_size.png"/></td>
-                        <td id="canvas_size_info" class="statusbar_text"></td>
-
-                        <td class="statusbar_icon"><img src="../img/statusbar_icons/file_size.png"/></td>
-                        <td class="statusbar_text">Size: 0KB</td>
-
-                        <td>
-                            <div align="right">
-                                <table style="margin: 0">
-                                    <tr>
-                                        <td>
-                                            <div id="zoom_text_value">100%</div>
-                                        </td>
-
-                                        <td><img src="../img/statusbar_icons/zoom_out.png" data-bind="click: ZoomOut"/>
-                                        </td>
-
-                                        <td>
-                                            <input id="zoom_value" type="range" value="100" min="25" max="800" step="25"
-                                                   style="width:100px; margin: 0;" onchange="raiseZoomChanged()"/>
-                                        </td>
-
-                                        <td><img src="../img/statusbar_icons/zoom_in.png" data-bind="click: ZoomIn"/>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-
         <!-- External blocks -->
         <!-- Brush width block -->
         <div id="brush_width_block"></div>

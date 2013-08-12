@@ -142,3 +142,36 @@
 .seResizingAdorner {
     cursor: se-resize;
 }
+
+.statusbar {
+    border-top: 1px solid #919191;
+    height: 26px;
+
+    padding: 1px;
+}
+
+.statusbar .statusbar_inner {
+    background-color: #F1EDED;
+    height: 26px;
+
+    overflow: hidden;
+}
+
+.statusbar .statusbar_inner .statusbarBlock {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 3px;
+}
+
+.statusbar_icon {
+    width: 20px;
+
+    display: inline-block;
+}
+
+.statusbar_text {
+    font-size: 13px;
+
+    border-right: 1px solid #D7D7D7;
+    width: 135px;
+}
