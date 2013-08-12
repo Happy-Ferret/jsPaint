@@ -1,6 +1,6 @@
-<div class="statusbar">
-    <div class="statusbar_inner">
-        <div class="statusbarBlock">
+<div class="statusbar" data-bind="visible: State.StatusbarVisible">
+    <div class="statusbarInner">
+    <div class="statusbarBlock">
             <div class="statusbar_icon"><img src="../img/statusbar_icons/position.png"/></div>
             <span class="statusbar_text" data-bind="text: Coordinates"></span>
         </div>
