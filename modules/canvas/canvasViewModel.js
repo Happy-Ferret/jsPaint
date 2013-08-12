@@ -136,6 +136,10 @@ function CanvasViewModel(state) {
     };
 
     this.EndResize = function () {
+        if (self.ResizeMode == ResizeStatus.None) {
+            return;
+        }
+
         var canvas = getElement('canv');
         var resizingCanvas = getElement('resizing_canvas');
         var app = document.body;
