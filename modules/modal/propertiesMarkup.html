@@ -1,16 +1,54 @@
 <div id="properties_window_content" style="background-color: #F0F0F0;">
-    <fieldset>
-        <legend>File Attributes</legend>
-    </fieldset>
+    <div>
+        <fieldset>
+            <legend>File Attributes</legend>
+            <table>
+                <tr>
+                    <td>Last Saved:</td>
+                    <td data-bind="text: State.LastSaved"></td>
+                </tr>
+                <tr>
+                    <td>Size on disk:</td>
+                    <td data-bind="text: State.SizeOnDisk"></td>
+                </tr>
+                <tr>
+                    <td>Resolution:</td>
+                    <td data-bind="text: State.Resolution"></td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
 
-    <fieldset>
-        <legend>Units</legend>
-    </fieldset>
+    <div>
+        <fieldset>
+            <legend>Units</legend>
+            <label><input type="radio" name="units" value="Inches" data-bind="checked: SelectedUnit"/>Inches</label>
+            <label><input type="radio" name="units" value="Centimeters"
+                          data-bind="checked: SelectedUnit"/>Centimeters</label>
+            <label><input type="radio" name="units" value="Pixels" data-bind="checked: SelectedUnit"/>Pixels</label>
+        </fieldset>
 
-    <fieldset>
-        <legend>Colors</legend>
-    </fieldset>
+        <fieldset>
+            <legend>Colors</legend>
+            <label>
+                <input type="radio" name="colors" value="Black and white" data-bind="checked: SelectedColor"/>Black and
+                white</label>
+            <label>
+                <input type="radio" name="colors" value="Color" data-bind="checked: SelectedColor"/>Color
+            </label>
+        </fieldset>
+    </div>
+    <div>
+        <span>Width:</span>
+        <input type="text" data-bind="value: CanvasSize().Width "/>
+        <span>Height:</span>
+        <input type="text" data-bind="value: CanvasSize().Height "/>
+        <input type="button" value="Default" data-bind="click: ResetSize"/>
+    </div>
 
-    <input type="text"/> <input type="text"/> <input type="button" value="Default"/><br/>
-    <input type="button" value="OK"/><input type="button" value="Cancel"/>
+    <div>
+        <input type="button" class="mediumWindowsButton" value="OK"
+               data-bind="click: function(){ $data.SaveChanges($parent.Close); }"/>
+        <input type="button" class="mediumWindowsButton" value="Cancel" data-bind="click: $parent.Close"/>
+    </div>
 </div>

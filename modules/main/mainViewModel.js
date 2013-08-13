@@ -32,7 +32,7 @@ function MainViewModel(state) {
 
     this.ShowProperties = function () {
         Application.CreateWindow({
-            title: '',
+            title: 'Image Properties',
             iconClass: 'systemAppIcon',
             size: {
 
@@ -40,7 +40,7 @@ function MainViewModel(state) {
         }, {
             windowTemplate: 'propertiesWindowTemplate'
         }, {
-            windowViewModel: self.State
+            windowViewModel: new PropertiesViewModel(self.State)
         });
     };
 

@@ -1,6 +1,16 @@
 function ApplicationState() {
     var self = this;
 
+    self.ColorTypes = {
+        Color: 'Color',
+        BlackAndWhite: 'Black and white'
+    };
+    self.Units = {
+        Pixels: 'Pixels',
+        Inches: 'Inches',
+        Centimeters: 'Centimeters'
+    };
+
     self.PrimaryColor = ko.observable(new ColorModel(0, 0, 0));
     self.SecondaryColor = ko.observable(new ColorModel(255, 255, 255));
     self.IsPrimaryColorSelected = ko.observable(true);
@@ -8,6 +18,9 @@ function ApplicationState() {
     self.RulersVisible = ko.observable(false);
     self.GridlinesVisible = ko.observable(false);
     self.StatusbarVisible = ko.observable(true);
+
+    self.SelectedColor = ko.observable('Color');
+    self.SelectedUnit = ko.observable('Pixels');
 
     self.MousePosition = ko.observable({
         X: ko.observable(0),
