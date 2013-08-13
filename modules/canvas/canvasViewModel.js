@@ -19,13 +19,17 @@ function CanvasViewModel(state) {
     self.CanvasHeight = ko.observable(500);
 
     this.InitGridlines = function () {
+        if (self.State.GridlinesVisible() == false) {
+            return;
+        }
+
         var step = 10;
 
         var gridlinesCanvasElement = getElement('gridlines');
         var canvasElement = getElement('canv');
 
-        var width = self.CanvasWidth();
-        var height = self.CanvasHeight();
+        var width = self.State.CanvasSize().Width();
+        var height = self.State.CanvasSize().Height();
         var pixelWidth = width + 'px';
         var pixelHeight = height + 'px';
 
@@ -73,6 +77,10 @@ function CanvasViewModel(state) {
                 getElement('gridlines').style.display = 'none';
             }
         });
+
+        state.CanvasSize.subscribe(self.InitGridlines);
+        state.CanvasSize().Height.subscribe(self.InitGridlines);
+        state.CanvasSize().Width.subscribe(self.InitGridlines);
     };
 
     self.ResizeMode = ResizeStatus.None;
@@ -145,6 +153,9 @@ function CanvasViewModel(state) {
 
         canvas.style.width = resizingCanvas.width;
         canvas.style.height = resizingCanvas.height;
+
+        self.State.CanvasSize().Width(resizingCanvas.width);
+        self.State.CanvasSize().Height(resizingCanvas.height);
 
         canvas.width = parseInt(canvas.style.width) / self.State.DecimalZoom();
         canvas.height = parseInt(canvas.style.height) / self.State.DecimalZoom();
