@@ -66,27 +66,29 @@
                             <div>Color|Solid</div>
                         </td>
                         <td>Hue:</td>
-                        <td><input type="text" class="color_param" maxlength="3" data-bind="value: CurrentColor().Hue"/>
+                        <td><input type="text" class="color_param" maxlength="3"
+                                   data-bind="value: CurrentColor().Hue, valueUpdate: 'afterkeydown'"/>
                         </td>
                         <td>Red:</td>
-                        <td><input type="text" class="color_param" maxlength="3" data-bind="value: CurrentColor().Red"/>
+                        <td><input type="text" class="color_param" maxlength="3"
+                                   data-bind="value: CurrentColor().Red, valueUpdate: 'afterkeydown'"/>
                         </td>
                     </tr>
                     <tr>
                         <td>Sat:</td>
                         <td><input type="text" class="color_param" maxlength="3"
-                                   data-bind="value: CurrentColor().Saturation"/></td>
+                                   data-bind="value: CurrentColor().Saturation, valueUpdate: 'afterkeydown'"/></td>
                         <td>Green:</td>
                         <td><input type="text" class="color_param" maxlength="3"
-                                   data-bind="value: CurrentColor().Green"/></td>
+                                   data-bind="value: CurrentColor().Green, valueUpdate: 'afterkeydown'"/></td>
                     </tr>
                     <tr>
                         <td>Lum:</td>
                         <td><input type="text" class="color_param" maxlength="3"
-                                   data-bind="value: CurrentColor().Luma"/></td>
+                                   data-bind="value: CurrentColor().Luma, valueUpdate: 'afterkeydown'"/></td>
                         <td>Blue:</td>
                         <td><input type="text" class="color_param" maxlength="3"
-                                   data-bind="value: CurrentColor().Blue"/></td>
+                                   data-bind="value: CurrentColor().Blue, valueUpdate: 'afterkeydown'"/></td>
                     </tr>
                     <tr>
                         <td colspan="4">
