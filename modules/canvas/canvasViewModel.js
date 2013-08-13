@@ -15,8 +15,8 @@ function CanvasViewModel(state) {
 
     self.State = state;
 
-    self.CanvasWidth = ko.observable(500);
-    self.CanvasHeight = ko.observable(500);
+    self.CanvasPixelWidth = ko.observable(500);
+    self.CanvasPixelHeight = ko.observable(500);
 
     this.InitGridlines = function () {
         if (self.State.GridlinesVisible() == false) {
@@ -28,8 +28,8 @@ function CanvasViewModel(state) {
         var gridlinesCanvasElement = getElement('gridlines');
         var canvasElement = getElement('canv');
 
-        var width = self.State.CanvasSize().Width();
-        var height = self.State.CanvasSize().Height();
+        var width = self.State.CanvasPixelWidth();
+        var height = self.State.CanvasPixelHeight();
         var pixelWidth = width + 'px';
         var pixelHeight = height + 'px';
 
@@ -65,8 +65,8 @@ function CanvasViewModel(state) {
         }
     };
 
-    self.CanvasWidth.subscribe(self.InitGridlines);
-    self.CanvasHeight.subscribe(self.InitGridlines);
+    self.CanvasPixelWidth.subscribe(self.InitGridlines);
+    self.CanvasPixelHeight.subscribe(self.InitGridlines);
 
     this.Init = function () {
         state.GridlinesVisible.subscribe(function (newValue) {
@@ -78,9 +78,8 @@ function CanvasViewModel(state) {
             }
         });
 
-        state.CanvasSize.subscribe(self.InitGridlines);
-        state.CanvasSize().Height.subscribe(self.InitGridlines);
-        state.CanvasSize().Width.subscribe(self.InitGridlines);
+        state.CanvasPixelHeight.subscribe(self.InitGridlines);
+        state.CanvasPixelWidth.subscribe(self.InitGridlines);
     };
 
     self.ResizeMode = ResizeStatus.None;
@@ -129,8 +128,6 @@ function CanvasViewModel(state) {
         var x = coords.x - parseInt(resizingCanvas.style.left);
         var y = coords.y - parseInt(resizingCanvas.style.top);
 
-        //updateCanvasSize({ width: x, height: y });
-
         if (self.ResizeMode == ResizeStatus.East) {
             resizingCanvas.width = x;
             resizingCanvas.height = getElement('canv').height;
@@ -154,13 +151,11 @@ function CanvasViewModel(state) {
         canvas.style.width = resizingCanvas.width;
         canvas.style.height = resizingCanvas.height;
 
-        self.State.CanvasSize().Width(resizingCanvas.width);
-        self.State.CanvasSize().Height(resizingCanvas.height);
+        self.State.CanvasPixelWidth(resizingCanvas.width);
+        self.State.CanvasPixelHeight(resizingCanvas.height);
 
         canvas.width = parseInt(canvas.style.width) / self.State.DecimalZoom();
         canvas.height = parseInt(canvas.style.height) / self.State.DecimalZoom();
-
-        //getElement('workzone').style.height = canvas.height + "px";
 
         canvas.parentElement.removeChild(resizingCanvas);
 

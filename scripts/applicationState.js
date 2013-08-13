@@ -6,10 +6,12 @@ function ApplicationState() {
         BlackAndWhite: 'Black and white'
     };
     self.Units = {
-        Pixels: 'Pixels',
-        Inches: 'Inches',
-        Centimeters: 'Centimeters'
+        Pixels: { name: 'Pixels', abbreviation: 'px' },
+        Inches: { name: 'Inches', abbreviation: 'inches' },
+        Centimeters: { name: 'Centimeters', abbreviation: 'cm' }
     };
+
+    self.DPI = ko.observable(96.0);
 
     self.PrimaryColor = ko.observable(new ColorModel(0, 0, 0));
     self.SecondaryColor = ko.observable(new ColorModel(255, 255, 255));
@@ -19,8 +21,8 @@ function ApplicationState() {
     self.GridlinesVisible = ko.observable(false);
     self.StatusbarVisible = ko.observable(true);
 
-    self.SelectedColor = ko.observable('Color');
-    self.SelectedUnit = ko.observable('Pixels');
+    self.SelectedColor = ko.observable(self.ColorTypes.Color);
+    self.SelectedUnit = ko.observable(self.Units.Pixels);
 
     self.MousePosition = ko.observable({
         X: ko.observable(0),
@@ -32,9 +34,48 @@ function ApplicationState() {
         Height: ko.observable(0)
     });
 
-    self.CanvasSize = ko.observable({
-        Width: ko.observable(500),
-        Height: ko.observable(500)
+    self.CanvasPixelWidth = ko.observable(500);
+    self.CanvasWidth = ko.computed({
+        read: function () {
+            if (self.SelectedUnit() == self.Units.Pixels) {
+                return self.CanvasPixelWidth();
+            } else if (self.SelectedUnit() == self.Units.Inches) {
+                return self.CanvasPixelWidth() / self.DPI();
+            } else if (self.SelectedUnit() == self.Units.Centimeters) {
+                return self.CanvasPixelWidth() * 2.54 / self.DPI();
+            }
+        },
+        write: function (value) {
+            if (self.SelectedUnit() == self.Units.Pixels) {
+                self.CanvasPixelWidth(value);
+            } else if (self.SelectedUnit() == self.Units.Inches) {
+                self.CanvasPixelWidth(value * self.DPI());
+            } else if (self.SelectedUnit() == self.Units.Centimeters) {
+                self.CanvasPixelWidth(value * self.DPI() / 2.54);
+            }
+        }
+    });
+
+    self.CanvasPixelHeight = ko.observable(500);
+    self.CanvasHeight = ko.computed({
+        read: function () {
+            if (self.SelectedUnit() == self.Units.Pixels) {
+                return self.CanvasPixelHeight();
+            } else if (self.SelectedUnit() == self.Units.Inches) {
+                return self.CanvasPixelHeight() / self.DPI();
+            } else if (self.SelectedUnit() == self.Units.Centimeters) {
+                return self.CanvasPixelHeight() * 2.54 / self.DPI();
+            }
+        },
+        write: function (value) {
+            if (self.SelectedUnit() == self.Units.Pixels) {
+                self.CanvasPixelHeight(value);
+            } else if (self.SelectedUnit() == self.Units.Inches) {
+                self.CanvasPixelHeight(value * self.DPI());
+            } else if (self.SelectedUnit() == self.Units.Centimeters) {
+                self.CanvasPixelHeight(value * self.DPI() / 2.54);
+            }
+        }
     });
 
     self.FileSize = ko.observable(0);
