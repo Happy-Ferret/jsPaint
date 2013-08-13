@@ -163,6 +163,7 @@
 
 .main_menu_item {
     height: 42px;
+    display: block !important;
 }
 
 .verticalButton, .stretchVerticalButton {
