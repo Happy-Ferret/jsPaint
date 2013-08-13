@@ -175,3 +175,13 @@
     border-right: 1px solid #D7D7D7;
     width: 135px;
 }
+
+.mediumWindowsButton {
+    width: 75px;
+    height: 23px;
+}
+
+.smallWindowsButton {
+    height: 21px;
+    width: 64px;
+}
