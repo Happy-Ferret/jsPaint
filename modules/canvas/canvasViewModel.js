@@ -142,13 +142,12 @@ function CanvasViewModel(state) {
 
         var canvas = getElement('canv');
         var resizingCanvas = getElement('resizing_canvas');
-        var app = document.body;
 
         canvas.style.width = resizingCanvas.width;
         canvas.style.height = resizingCanvas.height;
 
-        canvas.width = parseInt(canvas.style.width) / 1;//getZoomValue();
-        canvas.height = parseInt(canvas.style.height) / 1;//getZoomValue();
+        canvas.width = parseInt(canvas.style.width) / self.State.DecimalZoom();
+        canvas.height = parseInt(canvas.style.height) / self.State.DecimalZoom();
 
         getElement('workzone').style.height = canvas.height + "px";
 
