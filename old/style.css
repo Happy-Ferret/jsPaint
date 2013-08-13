@@ -28,26 +28,6 @@
     width: 130px;
 }
 
-.color_in_palette, .color_in_palette:hover, .color_selected, .color_selected:hover {
-    border-width: 1px;
-    border-style: solid;
-
-    padding: 1px;
-}
-
-.color_in_palette, .color_selected {
-    border-color: #A0A0A0;
-}
-
-.color_in_palette:hover {
-    border-color: #F29436;
-    background-color: #FFE294;
-}
-
-.color_in_palette:active {
-    border-color: #EF4810;
-}
-
 .toolbar_separator {
     border: 1px solid #FFF;
 

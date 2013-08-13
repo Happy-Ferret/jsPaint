@@ -1,8 +1,8 @@
 function ApplicationState() {
     var self = this;
 
-    self.PrimaryColor = ko.observable('#000000');
-    self.SecondaryColor = ko.observable('#FFFFFF');
+    self.PrimaryColor = ko.observable(new ColorModel(0, 0, 0));
+    self.SecondaryColor = ko.observable(new ColorModel(255, 255, 255));
     self.IsPrimaryColorSelected = ko.observable(true);
 
     self.RulersVisible = ko.observable(false);
@@ -44,7 +44,7 @@ function ApplicationState() {
     };
 
     this.ChangeColor = function (newColor) {
-        if (self.IsPrimaryColorSelected == true) {
+        if (self.IsPrimaryColorSelected() == true) {
             self.PrimaryColor(newColor);
         } else {
             self.SecondaryColor(newColor);
