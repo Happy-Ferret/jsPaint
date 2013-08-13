@@ -149,7 +149,7 @@ function CanvasViewModel(state) {
         canvas.width = parseInt(canvas.style.width) / self.State.DecimalZoom();
         canvas.height = parseInt(canvas.style.height) / self.State.DecimalZoom();
 
-        getElement('workzone').style.height = canvas.height + "px";
+        //getElement('workzone').style.height = canvas.height + "px";
 
         canvas.parentElement.removeChild(resizingCanvas);
 
