@@ -168,42 +168,6 @@ function pickColor(x, y) {
     };
 }
 
-function generate_palette() {
-    var table = getElement('palette');
-
-    palette.innerHTML = "";
-
-    var colcount = 10;
-
-    var count = 0;
-    for (var i = 0; i < predefinedColors.length; i++) {
-        var row = count % colcount == 0 ? table.insertRow(table.rows.length) : table.rows[table.rows.length - 1];
-        var cell = row.insertCell(count % colcount);
-
-        var element = document.createElement('div');
-        element.setAttribute("class", "color_in_palette");
-        element.style.width = "16px";
-        element.style.height = "16px";
-
-        var innerElement = document.createElement('div');
-        innerElement.innerHTML = "\xa0";
-        innerElement.style.width = "16px";
-        innerElement.style.height = "16px";
-        innerElement.style.backgroundColor = predefinedColors[count];
-
-        element.setAttribute("onclick", "changeColor('" + predefinedColors[count] + "')");
-
-        element.appendChild(innerElement);
-        cell.appendChild(element);
-
-        count++;
-    }
-
-    var row = table.insertRow(table.rows.length);
-    row.id = "custom_colors_row";
-    customColorsChanged();
-}
-
 function initCanvas() {
     var canvas = getElement('canv');
     var drawingArea = canvas.getContext("2d");
@@ -228,12 +192,6 @@ function _init() {
     initPicker();
 }
 
-function chooseBrushWidth(index) {
-    selectedBrushIndex = index;
-
-    hideBrushWidthBlock();
-}
-
 function initBrushWidthBlock() {
     var block = getElement('brush_width_block');
     block.innerHTML = "";
@@ -253,25 +211,6 @@ function initBrushWidthBlock() {
     }
 }
 
-function showBrushWidthBlock() {
-    initBrushWidthBlock();
-
-    var button = getElement('brush_width_button');
-    var block = getElement('brush_width_block');
-
-    var coords = getElementPositionInWindow(button);
-
-    block.style.visibility = 'visible';
-    block.style.left = coords.x;
-    block.style.top = coords.y + button.clientHeight;
-}
-
-function hideBrushWidthBlock() {
-    var block = getElement('brush_width_block');
-    block.style.visibility = 'collapse';
-}
-
-/* TOOLS */
 function deactivateAll() {
     if (selectedTool == 0)
         return;
@@ -477,28 +416,4 @@ function flipVertical() {
     context.putImageData(imageData, 0, 0);
 
     hideRotateBlock();
-}
-
-function customColorsChanged() {
-    var row = getElement('custom_colors_row');
-    row.innerHTML = "";
-    for (var i = 0; i < customColors.length; i++) {
-        var cell = row.insertCell(i);
-
-        var element = document.createElement('div');
-        element.setAttribute("class", "color_in_palette");
-        element.style.width = "16px";
-        element.style.height = "16px";
-
-        var innerElement = document.createElement('div');
-        innerElement.innerHTML = "\xa0";
-        innerElement.style.width = "16px";
-        innerElement.style.height = "16px";
-        innerElement.style.backgroundColor = customColors[i];
-
-        element.setAttribute("onclick", "changeColor('" + customColors[i] + "')");
-
-        element.appendChild(innerElement);
-        cell.appendChild(element);
-    }
 }
