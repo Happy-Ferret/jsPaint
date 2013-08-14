@@ -166,9 +166,5 @@ function CanvasViewModel(state) {
         self.InitGridlines();
     };
 
-    this.Test = function (a, b, c, d) {
-
-    };
-
     self.Init();
 }
