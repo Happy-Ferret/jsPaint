@@ -109,6 +109,7 @@
 
 .systemContent {
     height: 100%;
+    overflow: hidden;
 }
 
 .northResizingAdorner {

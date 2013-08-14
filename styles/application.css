@@ -19,17 +19,31 @@ body {
 
 .rulers {
     background-color: #F1F3F8;
-    border: 0 solid #8E9CAF;
 }
 
 .horizontal_ruler_block {
     height: 18px;
     border-bottom-width: 1px;
+    position: relative;
+    left: 33px;
 }
 
 .vertical_ruler_block {
     width: 18px;
     border-right-width: 1px;
+    vertical-align: top;
+    display: inline-block;
+    position: relative;
+    top: 10px;
+}
+
+#horizontal_ruler {
+    height: 18px;
+}
+
+.rulerContainer {
+    width: 100%;
+    height: 100%;
 }
 
 .gridlines {
@@ -55,6 +69,31 @@ body {
     padding: 7px 7px 10px 7px;
 
     overflow: auto;
+
+    vertical-align: top;
+    box-sizing: border-box;
+
+    display: inline-block;
+
+    width: 90%;
+    height: 90%;
+}
+
+.workzone_active {
+
+    border-top: 1px solid #8E9CAF;
+    border-left: 1px solid #8E9CAF;
+
+    border-radius: 4px 0 0 0;
+}
+
+.workzoneContainer {
+    background-color: #F1F3F8;
+}
+
+#vertical_ruler {
+    display: inline-block;
+
 }
 
 #brush_width_block {
@@ -293,13 +332,14 @@ body {
 .verticalRedTick, .horizontalRedTick {
     position: relative;
     background-color: red;
-    display: inline-block;
+    vertical-align: top;
 }
 
 .verticalRedTick {
     width: 18px;
     height: 1px;
-    left: -18px;
+    position: absolute;
+    z-index: 1;
 }
 
 .horizontalRedTick {

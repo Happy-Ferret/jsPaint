@@ -171,5 +171,10 @@ function CanvasViewModel(state) {
         self.State.MousePositionY(e.offsetY);
     };
 
+    this.MouseOut = function (sender, e) {
+        self.State.MousePositionX(undefined);
+        self.State.MousePositionY(undefined);
+    };
+
     self.Init();
 }
