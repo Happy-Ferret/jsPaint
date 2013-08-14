@@ -166,5 +166,10 @@ function CanvasViewModel(state) {
         self.InitGridlines();
     };
 
+    this.MouseMove = function (sender, e) {
+        self.State.MousePositionX(e.offsetX);
+        self.State.MousePositionY(e.offsetY);
+    };
+
     self.Init();
 }

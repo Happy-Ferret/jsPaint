@@ -1,7 +1,7 @@
 <table id="canvas_block">
     <tr>
         <td>
-            <canvas id="canv"
+            <canvas id="canv" data-bind="event: { mousemove: MouseMove }"
                     onmousedown="return; mouseDown()" onmouseout="return; removeEraserCursor()"
                     onmouseover="return; createEraserCursor()"
                     ></canvas>

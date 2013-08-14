@@ -26,10 +26,8 @@ function ApplicationState() {
     self.SelectedColor = ko.observable(self.ColorTypes.Color);
     self.SelectedUnit = ko.observable(self.Units.Pixels);
 
-    self.MousePosition = ko.observable({
-        X: ko.observable(0),
-        Y: ko.observable(0)
-    });
+    self.MousePositionX = ko.observable(0);
+    self.MousePositionY = ko.observable(0);
 
     self.SelectionSize = ko.observable({
         Width: ko.observable(0),

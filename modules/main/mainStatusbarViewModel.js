@@ -4,7 +4,7 @@ function MainStatusbarViewModel(state) {
     self.State = state;
 
     self.Coordinates = ko.computed(function () {
-        return '' + self.State.MousePosition().X() + 'x' + self.State.MousePosition().Y() + ' ' + self.State.SelectedUnit().abbreviation;
+        return '' + self.State.MousePositionX() + 'x' + self.State.MousePositionY() + ' ' + self.State.SelectedUnit().abbreviation;
     });
 
     self.SelectionSize = ko.computed(function () {
