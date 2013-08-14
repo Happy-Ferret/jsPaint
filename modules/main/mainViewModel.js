@@ -1,7 +1,46 @@
+var FileExtensions = {
+    png: 'png',
+    jpg: 'jpg'
+};
+
 function MainViewModel(state) {
     var self = this;
 
     self.State = state;
+
+    this.New = function () {
+
+    };
+
+    this.Open = function () {
+        var reader = new FileReader();
+        var image;
+        reader.onload = function (e) {
+            image = new Image();
+            image.src = e.target.result;
+
+            image.onload = function () {
+                var canvas = getElement('canv');
+                canvas.width = image.width;
+                canvas.height = image.height;
+                canvas.style.width = canvas.width;
+                canvas.style.height = canvas.height;
+
+                canvas.getContext("2d").drawImage(image, 0, 0);
+            };
+        };
+        reader.readAsDataURL(getElement('image_file_picker').files[0]);
+    };
+
+    this.Save = function () {
+        if (!self.State.FileExtension() || self.State.FileExtension() == FileExtensions.png) {
+            window.open(getElement('canv').toDataURL('image/png'), 'Save result');
+            self.State.FileExtension(FileExtensions.png);
+        } else if (self.State.FileExtension() == FileExtensions.jpg) {
+            window.open(getElement('canv').toDataURL('image/jpeg'), 'Save result');
+            self.State.FileExtension(FileExtensions.jpg);
+        }
+    };
 
     this.Print = function () {
         function cloneCanvas(oldCanvas) {
@@ -120,9 +159,9 @@ function MainViewModel(state) {
         new RibbonTabViewModel('Home', 'homeRibbonTabTemplate', new HomeTabViewModel(self.State), true),
         new RibbonTabViewModel('View', 'viewRibbonTabTemplate', new ViewTabViewModel(self.State), false)
     ], [
-        new MainMenuItemViewModel('New', 'menu-icon-new'),
-        new MainMenuItemViewModel('Open', 'menu-icon-open'),
-        new MainMenuItemViewModel('Save', 'menu-icon-save'),
+        new MainMenuItemViewModel('New', 'menu-icon-new', self.New),
+        new MainMenuItemViewModel('Open', 'menu-icon-open', self.Open),
+        new MainMenuItemViewModel('Save', 'menu-icon-save', self.Save),
         new MainMenuItemViewModel('Save as', 'menu-icon-save-as'),
         new MainMenuItemViewModel('Print', 'menu-icon-print', self.Print),
         new MainMenuItemViewModel('From scanner or camera', 'menu-icon-from-scanner'),

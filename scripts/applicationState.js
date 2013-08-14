@@ -11,6 +11,8 @@ function ApplicationState() {
         Centimeters: { name: 'Centimeters', abbreviation: 'cm' }
     };
 
+    self.FileExtension = ko.observable(FileExtensions.png);
+
     self.DPI = ko.observable(96.0);
 
     self.PrimaryColor = ko.observable(new ColorModel(0, 0, 0));
