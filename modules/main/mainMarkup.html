@@ -2,11 +2,13 @@
 
 <div style="width: 100%; height: 18px;" class="rulers" data-bind="visible: State.RulersVisible">
     <canvas height="18" style="height: 18px; width: 100%" id="horizontal_ruler"></canvas>
+    <div class="horizontalRedTick" data-bind="style: { left: State.MousePositionX }"></div>
 </div>
 <div style="width: 100%; height: 480px">
     <div class="rulers" style="vertical-align: top; display: inline-block;" id="vertical_ruler_block"
          data-bind="visible: State.RulersVisible">
         <canvas width="18" id="vertical_ruler"></canvas>
+        <div class="verticalRedTick" data-bind="style: { top: State.MousePositionY }"></div>
     </div>
     <div style="vertical-align: top; display: inline-block; box-sizing: border-box; width:100%; height: 100%">
         <div id="workzone" style="width: 100%; height:100%; vertical-align: top;  box-sizing: border-box;"

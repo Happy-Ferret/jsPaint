@@ -289,3 +289,21 @@ body {
         display: none;
     }
 }
+
+.verticalRedTick, .horizontalRedTick {
+    position: relative;
+    background-color: red;
+    display: inline-block;
+}
+
+.verticalRedTick {
+    width: 18px;
+    height: 1px;
+    left: -18px;
+}
+
+.horizontalRedTick {
+    width: 1px;
+    height: 18px;
+    top: -18px;
+}
