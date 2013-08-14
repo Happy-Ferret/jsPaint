@@ -275,7 +275,9 @@ body {
 
     opacity: 0;
 
-    position: absolute;
+    position: relative;
+    top: -42px;
+    left: 0;
 }
 
 #canvas_resize_window_content {

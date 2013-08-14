@@ -13,8 +13,19 @@ function MainMenuItemViewModel(title, iconClass, action) {
 
     self.Title = ko.observable(title);
     self.IconClass = ko.observable(iconClass);
+    self.Template = 'commonMenuButtonTemplate';
 
     this.Action = action;
+}
+
+function MainMenuOpenItemViewModel(title, iconClass, selectedCallback) {
+    var self = this;
+
+    self.Title = ko.observable(title);
+    self.IconClass = ko.observable(iconClass);
+    self.Template = 'openMenuButtonTemplate';
+
+    this.SelectedCallback = selectedCallback;
 }
 
 function RibbonViewModel(tabs, mainMenuItems) {

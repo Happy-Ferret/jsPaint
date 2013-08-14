@@ -1,3 +1,18 @@
+<script type="text/html" id="commonMenuButtonTemplate">
+    <div class="button main_menu_item" data-bind="click: Action">
+        <div class="menuItemBlock menu-icon" data-bind="css: IconClass"></div>
+        <div class="menuItemBlock main_menu_item_text" data-bind="text: Title"></div>
+    </div>
+</script>
+
+<script type="text/html" id="openMenuButtonTemplate">
+    <div class="button main_menu_item">
+        <div class="menuItemBlock menu-icon" data-bind="css: IconClass"></div>
+        <div class="menuItemBlock main_menu_item_text" data-bind="text: Title"></div>
+        <input type="file" class="trap_filepicker" data-bind="event: { change: SelectedCallback }" accept="image/*"/>
+    </div>
+</script>
+
 <div class="ribbonMenuBar">
     <div class="ribbonTabItem ribbonMainMenuButton" data-bind="click: ShowMenu">&nbsp</div>
 
@@ -6,17 +21,14 @@
             <div class="ribbonTabItem ribbonMainMenuButton" data-bind="click: HideMenu" style="margin: -1px">&nbsp</div>
         </div>
         <div class="mainMenuIcons" data-bind="foreach: MainMenuItems">
-            <div class="button main_menu_item" data-bind="click: Action">
-            <div class="menuItemBlock menu-icon" data-bind="css: IconClass"></div>
-                <div class="menuItemBlock main_menu_item_text" data-bind="text: Title"></div>
-            </div>
+            <!-- ko template: { name: Template, data: $data } -->
+            <!-- /ko -->
         </div>
         <div class="mainMenuBottom">&nbsp</div>
 
         <!--
 
-                                        <input type="file" class="trap_filepicker" data-bind="event: { change: Open }"
-                                               id="image_file_picker" accept="image/*"/>
+
                                         <table style="height: 100%">
                                             <tr>
                                                 <td class="menu-icon menu-icon-open">&nbsp</td>

@@ -12,7 +12,7 @@ function MainViewModel(state) {
 
     };
 
-    this.Open = function () {
+    this.Open = function (sender, event) {
         var reader = new FileReader();
         var image;
         reader.onload = function (e) {
@@ -29,7 +29,7 @@ function MainViewModel(state) {
                 canvas.getContext("2d").drawImage(image, 0, 0);
             };
         };
-        reader.readAsDataURL(getElement('image_file_picker').files[0]);
+        reader.readAsDataURL(event.currentTarget.files[0]);
     };
 
     this.Save = function () {
@@ -160,7 +160,7 @@ function MainViewModel(state) {
         new RibbonTabViewModel('View', 'viewRibbonTabTemplate', new ViewTabViewModel(self.State), false)
     ], [
         new MainMenuItemViewModel('New', 'menu-icon-new', self.New),
-        new MainMenuItemViewModel('Open', 'menu-icon-open', self.Open),
+        new MainMenuOpenItemViewModel('Open', 'menu-icon-open', self.Open),
         new MainMenuItemViewModel('Save', 'menu-icon-save', self.Save),
         new MainMenuItemViewModel('Save as', 'menu-icon-save-as'),
         new MainMenuItemViewModel('Print', 'menu-icon-print', self.Print),
