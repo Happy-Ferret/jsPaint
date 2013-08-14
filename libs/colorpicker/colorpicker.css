@@ -79,6 +79,7 @@ input.add_to_custom {
 .color_in_palette {
     width: 16px;
     height: 16px;
+    display: inline-block;
 }
 
 .color_in_palette:active {
