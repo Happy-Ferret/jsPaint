@@ -9,7 +9,12 @@ function MainViewModel(state) {
     self.State = state;
 
     this.New = function () {
+        var canvas = getElement('canv');
+        var drawingArea = canvas.getContext("2d");
 
+        drawingArea.fillStyle = "#FFFFFF";
+        drawingArea.fillRect(0, 0, canvas.width, canvas.height);
+        drawingArea.stroke();
     };
 
     this.Open = function (sender, event) {

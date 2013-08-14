@@ -168,15 +168,6 @@ function pickColor(x, y) {
     };
 }
 
-function initCanvas() {
-    var canvas = getElement('canv');
-    var drawingArea = canvas.getContext("2d");
-
-    drawingArea.fillStyle = "#FFFFFF";
-    drawingArea.fillRect(0, 0, canvas.width, canvas.height);
-    drawingArea.stroke();
-}
-
 function tempMethod(e) {
     processResizing(e);
 }
