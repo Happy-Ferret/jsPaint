@@ -36,7 +36,7 @@
                                     data-bind="attr: { id: ID }"></canvas>
 
                             <svg id="palette_picker" draggable="false"
-                                 data-bind="style: { left: PalettePickerPositionLeft, top: PalettePickerPositionTop }">
+                                 data-bind="visible: IsChangingPalette() == false, style: { left: PalettePickerPositionLeft, top: PalettePickerPositionTop }">
                             <rect x="8" y="0" width="3" height="5"/>
                                 <rect x="8" y="14" width="3" height="5"/>
                                 <rect x="0" y="8" width="5" height="3"/>
