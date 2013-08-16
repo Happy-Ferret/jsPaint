@@ -161,6 +161,18 @@ function ColorPickerViewModel() {
     self.CurrentColor = ko.observable(new ColorModel(0, 0, 0, self.GenerateLumPalette));
     self.CurrentColor.subscribe(self.GenerateLumPalette);
 
+    self.PalettePickerPositionLeft = ko.computed(function () {
+        return (self.CurrentColor().Hue() - 10) + 'px';
+    });
+
+    self.PalettePickerPositionTop = ko.computed(function () {
+        return (self.MAX_HSL - self.CurrentColor().Saturation() - 10) + 'px';
+    });
+
+    self.LumaPickerPosition = ko.computed(function () {
+        return (self.MAX_HSL - self.CurrentColor().Luma()) + 'px';
+    });
+
     this.GeneratePalette = function () {
         var canvas = document.getElementById(self.ID()).getContext("2d");
 
@@ -182,6 +194,46 @@ function ColorPickerViewModel() {
         self.CustomPickerColors()[row]()[column](newColor);
 
         self.CurrentCustomIndex = (self.CurrentCustomIndex + 1) % elemCnt;
+    };
+
+    self.IsChangingPalette = ko.observable(false);
+    self.IsChangingLuma = ko.observable(false);
+
+    this.BeginChangingPalette = function (sender, event) {
+        self.IsChangingPalette(true);
+
+        self.ProcessChangingPalette(sender, event);
+    };
+
+    this.ProcessChangingPalette = function (sender, event) {
+        if (!self.IsChangingPalette || self.IsChangingPalette() == false) {
+            return;
+        }
+
+        self.CurrentColor().Hue(event.layerX);
+        self.CurrentColor().Saturation(self.MAX_HSL - event.layerY);
+    };
+
+    this.EndChangingPalette = function () {
+        self.IsChangingPalette(false);
+    };
+
+    this.BeginChangingLuma = function (sender, event) {
+        self.IsChangingLuma(true);
+
+        self.ProcessChangingLuma(sender, event);
+    };
+
+    this.ProcessChangingLuma = function (sender, event) {
+        if (!self.IsChangingLuma || self.IsChangingLuma() == false) {
+            return;
+        }
+
+        self.CurrentColor().Luma(self.MAX_HSL - event.layerY);
+    };
+
+    this.EndChangingLuma = function () {
+        self.IsChangingLuma(false);
     };
 
     this.RenderCompleted = function () {
@@ -211,41 +263,15 @@ function ColorPickerViewModel() {
 function initPicker() {
     generateLumPalette(160 * 360.0 / MAX_LUMA, 0);
 
-    document.getElementById('palette_crosshair').draggable = false;
-
     document.getElementById('define_custom_colors').disabled = true;
 }
 
 function colorChanged(color) {
     generateLumPalette(color.hue, color.saturation);
 
-    var paletteCrosshair = document.getElementById('palette_crosshair');
-    var lumaSlider = document.getElementById('luma_slider');
     paletteCrosshair.style.marginLeft = color.hue + "px";
     paletteCrosshair.style.marginTop = (MAX_SATURATION - color.saturation) + "px";
     lumaSlider.style.marginTop = (MAX_LUMA - color.luma) + "px";
-}
-
-function changeLuma(event) {
-    var picker = document.getElementById('luma_picker');
-    var slider = document.getElementById('luma_slider');
-
-    slider.style.marginTop = (getAbsoluteMousePos(event).y - getAbsoluteElementPosition(picker).y) + "px";
-
-    colorChanged(defineColor());
-}
-
-function changePalette(event) {
-    var picker = document.getElementById('palette_picker');
-    var crosshair = document.getElementById('palette_crosshair');
-
-    var hue = getAbsoluteMousePos(event).x - getAbsoluteElementPosition(picker).x - (crosshair.width * 0.5);
-    var saturation = getAbsoluteMousePos(event).y - getAbsoluteElementPosition(picker).y - (crosshair.height * 0.5);
-    crosshair.style.marginLeft = hue + "px";
-    crosshair.style.marginTop = saturation + "px";
-
-    generateLumPalette(hue, MAX_SATURATION - saturation);
-    colorChanged(defineColor());
 }
 
 function defineColor() {

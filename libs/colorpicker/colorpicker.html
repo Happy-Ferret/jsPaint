@@ -29,13 +29,15 @@
             <table>
                 <tr>
                     <td>
-                        <div style="overflow: hidden; height: 242px;">
+                        <div style="overflow: hidden; position: relative; height: 242px;"
+                             data-bind="event: { mousedown: BeginChangingPalette, mouseup: EndChangingPalette, mousemove: ProcessChangingPalette }">
                             <canvas width="240px" height="240px"
-                                    style="border-color: #000; border-style: solid; border-width: 1px;"
+                                    style="border: 1px solid #000;"
                                     data-bind="attr: { id: ID }"></canvas>
 
-                            <svg id="palette_picker" draggable="false">
-                                <rect x="8" y="0" width="3" height="5"/>
+                            <svg id="palette_picker" draggable="false"
+                                 data-bind="style: { left: PalettePickerPositionLeft, top: PalettePickerPositionTop }">
+                            <rect x="8" y="0" width="3" height="5"/>
                                 <rect x="8" y="14" width="3" height="5"/>
                                 <rect x="0" y="8" width="5" height="3"/>
                                 <rect x="14" y="8" width="5" height="3"/>
@@ -44,14 +46,14 @@
                     </td>
                     <td>
                         <table>
-                            <tr>
+                            <tr data-bind="event: { mousedown: BeginChangingLuma, mouseup: EndChangingLuma, mousemove: ProcessChangingLuma }">
                                 <td>
                                     <canvas id="lum_palette" width="10" height="185">&nbsp</canvas>
                                 </td>
                                 <td>
                                     <div style="overflow: hidden; width: 10px; height: 190px;">
-                                        <svg id="luma_picker">
-                                            <!--<img src="images/luma_picker.png" id="luma_slider"/>-->
+                                        <svg id="luma_picker" data-bind="style : { top: LumaPickerPosition }">
+                                        <!--<img src="images/luma_picker.png" id="luma_slider"/>-->
                                             <polygon points="6 0, 6 10, 0 5" fill="black"/>
                                         </svg>
                                     </div>
