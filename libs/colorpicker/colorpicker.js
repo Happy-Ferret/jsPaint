@@ -124,12 +124,12 @@ function ColorPickerViewModel() {
     self.MAX_RGB = 255;
 
     self.PREDEFINED_PICKER_COLORS = [
-        [ "#FF8080", "#FFFF80", "#80FF80", "#00FF80", "#80FFFF", "#0080FF", "#FF80C0", "#FF80FF" ],
-        [ "#FF0000", "#FFFF00", "#80FF00", "#00FF40", "#00FF40", "#0080C0", "#8080C0", "#FF00FF" ],
-        [ "#804040", "#FF8040", "#00FF00", "#008080", "#004080", "#8080FF", "#800040", "#FF0080" ],
-        [ "#800000", "#FF8000", "#008000", "#008040", "#0000FF", "#0000A0", "#800080", "#8000FF" ],
-        [ "#400000", "#804000", "#004000", "#004040", "#000080", "#000040", "#400040", "#400080" ],
-        [ "#000000", "#808000", "#808040", "#808080", "#408080", "#C0C0C0", "#400040", "#FFFFFF" ]
+        [ new ColorModel(255, 128, 128), new ColorModel(255, 255, 128), new ColorModel(128, 255, 128), new ColorModel(0, 255, 128), new ColorModel(128, 255, 255), new ColorModel(0, 128, 255), new ColorModel(255, 128, 192), new ColorModel(255, 128, 155) ],
+        [ new ColorModel(255, 0, 0), new ColorModel(255, 255, 0), new ColorModel(128, 255, 0), new ColorModel(0, 255, 64), new ColorModel(0, 255, 64), new ColorModel(0, 128, 192), new ColorModel(128, 128, 192), new ColorModel(255, 0, 255) ],
+        [ new ColorModel(128, 64, 64), new ColorModel(255, 128, 64), new ColorModel(0, 255, 0), new ColorModel(0, 128, 128), new ColorModel(0, 64, 128), new ColorModel(128, 128, 255), new ColorModel(128, 0, 64), new ColorModel(255, 0, 128) ],
+        [ new ColorModel(128, 0, 0), new ColorModel(255, 128, 0), new ColorModel(0, 128, 0), new ColorModel(0, 128, 64), new ColorModel(0, 0, 255), new ColorModel(0, 0, 160), new ColorModel(128, 0, 128), new ColorModel(128, 0, 255) ],
+        [ new ColorModel(64, 0, 0), new ColorModel(128, 64, 0), new ColorModel(0, 64, 0), new ColorModel(0, 64, 64), new ColorModel(0, 0, 128), new ColorModel(0, 0, 64), new ColorModel(64, 0, 64), new ColorModel(64, 0, 128) ],
+        [ new ColorModel(0, 0, 0), new ColorModel(128, 128, 0), new ColorModel(128, 128, 64), new ColorModel(128, 128, 128), new ColorModel(64, 128, 128), new ColorModel(192, 192, 192), new ColorModel(64, 0, 64), new ColorModel(255, 255, 255) ]
     ];
 
     self.Rendered = ko.observable(false);
@@ -139,6 +139,10 @@ function ColorPickerViewModel() {
 
     self.CustomColorsRowCnt = ko.observable(0);
     self.CustomColorsColumnCnt = ko.observable(0);
+
+    this.SelectColor = function (newValue) {
+        self.CurrentColor(newValue);
+    };
 
     this.GenerateLumPalette = function () {
         if (self.Rendered() == false || self.IsChangingLuma() == true) {

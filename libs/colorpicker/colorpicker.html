@@ -4,14 +4,16 @@
             <div>Basic colors:</div>
             <div data-bind="foreach: PREDEFINED_PICKER_COLORS" class="colors_container">
                 <!-- ko foreach: $data -->
-                <div class="color_in_palette" data-bind="style: { backgroundColor: $data }"></div>
+                <div class="color_in_palette"
+                     data-bind="style: { backgroundColor: $data.HtmlColor }, click: function(){ $parents[1].SelectColor($data); }"></div>
                 <!-- /ko -->
             </div>
 
             <div>Custom colors:</div>
             <div data-bind="foreach: CustomPickerColors" class="colors_container">
                 <!-- ko foreach: $data -->
-                <div class="color_in_palette" data-bind="style: { backgroundColor: $data.HtmlColor }"></div>
+                <div class="color_in_palette"
+                     data-bind="style: { backgroundColor: $data.HtmlColor }, click: function(){ $parents[1].SelectColor($data); }"></div>
                 <!-- /ko -->
             </div>
 
