@@ -85,3 +85,7 @@ input.add_to_custom {
 .color_in_palette:active {
     border-color: #EF4810;
 }
+
+.colors_container {
+    width: 200px;
+}

@@ -2,18 +2,18 @@
     <tr>
         <td>
             <div>Basic colors:</div>
-            <table data-bind="foreach: PREDEFINED_PICKER_COLORS">
-                <tr data-bind="foreach: $data">
-                    <td class="color_cell" data-bind="style: { backgroundColor: $data }"></td>
-                </tr>
-            </table>
+            <div data-bind="foreach: PREDEFINED_PICKER_COLORS" class="colors_container">
+                <!-- ko foreach: $data -->
+                <div class="color_in_palette" data-bind="style: { backgroundColor: $data }"></div>
+                <!-- /ko -->
+            </div>
 
             <div>Custom colors:</div>
-            <table data-bind="foreach: CustomPickerColors">
-                <tr data-bind="foreach: $data">
-                    <td class="color_cell" data-bind="style: { backgroundColor: $data.HtmlColor }"></td>
-                </tr>
-            </table>
+            <div data-bind="foreach: CustomPickerColors" class="colors_container">
+                <!-- ko foreach: $data -->
+                <div class="color_in_palette" data-bind="style: { backgroundColor: $data.HtmlColor }"></div>
+                <!-- /ko -->
+            </div>
 
             <div>
                 <input type="button" value="Define Custom Colors >> " id="define_custom_colors"/>
