@@ -1,108 +1,106 @@
-<div id="color_picker_window_content">
-    <table>
-        <tr>
-            <td>
-                <div>Basic colors:</div>
-                <table data-bind="foreach: PREDEFINED_PICKER_COLORS">
-                    <tr data-bind="foreach: $data">
-                        <td class="color_cell" data-bind="style: { backgroundColor: $data }"></td>
-                    </tr>
-                </table>
+<table id="color_picker_window_content">
+    <tr>
+        <td>
+            <div>Basic colors:</div>
+            <table data-bind="foreach: PREDEFINED_PICKER_COLORS">
+                <tr data-bind="foreach: $data">
+                    <td class="color_cell" data-bind="style: { backgroundColor: $data }"></td>
+                </tr>
+            </table>
 
-                <div>Custom colors:</div>
-                <table data-bind="foreach: CustomPickerColors">
-                    <tr data-bind="foreach: $data">
-                        <td class="color_cell" data-bind="style: { backgroundColor: $data.HtmlColor }"></td>
-                    </tr>
-                </table>
+            <div>Custom colors:</div>
+            <table data-bind="foreach: CustomPickerColors">
+                <tr data-bind="foreach: $data">
+                    <td class="color_cell" data-bind="style: { backgroundColor: $data.HtmlColor }"></td>
+                </tr>
+            </table>
 
-                <div>
-                    <input type="button" value="Define Custom Colors >> " id="define_custom_colors"/>
-                </div>
+            <div>
+                <input type="button" value="Define Custom Colors >> " id="define_custom_colors"/>
+            </div>
 
-                <div>
-                    <input type="button" value="OK" class="smallWindowsButton"
-                           data-bind="click: function(){ $parent.DataSelect(CurrentColor().HtmlColor()); }"/>
-                    <input type="button" value="Cancel" class="cancel_button" data-bind="click: $parent.Close"/>
-                </div>
-            </td>
-            <td>
-                <table>
-                    <tr>
-                        <td>
-                            <div style="overflow: hidden; height: 242px;">
-                                <canvas width="240px" height="240px"
-                                        style="border-color: #000; border-style: solid; border-width: 1px;"
-                                        data-bind="attr: { id: ID }"></canvas>
+            <div>
+                <input type="button" value="OK" class="smallWindowsButton"
+                       data-bind="click: function(){ $parent.DataSelect(CurrentColor().HtmlColor()); }"/>
+                <input type="button" value="Cancel" class="cancel_button" data-bind="click: $parent.Close"/>
+            </div>
+        </td>
+        <td>
+            <table>
+                <tr>
+                    <td>
+                        <div style="overflow: hidden; height: 242px;">
+                            <canvas width="240px" height="240px"
+                                    style="border-color: #000; border-style: solid; border-width: 1px;"
+                                    data-bind="attr: { id: ID }"></canvas>
 
-                                <svg id="palette_picker">
-                                    <rect x="8" y="0" width="3" height="5"/>
-                                    <rect x="8" y="14" width="3" height="5"/>
-                                    <rect x="0" y="8" width="5" height="3"/>
-                                    <rect x="14" y="8" width="5" height="3"/>
-                                </svg>
-                            </div>
-                        </td>
-                        <td>
-                            <table>
-                                <tr>
-                                    <td>
-                                        <canvas id="lum_palette" width="10" height="185">&nbsp</canvas>
-                                    </td>
-                                    <td>
-                                        <div style="overflow: hidden; width: 10px; height: 190px;">
-                                            <svg id="luma_picker">
-                                                <!--<img src="images/luma_picker.png" id="luma_slider"/>-->
-                                                <polygon points="6 0, 6 10, 0 5" fill="black"/>
-                                            </svg>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
+                            <svg id="palette_picker" draggable="false">
+                                <rect x="8" y="0" width="3" height="5"/>
+                                <rect x="8" y="14" width="3" height="5"/>
+                                <rect x="0" y="8" width="5" height="3"/>
+                                <rect x="14" y="8" width="5" height="3"/>
+                            </svg>
+                        </div>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    <canvas id="lum_palette" width="10" height="185">&nbsp</canvas>
+                                </td>
+                                <td>
+                                    <div style="overflow: hidden; width: 10px; height: 190px;">
+                                        <svg id="luma_picker">
+                                            <!--<img src="images/luma_picker.png" id="luma_slider"/>-->
+                                            <polygon points="6 0, 6 10, 0 5" fill="black"/>
+                                        </svg>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
 
-                <table>
-                    <tr>
-                        <td rowspan="3">
-                            <div id="color_example"
-                                 data-bind="style: { backgroundColor: CurrentColor().HtmlColor }"></div>
-                            <div>Color|Solid</div>
-                        </td>
-                        <td>Hue:</td>
-                        <td><input type="text" class="color_param" maxlength="3"
-                                   data-bind="value: CurrentColor().Hue, valueUpdate: 'afterkeydown'"/>
-                        </td>
-                        <td>Red:</td>
-                        <td><input type="text" class="color_param" maxlength="3"
-                                   data-bind="value: CurrentColor().Red, valueUpdate: 'afterkeydown'"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Sat:</td>
-                        <td><input type="text" class="color_param" maxlength="3"
-                                   data-bind="value: CurrentColor().Saturation, valueUpdate: 'afterkeydown'"/></td>
-                        <td>Green:</td>
-                        <td><input type="text" class="color_param" maxlength="3"
-                                   data-bind="value: CurrentColor().Green, valueUpdate: 'afterkeydown'"/></td>
-                    </tr>
-                    <tr>
-                        <td>Lum:</td>
-                        <td><input type="text" class="color_param" maxlength="3"
-                                   data-bind="value: CurrentColor().Luma, valueUpdate: 'afterkeydown'"/></td>
-                        <td>Blue:</td>
-                        <td><input type="text" class="color_param" maxlength="3"
-                                   data-bind="value: CurrentColor().Blue, valueUpdate: 'afterkeydown'"/></td>
-                    </tr>
-                    <tr>
-                        <td colspan="4">
-                            <input type="button" class="add_to_custom" value="Add to Custom Colors"
-                                   data-bind="click: AddToCustomColors"/>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-</div>
+            <table>
+                <tr>
+                    <td rowspan="3">
+                        <div id="color_example"
+                             data-bind="style: { backgroundColor: CurrentColor().HtmlColor }"></div>
+                        <div>Color|Solid</div>
+                    </td>
+                    <td>Hue:</td>
+                    <td><input type="text" class="color_param" maxlength="3"
+                               data-bind="value: CurrentColor().Hue, valueUpdate: 'afterkeydown'"/>
+                    </td>
+                    <td>Red:</td>
+                    <td><input type="text" class="color_param" maxlength="3"
+                               data-bind="value: CurrentColor().Red, valueUpdate: 'afterkeydown'"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sat:</td>
+                    <td><input type="text" class="color_param" maxlength="3"
+                               data-bind="value: CurrentColor().Saturation, valueUpdate: 'afterkeydown'"/></td>
+                    <td>Green:</td>
+                    <td><input type="text" class="color_param" maxlength="3"
+                               data-bind="value: CurrentColor().Green, valueUpdate: 'afterkeydown'"/></td>
+                </tr>
+                <tr>
+                    <td>Lum:</td>
+                    <td><input type="text" class="color_param" maxlength="3"
+                               data-bind="value: CurrentColor().Luma, valueUpdate: 'afterkeydown'"/></td>
+                    <td>Blue:</td>
+                    <td><input type="text" class="color_param" maxlength="3"
+                               data-bind="value: CurrentColor().Blue, valueUpdate: 'afterkeydown'"/></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <input type="button" class="add_to_custom" value="Add to Custom Colors"
+                               data-bind="click: AddToCustomColors"/>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
