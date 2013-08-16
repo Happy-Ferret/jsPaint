@@ -31,7 +31,7 @@ function ColorModel(r, g, b, colorChangedCallback) {
 
         var hsl = ColorHelpers.fromRGB(r, g, b);
 
-        self.CurrentColorHSL({hue: hsl.hue, luma: hsl.luma, saturation: hsl.saturation});
+        self.CurrentColorHSL({hue: isNaN(hsl.hue) ? 0 : hsl.hue, luma: hsl.luma, saturation: hsl.saturation});
 
         if (colorChangedCallback) {
             colorChangedCallback();
@@ -41,7 +41,7 @@ function ColorModel(r, g, b, colorChangedCallback) {
     this.ProcessHSLInput = function (h, s, l) {
         self.CurrentColorHSL({hue: h, luma: l, saturation: s});
 
-        var rgb = ColorHelpers.fromHSL(h * 360.0 / 240.0, s / 240.0, l / 240.0);
+        var rgb = ColorHelpers.fromHSL(h, s, l);
 
         self.CurrentColorRGB({red: rgb.red, green: rgb.green, blue: rgb.blue});
 
@@ -52,7 +52,7 @@ function ColorModel(r, g, b, colorChangedCallback) {
 
     self.Red = ko.computed({
         read: function () {
-            return self.CurrentColorRGB().red;
+            return parseInt(self.CurrentColorRGB().red);
         },
         write: function (value) {
             self.ProcessRGBInput(self.ValidateValue(value, self.MAX_RGB), self.CurrentColorRGB().green, self.CurrentColorRGB().blue);
@@ -61,7 +61,7 @@ function ColorModel(r, g, b, colorChangedCallback) {
 
     self.Green = ko.computed({
         read: function () {
-            return self.CurrentColorRGB().green;
+            return parseInt(self.CurrentColorRGB().green);
         },
         write: function (value) {
             self.ProcessRGBInput(self.CurrentColorRGB().red, self.ValidateValue(value, self.MAX_RGB), self.CurrentColorRGB().blue);
@@ -70,7 +70,7 @@ function ColorModel(r, g, b, colorChangedCallback) {
 
     self.Blue = ko.computed({
         read: function () {
-            return self.CurrentColorRGB().blue;
+            return parseInt(self.CurrentColorRGB().blue);
         },
         write: function (value) {
             self.ProcessRGBInput(self.CurrentColorRGB().red, self.CurrentColorRGB().green, self.ValidateValue(value, self.MAX_RGB));
@@ -79,7 +79,7 @@ function ColorModel(r, g, b, colorChangedCallback) {
 
     self.Hue = ko.computed({
         read: function () {
-            return self.CurrentColorHSL().hue;
+            return parseInt(self.CurrentColorHSL().hue);
         },
         write: function (value) {
             self.ProcessHSLInput(self.ValidateValue(value, self.MAX_HSL), self.CurrentColorHSL().saturation, self.CurrentColorHSL().luma);
@@ -88,7 +88,7 @@ function ColorModel(r, g, b, colorChangedCallback) {
 
     self.Luma = ko.computed({
         read: function () {
-            return self.CurrentColorHSL().luma;
+            return parseInt(self.CurrentColorHSL().luma);
         },
         write: function (value) {
             self.ProcessHSLInput(self.CurrentColorHSL().hue, self.CurrentColorHSL().saturation, self.ValidateValue(value, self.MAX_HSL));
@@ -97,7 +97,7 @@ function ColorModel(r, g, b, colorChangedCallback) {
 
     self.Saturation = ko.computed({
         read: function () {
-            return self.CurrentColorHSL().saturation;
+            return parseInt(self.CurrentColorHSL().saturation);
         },
         write: function (value) {
             self.ProcessHSLInput(self.CurrentColorHSL().hue, self.ValidateValue(value, self.MAX_HSL), self.CurrentColorHSL().luma);
@@ -141,7 +141,7 @@ function ColorPickerViewModel() {
     self.CustomColorsColumnCnt = ko.observable(0);
 
     this.GenerateLumPalette = function () {
-        if (self.Rendered() == false) {
+        if (self.Rendered() == false || self.IsChangingLuma() == true) {
             return;
         }
 
@@ -152,7 +152,7 @@ function ColorPickerViewModel() {
         var canvas = canv.getContext("2d");
 
         for (var lum = self.MAX_HSL; lum >= 0; lum--) {
-            var tempColor = ColorHelpers.fromHSL(hue * 360.0 / 240.0, saturation / 240.0, lum / 240.0);
+            var tempColor = ColorHelpers.fromHSL(hue, saturation, lum);
             canvas.fillStyle = ColorHelpers.toHtmlRGB(tempColor.red, tempColor.green, tempColor.blue);
             canvas.fillRect(0, self.MAX_HSL - lum, canv.width, 1);
         }
@@ -178,7 +178,7 @@ function ColorPickerViewModel() {
 
         for (var saturation = self.MAX_HSL; saturation >= 0; saturation--) {
             for (var hue = 0; hue <= self.MAX_HSL; hue++) {
-                var tmpColor = ColorHelpers.fromHSL(hue * 360.0 / 240.0, saturation / 240.0, 0.5);
+                var tmpColor = ColorHelpers.fromHSL(hue, saturation, self.MAX_HSL * 0.5);
                 canvas.fillStyle = ColorHelpers.toHtmlRGB(tmpColor.red, tmpColor.green, tmpColor.blue);
                 canvas.fillRect(hue, self.MAX_HSL - saturation, 1, 1);
             }
@@ -258,38 +258,4 @@ function ColorPickerViewModel() {
     };
 
     self.Init();
-}
-
-function initPicker() {
-    generateLumPalette(160 * 360.0 / MAX_LUMA, 0);
-
-    document.getElementById('define_custom_colors').disabled = true;
-}
-
-function colorChanged(color) {
-    generateLumPalette(color.hue, color.saturation);
-
-    paletteCrosshair.style.marginLeft = color.hue + "px";
-    paletteCrosshair.style.marginTop = (MAX_SATURATION - color.saturation) + "px";
-    lumaSlider.style.marginTop = (MAX_LUMA - color.luma) + "px";
-}
-
-function defineColor() {
-    var crosshair = document.getElementById('palette_crosshair');
-    var lumaSlider = document.getElementById('luma_slider');
-
-    var h = parseInt(crosshair.style.marginLeft);
-    var s = MAX_SATURATION - parseInt(crosshair.style.marginTop);
-    var l = MAX_LUMA - parseInt(lumaSlider.style.marginTop);
-    var rgbClr = fromHSL(h * 360.0 / 240.0, s / 240.0, l / 240.0);
-}
-
-function pickPredefined(color) {
-    var hsl = fromRGB(r, g, b);
-
-    colorChanged({
-        hue: Math.round(hsl.hue * 240.0 / 360.0),
-        saturation: Math.round(hsl.saturation * 240.0),
-        luma: Math.round(hsl.luma * 240.0)
-    });
 }

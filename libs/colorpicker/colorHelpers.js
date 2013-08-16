@@ -66,13 +66,17 @@ ColorHelpers = {
             hue = 0.0;
 
         return {
-            hue: hue,
-            saturation: saturation,
-            luma: luma
+            hue: hue * 240.0 / 360.0,
+            saturation: saturation * 240.0,
+            luma: luma * 240.0
         };
     },
 
     fromHSL: function (hue, saturation, lum) {
+        hue = hue * 360.0 / 240.0;
+        saturation = saturation / 240.0;
+        lum = lum / 240.0;
+
         var q = 0;
 
         if (lum < 0.5)
@@ -89,14 +93,11 @@ ColorHelpers = {
         tr = ColorHelpers.Normalize(tr);
         tg = ColorHelpers.Normalize(tg);
         tb = ColorHelpers.Normalize(tb);
-        r = ColorHelpers.ComputeColor(q, p, tr) * 255;
-        g = ColorHelpers.ComputeColor(q, p, tg) * 255;
-        b = ColorHelpers.ComputeColor(q, p, tb) * 255;
 
         return {
-            red: r,
-            green: g,
-            blue: b
+            red: ColorHelpers.ComputeColor(q, p, tr) * 255,
+            green: ColorHelpers.ComputeColor(q, p, tg) * 255,
+            blue: ColorHelpers.ComputeColor(q, p, tb) * 255
         };
     }
 };
