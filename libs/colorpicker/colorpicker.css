@@ -34,7 +34,7 @@
     -webkit-user-drag: none;
 }
 
-.cancel_button {
+.colorpickerCancelButton {
     height: 21px;
     width: 64px;
 }
@@ -61,31 +61,43 @@ input.add_to_custom {
     position: absolute;
 }
 
-.color_in_palette, .color_in_palette:hover, .color_selected, .color_selected:hover {
+.colorpickerColorCell, .colorpickerColorCell:hover, .color_selected, .color_selected:hover {
     border: 1px solid;
 
     padding: 1px;
 }
 
-.color_in_palette, .color_selected {
+.colorpickerColorCell, .color_selected {
     border-color: #A0A0A0;
 }
 
-.color_in_palette:hover {
+.colorpickerColorCell:hover {
     border-color: #F29436;
     background-color: #FFE294;
 }
 
-.color_in_palette {
+.colorpickerColorCell {
     width: 16px;
     height: 16px;
     display: inline-block;
 }
 
-.color_in_palette:active {
+.colorpickerColorCell:active {
     border-color: #EF4810;
 }
 
-.colors_container {
+.colorpickerColorsContainer {
     width: 200px;
+}
+
+.colorpickerContent {
+    margin: 10px;
+}
+
+.colorpickerLeftColumn {
+    float: left;
+}
+
+.colorpickerRightColumn {
+    float: right;
 }
