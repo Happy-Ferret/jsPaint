@@ -1,28 +1,4 @@
-var ColorHelpers;
-ColorHelpers = {
-    Normalize: function (tr) {
-        if (tr < 0)
-            return tr + 1.0;
-
-        if (tr > 1.0)
-            return tr - 1.0;
-
-        return tr;
-    },
-
-    ComputeColor: function (q, p, tc) {
-        if (tc < 1.0 / 6.0)
-            return p + ((q - p) * 6.0 * tc);
-
-        if (tc < 0.5)
-            return q;
-
-        if (tc < 2.0 / 3.0)
-            return p + ((q - p) * 6.0 * (2.0 / 3.0 - tc));
-
-        return p;
-    },
-
+var ColorHelpers = {
     toHtmlRGB: function (red, green, blue) {
         var r = parseInt(red).toString(16).length == 1 ? "0" + parseInt(red).toString(16) : parseInt(red).toString(16);
         var g = parseInt(green).toString(16).length == 1 ? "0" + parseInt(green).toString(16) : parseInt(green).toString(16);
@@ -77,6 +53,29 @@ ColorHelpers = {
         saturation = saturation / 240.0;
         lum = lum / 240.0;
 
+        var computeColor = function (q, p, tc) {
+            if (tc < 1.0 / 6.0)
+                return p + ((q - p) * 6.0 * tc);
+
+            if (tc < 0.5)
+                return q;
+
+            if (tc < 2.0 / 3.0)
+                return p + ((q - p) * 6.0 * (2.0 / 3.0 - tc));
+
+            return p;
+        };
+
+        var normalize = function (tr) {
+            if (tr < 0)
+                return tr + 1.0;
+
+            if (tr > 1.0)
+                return tr - 1.0;
+
+            return tr;
+        };
+
         var q = 0;
 
         if (lum < 0.5)
@@ -90,14 +89,14 @@ ColorHelpers = {
         var tr = hk + 1.0 / 3.0;
         var tg = hk;
         var tb = hk - 1.0 / 3.0;
-        tr = ColorHelpers.Normalize(tr);
-        tg = ColorHelpers.Normalize(tg);
-        tb = ColorHelpers.Normalize(tb);
+        tr = normalize(tr);
+        tg = normalize(tg);
+        tb = normalize(tb);
 
         return {
-            red: ColorHelpers.ComputeColor(q, p, tr) * 255,
-            green: ColorHelpers.ComputeColor(q, p, tg) * 255,
-            blue: ColorHelpers.ComputeColor(q, p, tb) * 255
+            red: computeColor(q, p, tr) * 255,
+            green: computeColor(q, p, tg) * 255,
+            blue: computeColor(q, p, tb) * 255
         };
     }
 };
