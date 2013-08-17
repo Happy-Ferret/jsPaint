@@ -34,7 +34,7 @@
                          data-bind="event: { mousedown: BeginChangingPalette, mouseup: EndChangingPalette, mousemove: ProcessChangingPalette }">
                         <canvas width="240px" height="240px"
                                 style="border: 1px solid #000;"
-                                data-bind="attr: { id: ID }"></canvas>
+                                data-bind="attr: { id: PaletteCanvasID }"></canvas>
 
                         <svg id="palette_picker" draggable="false"
                              data-bind="visible: IsChangingPalette() == false, style: { left: PalettePickerPositionLeft, top: PalettePickerPositionTop }">
@@ -49,7 +49,9 @@
                     <table>
                         <tr data-bind="event: { mousedown: BeginChangingLuma, mouseup: EndChangingLuma, mousemove: ProcessChangingLuma }">
                             <td>
-                                <canvas id="lum_palette" width="10" height="185">&nbsp</canvas>
+                                <canvas class="lum_palette" width="10" height="185"
+                                        data-bind="attr: { id: LumaCanvasID }">&nbsp
+                                </canvas>
                             </td>
                             <td>
                                 <div style="overflow: hidden; width: 10px; height: 190px;">

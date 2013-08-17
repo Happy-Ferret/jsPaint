@@ -118,7 +118,8 @@ function ColorModel(r, g, b, colorChangedCallback) {
 function ColorPickerViewModel() {
     var self = this;
 
-    self.ID = ko.observable(Math.random() * 10000000);
+    self.PaletteCanvasID = ko.observable('paletteCanvas' + (Math.random() * 10000000));
+    self.LumaCanvasID = ko.observable('lumaCanvas' + (Math.random() * 10000000));
 
     self.MAX_HSL = 240;
     self.MAX_RGB = 255;
@@ -152,7 +153,7 @@ function ColorPickerViewModel() {
         var hue = self.CurrentColor().Hue();
         var saturation = self.CurrentColor().Saturation();
 
-        var canv = document.getElementById('lum_palette');
+        var canv = document.getElementById(self.LumaCanvasID());
         var canvas = canv.getContext("2d");
 
         for (var lum = self.MAX_HSL; lum >= 0; lum--) {
@@ -178,7 +179,7 @@ function ColorPickerViewModel() {
     });
 
     this.GeneratePalette = function () {
-        var canvas = document.getElementById(self.ID()).getContext("2d");
+        var canvas = document.getElementById(self.PaletteCanvasID()).getContext("2d");
 
         for (var saturation = self.MAX_HSL; saturation >= 0; saturation--) {
             for (var hue = 0; hue <= self.MAX_HSL; hue++) {
