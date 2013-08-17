@@ -30,10 +30,9 @@
         <table>
             <tr>
                 <td>
-                    <div style="overflow: hidden; position: relative; height: 242px;"
+                    <div class="colorpickerPaletteBlock"
                          data-bind="event: { mousedown: BeginChangingPalette, mouseup: EndChangingPalette, mousemove: ProcessChangingPalette }">
-                        <canvas width="240px" height="240px"
-                                style="border: 1px solid #000;"
+                        <canvas width="240px" height="240px" class="colorpickerPaletteCanvas"
                                 data-bind="attr: { id: PaletteCanvasID }"></canvas>
 
                         <svg id="palette_picker" draggable="false"
@@ -53,13 +52,10 @@
                                         data-bind="attr: { id: LumaCanvasID }">&nbsp
                                 </canvas>
                             </td>
-                            <td>
-                                <div style="overflow: hidden; width: 10px; height: 190px;">
-                                    <svg id="luma_picker" data-bind="style : { top: LumaPickerPosition }">
-                                        <!--<img src="images/luma_picker.png" id="luma_slider"/>-->
-                                        <polygon points="6 0, 6 10, 0 5" fill="black"></polygon>
-                                    </svg>
-                                </div>
+                            <td class="colorpickerLumaPickerBlock">
+                                <svg id="luma_picker" data-bind="style : { top: LumaPickerPosition }">
+                                    <polygon points="6 0, 6 10, 0 5" fill="black"></polygon>
+                                </svg>
                             </td>
                         </tr>
                     </table>

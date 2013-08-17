@@ -92,3 +92,20 @@ input.add_to_custom {
 .colorpickerRightColumn {
     float: right;
 }
+
+.colorpickerPaletteBlock {
+    overflow: hidden;
+    position: relative;
+    height: 242px;
+"
+}
+
+.colorpickerPaletteCanvas {
+    border: 1px solid #000;
+}
+
+.colorpickerLumaPickerBlock {
+    overflow: hidden;
+    width: 10px;
+    height: 190px;
+}
