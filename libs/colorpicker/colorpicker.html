@@ -31,8 +31,8 @@
             <tr>
                 <td>
                     <div class="colorpickerPaletteBlock"
-                         data-bind="event: { mousedown: BeginChangingPalette, mouseup: EndChangingPalette, mousemove: ProcessChangingPalette }">
-                        <canvas width="240px" height="240px" class="colorpickerPaletteCanvas"
+                         data-bind="event: { mousedown: BeginChangingPalette, mouseup: EndChangingPalette, mousemove: ProcessChangingPalette, mouseout: EndChangingPalette }">
+                    <canvas width="240px" height="240px" class="colorpickerPaletteCanvas"
                                 data-bind="attr: { id: PaletteCanvasID }"></canvas>
 
                         <svg id="palette_picker" draggable="false"
@@ -46,15 +46,16 @@
                 </td>
                 <td>
                     <table>
-                        <tr data-bind="event: { mousedown: BeginChangingLuma, mouseup: EndChangingLuma, mousemove: ProcessChangingLuma }">
-                            <td>
-                                <canvas class="lum_palette" width="10" height="185"
+                        <tr data-bind="event: { mousedown: BeginChangingLuma, mouseup: EndChangingLuma, mousemove: ProcessChangingLuma, mouseout: EndChangingLuma }">
+                            <td class="colorpickerLumaPickerBlock">
+                                <canvas class="lum_palette" width="10" height="240"
                                         data-bind="attr: { id: LumaCanvasID }">&nbsp
                                 </canvas>
                             </td>
                             <td class="colorpickerLumaPickerBlock">
-                                <svg id="luma_picker" data-bind="style : { top: LumaPickerPosition }">
-                                    <polygon points="6 0, 6 10, 0 5" fill="black"></polygon>
+                                <svg id="luma_picker" data-bind="style : { top: LumaPickerPosition }" height="10"
+                                     width="10">
+                                <polygon points="6 0, 6 10, 0 5" fill="black"></polygon>
                                 </svg>
                             </td>
                         </tr>

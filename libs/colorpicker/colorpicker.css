@@ -108,4 +108,5 @@ input.add_to_custom {
     overflow: hidden;
     width: 10px;
     height: 190px;
+    position: relative;
 }
