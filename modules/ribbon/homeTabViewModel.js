@@ -31,8 +31,8 @@ function HomeTabViewModel(state) {
             iconClass: 'systemAppIcon',
 
             size: {
-                width: 510,
-                height: 360
+                width: 450,
+                height: 300
             }
         }, {
             windowTemplate: 'colorpickerTemplate'

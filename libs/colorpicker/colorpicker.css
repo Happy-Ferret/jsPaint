@@ -34,7 +34,7 @@
     -webkit-user-drag: none;
 }
 
-.colorpickerCancelButton {
+.cancel_button {
     height: 21px;
     width: 64px;
 }
@@ -61,43 +61,31 @@ input.add_to_custom {
     position: absolute;
 }
 
-.colorpickerColorCell, .colorpickerColorCell:hover, .color_selected, .color_selected:hover {
+.color_in_palette, .color_in_palette:hover, .color_selected, .color_selected:hover {
     border: 1px solid;
 
     padding: 1px;
 }
 
-.colorpickerColorCell, .color_selected {
+.color_in_palette, .color_selected {
     border-color: #A0A0A0;
 }
 
-.colorpickerColorCell:hover {
+.color_in_palette:hover {
     border-color: #F29436;
     background-color: #FFE294;
 }
 
-.colorpickerColorCell {
+.color_in_palette {
     width: 16px;
     height: 16px;
     display: inline-block;
 }
 
-.colorpickerColorCell:active {
+.color_in_palette:active {
     border-color: #EF4810;
 }
 
-.colorpickerColorsContainer {
+.colors_container {
     width: 200px;
-}
-
-.colorpickerContent {
-    margin: 10px;
-}
-
-.colorpickerLeftColumn {
-    float: left;
-}
-
-.colorpickerRightColumn {
-    float: right;
 }
