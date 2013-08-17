@@ -149,8 +149,6 @@ function WindowViewModel(parameters, templates, viewModels, events) {
         };
 
         document.body.addEventListener('mousemove', self.Drag);
-
-        //ko.applyBindings(viewModel, getElement(self.ID()));
     };
 
     this.DataSelect = function (newValue) {
