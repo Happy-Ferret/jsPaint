@@ -141,7 +141,7 @@ function ColorPickerViewModel() {
     self.CustomColorsColumnCnt = ko.observable(0);
 
     this.SelectColor = function (newValue) {
-        self.CurrentColor(newValue);
+        self.CurrentColor(new ColorModel(newValue.Red(), newValue.Green(), newValue.Blue()));
     };
 
     this.GenerateLumPalette = function () {
