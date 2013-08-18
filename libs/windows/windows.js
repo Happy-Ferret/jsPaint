@@ -191,7 +191,7 @@ function WindowViewModel(parameters, templates, viewModels, events) {
         };
 
         self.Size.Width(window.innerWidth);
-        self.Size.Height(window.InnerHeight);
+        self.Size.Height(window.innerHeight);
         self.Position.Left(0);
         self.Position.Top(0);
 
@@ -210,7 +210,7 @@ function WindowViewModel(parameters, templates, viewModels, events) {
         self.IsVisible(false);
     };
 
-    this.BeginDrag = function (data, event) {
+    this.BeginDrag = function () {
         self.IsDragging = true;
     };
 
