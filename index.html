@@ -7,8 +7,8 @@
 
     <!-- INTERNAL LIBS -->
     <script type="text/html" id="windowTemplate"></script>
-    <link rel="stylesheet" type="text/css" href="libs/windows/windows.css"/>
-    <script type="text/javascript" src="libs/windows/windows.js"></script>
+    <link rel="stylesheet" type="text/css" href="libs/windows/windows-0.9.0.css"/>
+    <script type="text/javascript" src="libs/windows/windows-0.9.0.js"></script>
 
     <script type="text/html" id="ribbonTemplate"></script>
     <link rel="stylesheet" type="text/css" href="libs/ribbon/ribbon.css"/>
@@ -57,7 +57,7 @@
     var Application;
 
     function loadTemplates() {
-        includeModule(getElement('windowTemplate'), '/libs/windows/windows.html');
+        WindowsFramework.includeModule(getElement('windowTemplate'), '/libs/windows/windows-0.9.0.html');
         includeModule(getElement('ribbonTemplate'), '/libs/ribbon/ribbon.html');
         includeModule(getElement('colorpickerTemplate'), 'libs/colorpicker/colorpicker.html');
 
@@ -80,9 +80,10 @@
     }
 </script>
 
-<body onload="initApplication()" id="application">
+<body onload="initApplication()" id="application" data-bind="event: { mouseup: Dispatcher.EndDragAll }">
 
-<div class="container" id="windowsContainer" data-bind="template: { name: 'windowTemplate', foreach: Windows }"></div>
+<div class="container" id="windowsContainer"
+     data-bind="template: { name: 'windowTemplate', foreach: Dispatcher.Windows }"></div>
 
 </body>
 </html>

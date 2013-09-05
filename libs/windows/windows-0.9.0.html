@@ -1,0 +1,107 @@
+<!-- Black thin border -->
+<div class="systemOuterBorder"
+     data-bind="visible: IsVisible, style: { top: Position.Top, left: Position.Left, zIndex: Order }, event: { mousedown: BringToFront }">
+    <!-- System color border -->
+    <table cellspacing="0" cellpadding="0">
+        <tr>
+            <td style="position: relative">
+                <div class="nwResizingAdorner"
+                     data-bind="event: { mousedown: BeginResizeNW, mouseup: EndResize }"></div>
+            </td>
+            <td>
+                <div class="northResizingAdorner"
+                     data-bind="event: { mousedown: BeginResizeN, mouseup: EndResize }, style: { width: Size.FullWidth() - 14 }"></div>
+            </td>
+            <td style="position:relative">
+                <div class="neResizingAdorner"
+                     data-bind="event: { mousedown: BeginResizeNE, mouseup: EndResize }"></div>
+            </td>
+        </tr>
+        <tr>
+            <td style="position:relative">
+                <div class="westResizingAdorner"
+                     data-bind="event: { mousedown: BeginResizeW, mouseup: EndResize }, style: { height: Size.FullHeight() }"></div>
+            </td>
+            <td>
+                <div class="systemBorder">
+                    <div class="systemBar"
+                         data-bind="event: { mousedown: BeginDrag, mouseup: EndDrag, dblclick: ClickMaximize }">
+                        <div class="systemLeft">
+                            <div class="topIcon" data-bind="css: Icon"></div>
+                            <div class="systemSeparator"></div>
+                            <span class="systemCaption" data-bind="text: Title"></span>
+                        </div>
+
+                        <div class="systemButtons">
+                            <div class="systemButton"
+                                 data-bind="visible: CanMinimize, click: Minimize, clickBubble: false">
+                                <div class="systemMinimizeButton">
+                                    <svg>
+                                        <polygon points="8,12 20,12 20,8 8,8 8,12" fill="#FFFFFF" stroke-width="0.1"
+                                                 stroke="#000000" class="icon"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="systemButton"
+                                 data-bind="visible: CanMaximize, click: ClickMaximize, clickBubble: false, css: MaximizeStyle">
+                                <div class="systemMaximizeButton">
+                                    <svg data-bind="visible: IsMaximized() == false">
+                                        <polygon points="10,5 18,5 18,10 10,10 10,4" fill="transparent" stroke-width="2"
+                                                 stroke="#FFFFFF" class="icon"/>
+                                    </svg>
+                                    <svg data-bind="visible: IsMaximized">
+                                        <polyline points="12,3 20,3 20,9" fill="transparent" stroke-width="2"
+                                                  stroke="#FFFFFF" class="icon"/>
+                                        <polygon points="11,5 18,5 18,10 11,10 11,4" fill="transparent" stroke-width="2"
+                                                 stroke="#FFFFFF" class="icon"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="systemButton"
+                                 data-bind="visible: CanClose, click: Close, clickBubble: false">
+                                <div class="systemCloseButton">
+                                    <svg>
+                                        <polygon
+                                                points="10,4 12,4 14,6 16,4 18,4 15,7 15,8 18,11 16,11 14,9 12,11 10,11 13,8 13,7 10,4"
+                                                fill="#FFFFFF" stroke-width="1" stroke="#FFFFFF" class="icon"/>
+                                    </svg>
+                                    <svg class="fakeCloseIcon">
+                                        <polygon
+                                                points="10,4 12,4 14,6 16,4 18,4 15,7 15,8 18,11 16,11 14,9 12,11 10,11 13,8 13,7 10,4"
+                                                fill="#FFFFFF" stroke-width="1" stroke="#FFFFFF"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="systemContent"
+                         data-bind="template: { name: Template(), data: Data, afterRender: RenderCompleted }, style: { backgroundColor: Background, width: Size.Width, height: Size.Height }, attr: { id: ID }"></div>
+
+                    <div class="statusbar" data-bind="visible: StatusbarTemplate() != ''">
+                        <div class="statusbarInner"
+                             data-bind="template: { name: StatusbarTemplate(), data: StatusbarViewModel }"></div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="eastResizingAdorner"
+                     data-bind="event: { mousedown: BeginResizeE, mouseup: EndResize }, style: { height: Size.FullHeight }"></div>
+            </td>
+        </tr>
+        <tr>
+            <td style="position: relative">
+                <div class="swResizingAdorner"
+                     data-bind="event: { mousedown: BeginResizeSW, mouseup: EndResize }"></div>
+            </td>
+            <td>
+                <div class="southResizingAdorner"
+                     data-bind="event: { mousedown: BeginResizeS, mouseup: EndResize }, style: { width: Size.FullWidth() - 10 }"></div>
+            </td>
+            <td style="position: relative">
+                <div class="seResizingAdorner"
+                     data-bind="event: { mousedown: BeginResizeSE, mouseup: EndResize }"></div>
+            </td>
+        </tr>
+    </table>
+</div>

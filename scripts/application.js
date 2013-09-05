@@ -1,10 +1,10 @@
 function ApplicationViewModel() {
     var self = this;
 
-    self.Windows = ko.observableArray([]);
+    self.Dispatcher = new WindowsFramework.WindowsDispatcher();
 
     this.CreateWindow = function (parameters, templates, viewModels, events) {
-        self.Windows.push(new WindowViewModel(parameters, templates, viewModels, events));
+        self.Dispatcher.AddWindow(new WindowsFramework.WindowViewModel(parameters, templates, viewModels, events));
     };
 
     this.Init = function () {
