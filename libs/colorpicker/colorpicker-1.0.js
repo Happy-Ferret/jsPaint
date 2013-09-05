@@ -107,6 +107,8 @@ function ColorModel(r, g, b, colorChangedCallback) {
     self.MAX_HSL = 240;
     self.MAX_RGB = 255;
 
+    self.ColorChangedCallback = colorChangedCallback;
+
     /**
      * @return {number}
      */
@@ -136,8 +138,8 @@ function ColorModel(r, g, b, colorChangedCallback) {
 
         self.CurrentColorHSL({hue: isNaN(hsl.hue) ? 0 : hsl.hue, luma: hsl.luma, saturation: hsl.saturation});
 
-        if (colorChangedCallback) {
-            colorChangedCallback();
+        if (self.ColorChangedCallback) {
+            self.ColorChangedCallback();
         }
     };
 
@@ -148,8 +150,8 @@ function ColorModel(r, g, b, colorChangedCallback) {
 
         self.CurrentColorRGB({red: rgb.red, green: rgb.green, blue: rgb.blue});
 
-        if (colorChangedCallback) {
-            colorChangedCallback();
+        if (self.ColorChangedCallback) {
+            self.ColorChangedCallback();
         }
     };
 
@@ -218,7 +220,7 @@ function ColorModel(r, g, b, colorChangedCallback) {
     self.Init();
 }
 
-function ColorPickerViewModel() {
+function ColorPickerViewModel(events) {
     var self = this;
 
     self.PaletteCanvasID = ko.observable('paletteCanvas' + (Math.random() * 10000000));
@@ -245,7 +247,7 @@ function ColorPickerViewModel() {
     self.CustomColorsColumnCnt = ko.observable(0);
 
     this.SelectColor = function (newValue) {
-        self.CurrentColor(new ColorModel(newValue.Red(), newValue.Green(), newValue.Blue()));
+        self.CurrentColor(new ColorModel(newValue.Red(), newValue.Green(), newValue.Blue(), newValue.ColorChangedCallback));
     };
 
     this.GenerateLumPalette = function () {
@@ -298,7 +300,7 @@ function ColorPickerViewModel() {
         var column = self.CurrentCustomIndex % self.CustomColorsColumnCnt();
         var elemCnt = self.CustomColorsRowCnt() * self.CustomColorsColumnCnt();
 
-        var newColor = new ColorModel(self.CurrentColor().Red(), self.CurrentColor().Green(), self.CurrentColor().Blue());
+        var newColor = new ColorModel(self.CurrentColor().Red(), self.CurrentColor().Green(), self.CurrentColor().Blue(), self.GenerateLumPalette);
         self.CustomPickerColors()[row]()[column](newColor);
 
         self.CurrentCustomIndex = (self.CurrentCustomIndex + 1) % elemCnt;
@@ -313,13 +315,36 @@ function ColorPickerViewModel() {
         self.ProcessChangingPalette(sender, event);
     };
 
+    this.GetCoordinates = function (element) {
+        var obj = element;
+
+        var coordinates = {
+            x: 0,
+            y: 0
+        };
+
+        if (!element)
+            return coordinates;
+
+        do {
+            if (obj.offsetLeft)
+                coordinates.x += obj.offsetLeft;
+            if (obj.offsetTop)
+                coordinates.y += obj.offsetTop;
+        } while (obj = obj.offsetParent);
+
+        return coordinates;
+    };
+
     this.ProcessChangingPalette = function (sender, event) {
         if (!self.IsChangingPalette || self.IsChangingPalette() == false) {
             return;
         }
 
-        self.CurrentColor().Hue(event.layerX);
-        self.CurrentColor().Saturation(self.MAX_HSL - event.layerY);
+        var coordinates = self.GetCoordinates(document.getElementById(self.PaletteCanvasID()));
+
+        self.CurrentColor().Hue(event.pageX - coordinates.x);
+        self.CurrentColor().Saturation(self.MAX_HSL - (event.pageY - coordinates.y));
     };
 
     this.EndChangingPalette = function () {
@@ -337,7 +362,8 @@ function ColorPickerViewModel() {
             return;
         }
 
-        self.CurrentColor().Luma(self.MAX_HSL - event.layerY);
+        var coordinates = self.GetCoordinates(document.getElementById(self.LumaCanvasID()));
+        self.CurrentColor().Luma(self.MAX_HSL - (event.pageY - coordinates.y));
     };
 
     this.EndChangingLuma = function () {
@@ -350,6 +376,18 @@ function ColorPickerViewModel() {
         self.GenerateLumPalette();
     };
 
+    this.ChooseColor = function () {
+        if (events.selectColor) {
+            events.selectColor(self.CurrentColor());
+        }
+    };
+
+    this.Close = function () {
+        if (events.close) {
+            events.close();
+        }
+    };
+
     this.Init = function () {
         var rowCnt = 2;
         var columnCnt = 8;
@@ -357,7 +395,13 @@ function ColorPickerViewModel() {
         for (var i = 0; i < rowCnt; i++) {
             self.CustomPickerColors.push(ko.observableArray([]));
             for (var j = 0; j < columnCnt; j++) {
-                self.CustomPickerColors()[i].push(ko.observable(new ColorModel(255, 255, 255)));
+                self.CustomPickerColors()[i].push(ko.observable(new ColorModel(255, 255, 255, self.GenerateLumPalette)));
+            }
+        }
+
+        for (i = 0; i < self.PREDEFINED_PICKER_COLORS.length; i++) {
+            for (j = 0; j < self.PREDEFINED_PICKER_COLORS[i].length; j++) {
+                self.PREDEFINED_PICKER_COLORS[i][j].ColorChangedCallback = self.GenerateLumPalette;
             }
         }
 

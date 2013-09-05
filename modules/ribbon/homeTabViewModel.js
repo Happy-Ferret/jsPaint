@@ -31,13 +31,13 @@ function HomeTabViewModel(state) {
             iconClass: 'systemAppIcon',
 
             size: {
-                width: 510,
-                height: 360
+                width: 530,
+                height: 370
             }
         }, {
             windowTemplate: 'colorpickerTemplate'
         }, {
-            windowViewModel: new ColorPickerViewModel()
+            windowViewModel: new ColorPickerViewModel({})
         }, {
             onDataSelect: self.SelectColor
         });
